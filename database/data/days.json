@@ -1,0 +1,114 @@
+[
+  {
+    "id": "day_2026-09-18",
+    "date": "2026-09-18",
+    "affectiveCheckIn": {
+      "morning": {
+        "energyLevel": "navegando",
+        "stateTag": "Em Transição",
+        "promptAnswer": "Começando sem pressa."
+      },
+      "evening": null
+    },
+    "timelineSlots": [
+      {
+        "id": "slot_1789764493796_1",
+        "timeRange": {
+          "start": "08:00",
+          "end": "08:45"
+        },
+        "customTitle": "Despertar no compasso + café",
+        "internalState": "recarregando",
+        "isFlexible": true,
+        "status": "feito",
+        "authorCreditsEarned": 10,
+        "reflectionMicroNote": "Começo tranquilo."
+      },
+      {
+        "id": "slot_1789764493796_2",
+        "timeRange": {
+          "start": "14:00",
+          "end": "15:30"
+        },
+        "customTitle": "Encarar o resumo de história",
+        "internalState": "exige_energia",
+        "isFlexible": false,
+        "status": "parcial",
+        "authorCreditsEarned": 5,
+        "reflectionMicroNote": "Li 4 páginas e anotei os pontos."
+      },
+      {
+        "id": "slot_1789764493796_3",
+        "timeRange": {
+          "start": "16:00",
+          "end": "17:00"
+        },
+        "customTitle": "Ócio deliberado: olhar pro teto / música",
+        "internalState": "ocio_deliberado",
+        "isFlexible": true,
+        "status": "feito",
+        "authorCreditsEarned": 10,
+        "reflectionMicroNote": "Bateria regenerada com sucesso."
+      },
+      {
+        "id": "slot_1789764493796_4",
+        "timeRange": {
+          "start": "20:00",
+          "end": "21:00"
+        },
+        "customTitle": "Desenho livre ou gameplay leve",
+        "internalState": "foco_leve",
+        "isFlexible": true,
+        "status": "reorganizado_amanha",
+        "authorCreditsEarned": 0,
+        "reflectionMicroNote": "Ficou pra amanhã sem crise."
+      },
+      {
+        "id": "slot_1789764493797_9rt8",
+        "timeRange": {
+          "start": "16:00",
+          "end": "17:00"
+        },
+        "customTitle": "Ócio deliberado: ouvir música no escuro",
+        "internalState": "ocio_deliberado",
+        "isFlexible": true,
+        "status": "reorganizado_amanha",
+        "authorCreditsEarned": 0,
+        "reflectionMicroNote": ""
+      },
+      {
+        "id": "slot_1789764560338_ei33",
+        "timeRange": {
+          "start": "16:00",
+          "end": "17:00"
+        },
+        "customTitle": "Ócio deliberado: ouvir música no escuro",
+        "internalState": "ocio_deliberado",
+        "isFlexible": true,
+        "status": "reorganizado_amanha",
+        "authorCreditsEarned": 0,
+        "reflectionMicroNote": ""
+      },
+      {
+        "id": "slot_1789764566056_fq63",
+        "timeRange": {
+          "start": "16:00",
+          "end": "17:00"
+        },
+        "customTitle": "Ócio deliberado: ouvir música no escuro",
+        "internalState": "ocio_deliberado",
+        "isFlexible": true,
+        "status": "reorganizado_amanha",
+        "authorCreditsEarned": 0,
+        "reflectionMicroNote": ""
+      }
+    ],
+    "decompressionPad": {
+      "microDiary": "Despejo de pensamentos sem filtro.",
+      "writtenAt": "2026-09-18T20:49:26.089Z",
+      "privacyLock": true
+    },
+    "createdAt": "2026-09-18T20:48:13.796Z",
+    "updatedAt": "2026-09-18T20:49:26.089Z"
+  }
+]

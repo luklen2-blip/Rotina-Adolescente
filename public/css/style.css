@@ -1,0 +1,318 @@
+/* ==========================================================================
+   Ritmo: Autonomia através da Autoria - Estilo Neo-Brutalista Dark
+   Sem infantilização, alto contraste e focado na autoria do adolescente
+   ========================================================================== */
+
+:root {
+  --bg-main: #0b0f17;
+  --bg-card: #131926;
+  --bg-card-hover: #192132;
+  --bg-input: #0e1420;
+  --border-color: #27354a;
+  --border-focus: #6366f1;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #6366f1;
+  --accent-energy: #f59e0b;
+  --accent-ocio: #0ea5e9;
+  --accent-recharge: #10b981;
+  --accent-focus: #a855f7;
+  --neo-shadow: 3px 3px 0px rgba(0, 0, 0, 0.7);
+  --neo-shadow-sm: 2px 2px 0px rgba(0, 0, 0, 0.7);
+  --neo-shadow-hover: 1px 1px 0px rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-bottom: 90px; /* espaço para o painel de créditos fixo inferior */
+  overflow-x: hidden;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+/* Classes Neo-Brutalistas */
+.neo-box {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  box-shadow: var(--neo-shadow);
+  border-radius: 8px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.neo-box:hover {
+  border-color: #3b4d6b;
+}
+
+.neo-btn {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  box-shadow: var(--neo-shadow-sm);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.neo-btn-primary {
+  background-color: var(--accent-primary);
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+
+.neo-btn-done {
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #34d399;
+}
+.neo-btn-done.active {
+  background-color: #10b981;
+  color: #0b0f17;
+}
+
+.neo-btn-partial {
+  background-color: rgba(245, 158, 11, 0.15);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+.neo-btn-partial.active {
+  background-color: #f59e0b;
+  color: #0b0f17;
+}
+
+.neo-btn-reschedule {
+  background-color: rgba(14, 165, 233, 0.15);
+  border-color: #0ea5e9;
+  color: #38bdf8;
+}
+.neo-btn-reschedule.active {
+  background-color: #0ea5e9;
+  color: #0b0f17;
+}
+
+/* Badges de Estado Interno */
+.tag-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tag-recarregando {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.tag-exige_energia {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.tag-ocio_deliberado {
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.tag-foco_leve {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.tag-piloto_automatico {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+/* Inputs Livres de Autoria */
+.title-input {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.title-input:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-color);
+}
+
+.title-input:focus {
+  background: var(--bg-input);
+  border-color: var(--accent-primary);
+  outline: none;
+}
+
+/* Micro-reflexão */
+.reflection-input {
+  background: var(--bg-input);
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.reflection-input:focus {
+  border-color: #6366f1;
+  color: var(--text-primary);
+  outline: none;
+}
+
+/* Trilho da Timeline */
+.timeline-track {
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 10px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, #6366f1, #27354a, #10b981);
+}
+
+.slot-dot {
+  position: absolute;
+  left: -20px;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+/* Status Concluído ou Reorganizado */
+.slot-card.status-feito {
+  border-left: 4px solid #10b981;
+}
+
+.slot-card.status-parcial {
+  border-left: 4px solid #f59e0b;
+}
+
+.slot-card.status-reorganizado {
+  border-left: 4px solid #0ea5e9;
+  opacity: 0.85;
+}
+
+/* Toasts de Acolhimento */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  max-width: 420px;
+  margin: 0 auto;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  background: #131b2c;
+  border: 1.5px solid #3b4d6b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #f1f5f9;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  pointer-events: auto;
+  animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 14, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #131926;
+  border: 1.5px solid #27354a;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}

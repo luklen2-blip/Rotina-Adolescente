@@ -1,0 +1,367 @@
+[
+  {
+    "id": "current_week",
+    "weekTitle": "Semana Ativa",
+    "days": {
+      "segunda": {
+        "name": "Segunda",
+        "themeColor": "#0284c7",
+        "tasks": [
+          {
+            "id": "seg_1",
+            "title": "Ir para a escola",
+            "points": 1,
+            "icon": "school",
+            "done": true
+          },
+          {
+            "id": "seg_2",
+            "title": "Dia na escola sem reclamações",
+            "points": 3,
+            "icon": "smile",
+            "done": true
+          },
+          {
+            "id": "seg_3",
+            "title": "Fono (ao voltar da escola)",
+            "points": 1,
+            "icon": "message-circle",
+            "done": true
+          },
+          {
+            "id": "seg_4",
+            "title": "Reforço escolar",
+            "points": 3,
+            "icon": "book-open",
+            "done": true
+          },
+          {
+            "id": "seg_5",
+            "title": "Fazer a atividade do Kumon",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "seg_6",
+            "title": "Arrumar a mochila para o dia seguinte",
+            "points": 1,
+            "icon": "backpack",
+            "done": false
+          },
+          {
+            "id": "seg_7",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          },
+          {
+            "id": "seg_8",
+            "title": "21h: hora de dormir",
+            "points": 1,
+            "icon": "moon",
+            "done": false
+          }
+        ]
+      },
+      "terca": {
+        "name": "Terça",
+        "themeColor": "#16a34a",
+        "tasks": [
+          {
+            "id": "ter_1",
+            "title": "Ir para a escola",
+            "points": 1,
+            "icon": "school",
+            "done": false
+          },
+          {
+            "id": "ter_2",
+            "title": "Dia na escola sem reclamações",
+            "points": 3,
+            "icon": "smile",
+            "done": false
+          },
+          {
+            "id": "ter_3",
+            "title": "Ir ao Kumon (ao voltar da escola)",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "ter_4",
+            "title": "Psicopedagoga Tia Alyne",
+            "points": 1,
+            "icon": "user-check",
+            "done": false
+          },
+          {
+            "id": "ter_5",
+            "title": "Psicólogo Tio Luan",
+            "points": 1,
+            "icon": "heart",
+            "done": false
+          },
+          {
+            "id": "ter_6",
+            "title": "Reforço escolar (Tiana)",
+            "points": 3,
+            "icon": "book-open",
+            "done": false
+          },
+          {
+            "id": "ter_7",
+            "title": "Arrumar a mochila para o dia seguinte",
+            "points": 1,
+            "icon": "backpack",
+            "done": false
+          },
+          {
+            "id": "ter_8",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          },
+          {
+            "id": "ter_9",
+            "title": "21h: hora de dormir",
+            "points": 1,
+            "icon": "moon",
+            "done": false
+          }
+        ]
+      },
+      "quarta": {
+        "name": "Quarta",
+        "themeColor": "#eab308",
+        "tasks": [
+          {
+            "id": "qua_1",
+            "title": "Ir para a escola",
+            "points": 1,
+            "icon": "school",
+            "done": false
+          },
+          {
+            "id": "qua_2",
+            "title": "Dia na escola sem reclamações",
+            "points": 3,
+            "icon": "smile",
+            "done": false
+          },
+          {
+            "id": "qua_3",
+            "title": "Centro Esportivo (futebol + judô)",
+            "points": 1,
+            "icon": "activity",
+            "done": false
+          },
+          {
+            "id": "qua_4",
+            "title": "Lembrar do uniforme do judô!",
+            "points": 1,
+            "icon": "bell",
+            "done": false
+          },
+          {
+            "id": "qua_5",
+            "title": "Reforço escolar",
+            "points": 3,
+            "icon": "book-open",
+            "done": false
+          },
+          {
+            "id": "qua_6",
+            "title": "Fazer a atividade do Kumon",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "qua_7",
+            "title": "Arrumar a mochila para o dia seguinte",
+            "points": 1,
+            "icon": "backpack",
+            "done": false
+          },
+          {
+            "id": "qua_8",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          },
+          {
+            "id": "qua_9",
+            "title": "21h: hora de dormir",
+            "points": 1,
+            "icon": "moon",
+            "done": false
+          }
+        ]
+      },
+      "quinta": {
+        "name": "Quinta",
+        "themeColor": "#ec4899",
+        "tasks": [
+          {
+            "id": "qui_1",
+            "title": "Ir para a escola",
+            "points": 1,
+            "icon": "school",
+            "done": false
+          },
+          {
+            "id": "qui_2",
+            "title": "Dia na escola sem reclamações",
+            "points": 3,
+            "icon": "smile",
+            "done": false
+          },
+          {
+            "id": "qui_3",
+            "title": "Ir ao Kumon (ao voltar da escola)",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "qui_4",
+            "title": "Reforço escolar",
+            "points": 3,
+            "icon": "book-open",
+            "done": false
+          },
+          {
+            "id": "qui_5",
+            "title": "Arrumar a mochila para o dia seguinte",
+            "points": 1,
+            "icon": "backpack",
+            "done": false
+          },
+          {
+            "id": "qui_6",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          },
+          {
+            "id": "qui_7",
+            "title": "21h: hora de dormir",
+            "points": 1,
+            "icon": "moon",
+            "done": false
+          }
+        ]
+      },
+      "sexta": {
+        "name": "Sexta",
+        "themeColor": "#8b5cf6",
+        "tasks": [
+          {
+            "id": "sex_1",
+            "title": "Ir para a escola",
+            "points": 1,
+            "icon": "school",
+            "done": false
+          },
+          {
+            "id": "sex_2",
+            "title": "Dia na escola sem reclamações",
+            "points": 3,
+            "icon": "smile",
+            "done": false
+          },
+          {
+            "id": "sex_3",
+            "title": "Preparar a bolsa do Centro Esportivo",
+            "points": 1,
+            "icon": "briefcase",
+            "done": false
+          },
+          {
+            "id": "sex_4",
+            "title": "Centro Esportivo (futebol + judô)",
+            "points": 1,
+            "icon": "activity",
+            "done": false
+          },
+          {
+            "id": "sex_5",
+            "title": "Reforço escolar",
+            "points": 3,
+            "icon": "book-open",
+            "done": false
+          },
+          {
+            "id": "sex_6",
+            "title": "Fazer a atividade do Kumon",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "sex_7",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          },
+          {
+            "id": "sex_8",
+            "title": "21h: hora de dormir",
+            "points": 1,
+            "icon": "moon",
+            "done": false
+          }
+        ]
+      },
+      "sabado": {
+        "name": "Sábado",
+        "themeColor": "#06b6d4",
+        "tasks": [
+          {
+            "id": "sab_1",
+            "title": "Fazer a atividade do Kumon",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "sab_2",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          }
+        ]
+      },
+      "domingo": {
+        "name": "Domingo",
+        "themeColor": "#f97316",
+        "tasks": [
+          {
+            "id": "dom_1",
+            "title": "Fazer a atividade do Kumon",
+            "points": 3,
+            "icon": "edit-3",
+            "done": false
+          },
+          {
+            "id": "dom_2",
+            "title": "30 min de leitura",
+            "points": 3,
+            "icon": "book",
+            "done": false
+          }
+        ]
+      }
+    },
+    "createdAt": "2026-09-18T21:00:10.042Z",
+    "updatedAt": "2026-09-18T21:00:10.069Z"
+  }
+]

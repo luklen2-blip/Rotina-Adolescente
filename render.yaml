@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ritmo-autonomia
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && node tests/run_all.js
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: APP_NAME
+        value: "Ritmo: Autonomia através da Autoria"

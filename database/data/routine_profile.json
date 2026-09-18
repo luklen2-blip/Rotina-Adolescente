@@ -1,0 +1,26 @@
+[
+  {
+    "id": "miguel_profile",
+    "name": "Miguel",
+    "title": "Rotina do Miguel",
+    "subtitle": "Pequenas Ações, Grandes Conquistas!",
+    "slogans": [
+      "Disciplina hoje, liberdade amanhã!",
+      "Você consegue! Você se esforça! Você evolui! Você é capaz!",
+      "Esforço hoje, resultados sempre!"
+    ],
+    "values": [
+      "FOCO",
+      "ORGANIZAÇÃO",
+      "RESPONSABILIDADE",
+      "RESPEITO",
+      "APRENDIZADO",
+      "ESPORTES",
+      "AUTONOMIA",
+      "SONHOS"
+    ],
+    "cumulativePoints": 48,
+    "updatedAt": "2026-09-18T21:00:10.082Z",
+    "createdAt": "2026-09-18T21:00:10.044Z"
+  }
+]
