@@ -138,17 +138,35 @@ async function runTests() {
     passed++;
 
     // 10. Endpoint do Checkout Oficial Kiwify
-    console.log('👉 [10/10] Testando /api/checkout (Kiwify)...');
+    console.log('👉 [10/11] Testando /api/checkout (Kiwify)...');
     const checkoutRes = await request('/api/checkout');
     assert.strictEqual(checkoutRes.status, 200);
     assert.strictEqual(checkoutRes.json.provider, 'Kiwify');
     assert.strictEqual(checkoutRes.json.checkoutUrl, 'https://pay.kiwify.com.br/9fQEqnA');
     passed++;
 
-    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/10 testes passaram perfeitamente!`);
+    // 11. Validação de Chave de Ativação do Paywall
+    console.log('👉 [11/11] Testando /api/checkout/validate-code...');
+    const validKeyRes = await request('/api/checkout/validate-code', {
+      method: 'POST',
+      body: { code: 'RITMO2026' }
+    });
+    assert.strictEqual(validKeyRes.status, 200);
+    assert.strictEqual(validKeyRes.json.success, true);
+
+    const invalidKeyRes = await request('/api/checkout/validate-code', {
+      method: 'POST',
+      body: { code: 'ERRADO123' }
+    });
+    assert.strictEqual(invalidKeyRes.status, 401);
+    assert.strictEqual(invalidKeyRes.json.success, false);
+    passed++;
+
+    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/11 testes passaram perfeitamente!`);
   } finally {
     if (server) server.close();
   }
+
 }
 
 runTests().catch(err => {

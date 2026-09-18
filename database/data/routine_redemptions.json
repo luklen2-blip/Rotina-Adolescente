@@ -22,5 +22,21 @@
     "id": "rou_1789769453350_27p9e",
     "createdAt": "2026-09-18T22:10:53.350Z",
     "updatedAt": "2026-09-18T22:10:53.350Z"
+  },
+  {
+    "rewardName": "Escolher o filme da noite",
+    "cost": 5,
+    "claimedAt": "2026-09-18T22:15:29.647Z",
+    "id": "rou_1789769729647_owmyq",
+    "createdAt": "2026-09-18T22:15:29.647Z",
+    "updatedAt": "2026-09-18T22:15:29.647Z"
+  },
+  {
+    "rewardName": "Escolher o filme da noite",
+    "cost": 5,
+    "claimedAt": "2026-09-18T22:15:40.841Z",
+    "id": "rou_1789769740841_3p9rk",
+    "createdAt": "2026-09-18T22:15:40.841Z",
+    "updatedAt": "2026-09-18T22:15:40.841Z"
   }
 ]

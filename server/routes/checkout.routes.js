@@ -24,4 +24,31 @@ router.get('/redirect', (req, res) => {
   res.redirect(KIWIFY_CHECKOUT_URL);
 });
 
+// POST /api/checkout/validate-code - Validação de chaves de ativação
+router.post('/validate-code', (req, res) => {
+  const { code } = req.body || {};
+  if (!code || typeof code !== 'string') {
+    return res.status(400).json({ success: false, message: 'Código não fornecido.' });
+  }
+
+  const cleanCode = code.trim().toUpperCase();
+  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'SOUNDWORLD', 'VIP2026', 'LUCIANO', 'ADM2026'];
+  const isValid = validMasterKeys.includes(cleanCode) || cleanCode.startsWith('RTM-') || cleanCode.startsWith('KIW-');
+
+
+  if (isValid) {
+    return res.json({
+      success: true,
+      message: 'Chave de acesso válida! Acesso vitalício desbloqueado.',
+      tier: 'lifetime'
+    });
+  }
+
+  return res.status(401).json({
+    success: false,
+    message: 'Chave de acesso não encontrada ou inválida.'
+  });
+});
+
 export default router;
+
