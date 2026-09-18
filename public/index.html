@@ -47,8 +47,14 @@
         </div>
       </div>
 
-      <!-- Lado Direito: Nível de XP & Saldo de Pontos -->
-      <div class="flex items-center gap-3">
+      <!-- Lado Direito: Nível de XP, Saldo de Pontos & Checkout Kiwify -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://pay.kiwify.com.br/9fQEqnA" target="_blank" class="tech-card px-3 py-2 bg-emerald-950/40 border-emerald-500/50 text-emerald-300 font-mono font-bold text-xs flex items-center gap-1.5 hover:bg-emerald-900/40 hover:scale-105 transition-all shadow-sm shadow-emerald-500/30 shrink-0" title="Assinatura / Apoio Familiar Oficial (Kiwify)">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+          <span class="hidden sm:inline">Assinatura</span>
+          <span class="text-white">R$ 19,90</span>
+        </a>
+
         <div class="tech-card px-3.5 py-2 text-right border-cyan-500/30 bg-[#0c1420]">
           <p id="xp-level-display" class="text-[11px] font-mono font-extrabold text-cyan-400 tracking-wider">
             NÍVEL DE XP: 12
@@ -200,8 +206,12 @@
         SABEDORIA É TER A TUA PRÓPRIA ROTINA.
       </div>
 
-      <!-- Links Técnicos & Cloud -->
-      <div class="flex items-center gap-3 text-[11px] text-slate-500">
+      <!-- Links Técnicos, Pagamento & Cloud -->
+      <div class="flex items-center gap-3 text-[11px] text-slate-400">
+        <a href="https://pay.kiwify.com.br/9fQEqnA" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Pagamento Seguro Kiwify
+        </a>
+        <span>•</span>
         <a href="/api/health" target="_blank" class="hover:text-cyan-400">Health 24/7</a>
         <span>•</span>
         <button onclick="window.openLegalModal('privacidade')" class="hover:text-cyan-400">LGPD</button>

@@ -131,13 +131,21 @@ async function runTests() {
     passed++;
 
     // 9. Resolução de Arquivos Estáticos e SPA
-    console.log('👉 [9/9] Testando servidor estático e fallback SPA...');
+    console.log('👉 [9/10] Testando servidor estático e fallback SPA...');
     const home = await request('/');
     assert.strictEqual(home.status, 200);
     assert.ok(home.data.includes('Rotina do Miguel'), 'Deve carregar o HTML da Rotina do Miguel');
     passed++;
 
-    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/9 testes passaram perfeitamente!`);
+    // 10. Endpoint do Checkout Oficial Kiwify
+    console.log('👉 [10/10] Testando /api/checkout (Kiwify)...');
+    const checkoutRes = await request('/api/checkout');
+    assert.strictEqual(checkoutRes.status, 200);
+    assert.strictEqual(checkoutRes.json.provider, 'Kiwify');
+    assert.strictEqual(checkoutRes.json.checkoutUrl, 'https://pay.kiwify.com.br/9fQEqnA');
+    passed++;
+
+    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/10 testes passaram perfeitamente!`);
   } finally {
     if (server) server.close();
   }

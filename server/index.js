@@ -10,6 +10,7 @@ import checkinRoutes from './routes/checkin.routes.js';
 import rewardsRoutes from './routes/rewards.routes.js';
 import pixRoutes from './routes/pix.routes.js';
 import routineRoutes from './routes/routine.routes.js';
+import checkoutRoutes from './routes/checkout.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,6 +45,7 @@ staticCandidatePaths.forEach(dir => {
 // 2. Registro de Rotas da API
 app.use('/api', healthRoutes);
 app.use('/api/routine', routineRoutes);
+app.use('/api/checkout', checkoutRoutes);
 app.use('/api', timelineRoutes);
 app.use('/api', checkinRoutes);
 app.use('/api/rewards', rewardsRoutes);

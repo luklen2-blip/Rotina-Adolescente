@@ -33,7 +33,7 @@
             "title": "Reforço escolar",
             "points": 3,
             "icon": "book-open",
-            "done": false
+            "done": true
           },
           {
             "id": "seg_5",
@@ -362,6 +362,6 @@
       }
     },
     "createdAt": "2026-09-18T21:00:10.042Z",
-    "updatedAt": "2026-09-18T21:40:47.915Z"
+    "updatedAt": "2026-09-18T22:10:53.314Z"
   }
 ]
