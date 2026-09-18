@@ -3,268 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Rotina do Miguel — Pequenas Ações, Grandes Conquistas!</title>
-  <meta name="description" content="Sistema interativo de rotina semanal para adolescentes com pontuação diária e conquistas tangíveis.">
-  <meta name="theme-color" content="#0B0F17">
+  <title>Rotina do Miguel — Teu Ritmo Único</title>
+  <meta name="description" content="Gamified daily routine tracker app for teenagers. Clean Tech aesthetic.">
+  <meta name="theme-color" content="#070C14">
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS via CDN oficial -->
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              main: '#0B0F17',
-              card: '#131926',
-              border: '#27354A',
-              segunda: '#0284c7',
-              terca: '#16a34a',
-              quarta: '#eab308',
-              quinta: '#ec4899',
-              sexta: '#8b5cf6',
-              sabado: '#06b6d4',
-              domingo: '#f97316'
-            }
-          }
-        }
-      }
-    }
-  </script>
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-[#0B0F17] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#070C14] text-slate-100 antialiased selection:bg-cyan-500 selection:text-black">
 
-  <!-- Container de Toasts de Conquista -->
+  <!-- Container de Toasts -->
   <div id="toast-container"></div>
 
-  <!-- Shell do Quadro de Rotina -->
-  <div class="max-w-7xl mx-auto px-3 sm:px-6 py-5 space-y-6">
+  <!-- Tablet / Desktop Frame Wrapper (Efeito Tablet com Iluminação Ambiente) -->
+  <div class="min-h-screen flex flex-col justify-between p-3 sm:p-6 max-w-6xl mx-auto">
 
-    <!-- 1. CABEÇALHO DO QUADRO (IDÊNTICO À FOTO) -->
-    <header class="neo-box p-5 bg-gradient-to-r from-[#131926] via-[#1a2334] to-[#131926] border-2 border-indigo-500/40 relative overflow-hidden">
-      <!-- Elementos Decorativos -->
-      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
-        <!-- Lado Esquerdo: Slogan & Esporte -->
-        <div class="text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-2">
-            <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
-            DISCIPLINA HOJE, LIBERDADE AMANHÃ!
+    <!-- 1. CABEÇALHO SUPERIOR DA INTERFACE -->
+    <header class="flex items-center justify-between gap-4 mb-5 pb-3 border-b border-[#1b2a3f]">
+      <!-- Lado Esquerdo: Avatar Estilizado + Título -->
+      <div class="flex items-center gap-3">
+        <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-lime-400 p-0.5 shadow-lg shadow-cyan-500/30 shrink-0 cursor-pointer hover:scale-105 transition-transform" onclick="window.openProfileModal()">
+          <div class="w-full h-full bg-[#0e1724] rounded-[14px] flex items-center justify-center text-xl overflow-hidden">
+            🧑‍💻
           </div>
-          <div class="flex items-center gap-2 justify-center lg:justify-start">
-            <span class="text-2xl">👑</span>
-            <h1 id="board-title" class="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-200 to-amber-300">
-              ROTINA DO MIGUEL
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-lime-400 rounded-full border-2 border-[#070C14] flex items-center justify-center text-[9px] font-black text-black">✓</span>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 id="user-header-title" class="text-lg sm:text-xl font-black tracking-tight text-white uppercase flex items-center gap-2">
+              ROTINA DO <span class="text-glow-lime">MIGUEL</span>
             </h1>
           </div>
-          <p id="board-subtitle" class="text-xs sm:text-sm font-bold text-amber-400 tracking-wide mt-0.5 uppercase">
-            PEQUENAS AÇÕES, GRANDES CONQUISTAS!
+          <p class="text-[11px] font-mono text-cyan-400 font-semibold tracking-wide">
+            SABEDORIA É TER A TUA PRÓPRIA ROTINA
           </p>
         </div>
+      </div>
 
-        <!-- Centro: Balão de Incentivo & Valores -->
-        <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl max-w-md text-center space-y-2">
-          <p class="text-xs font-extrabold text-amber-300 uppercase tracking-wide">
-            ✨ VOCÊ CONSEGUE! VOCÊ SE ESFORÇA! VOCÊ EVOLUI! VOCÊ É CAPAZ! 😊
+      <!-- Lado Direito: Nível de XP & Saldo de Pontos -->
+      <div class="flex items-center gap-3">
+        <div class="tech-card px-3.5 py-2 text-right border-cyan-500/30 bg-[#0c1420]">
+          <p id="xp-level-display" class="text-[11px] font-mono font-extrabold text-cyan-400 tracking-wider">
+            NÍVEL DE XP: 12
           </p>
-          <div class="flex flex-wrap items-center justify-center gap-1.5 text-[10px] font-bold text-slate-300">
-            <span class="bg-indigo-950/70 border border-indigo-500/30 px-2 py-0.5 rounded">✓ FOCO</span>
-            <span class="bg-emerald-950/70 border border-emerald-500/30 px-2 py-0.5 rounded">✓ ORGANIZAÇÃO</span>
-            <span class="bg-amber-950/70 border border-amber-500/30 px-2 py-0.5 rounded">✓ RESPONSABILIDADE</span>
-            <span class="bg-purple-950/70 border border-purple-500/30 px-2 py-0.5 rounded">✓ ESPORTES</span>
-            <span class="bg-sky-950/70 border border-sky-500/30 px-2 py-0.5 rounded">✓ AUTONOMIA</span>
-            <span class="bg-pink-950/70 border border-pink-500/30 px-2 py-0.5 rounded">✓ SONHOS</span>
-          </div>
-        </div>
-
-        <!-- Lado Direito: Saldo de Pontos & Ações -->
-        <div class="flex flex-col items-center lg:items-end gap-2 shrink-0">
-          <div class="neo-box px-4 py-2.5 bg-amber-950/40 border-2 border-amber-500 text-amber-300 font-mono text-center">
-            <p class="text-[11px] font-bold uppercase tracking-wider text-amber-400">SALDO ACUMULADO</p>
-            <p id="cumulative-points-badge" class="text-2xl sm:text-3xl font-black text-amber-300 tracking-tight">
-              45 Pontos
-            </p>
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="window.addBonusPoints()" class="neo-btn text-xs py-1.5 px-3 bg-emerald-600 text-white font-bold border-emerald-500 hover:scale-105" title="Adicionar bônus de prova ou superação">
-              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> +5 Bônus Prova
-            </button>
-            <button id="btn-open-history" class="neo-btn text-xs py-1.5 px-3 hover:bg-slate-800 text-slate-300" title="Ver resgates anteriores">
-              <i data-lucide="history" class="w-3.5 h-3.5"></i> Resgates
-            </button>
-            <button onclick="window.resetRoutineWeek()" class="neo-btn text-xs py-1.5 px-2.5 text-slate-400 hover:text-white" title="Reiniciar semana (limpar checkboxes mantendo os pontos)">
-              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
+          <p id="saldo-points-display" class="text-sm sm:text-base font-mono font-black text-glow-lime">
+            SALDO: 345 PONTOS
+          </p>
         </div>
       </div>
     </header>
 
-    <!-- 2. GRADE SEMANAL DE DIAS (SEGUNDA A DOMINGO - IDÊNTICA À FOTO) -->
-    <section class="space-y-3">
-      <div class="flex items-center justify-between px-1">
-        <h2 class="font-extrabold text-sm sm:text-base text-slate-200 uppercase tracking-wider flex items-center gap-2">
-          <i data-lucide="calendar-days" class="w-4 h-4 text-indigo-400"></i>
-          Quadro de Atividades da Semana
-        </h2>
-        <span id="weekly-total-badge" class="text-xs font-mono font-bold text-amber-400 bg-amber-950/50 border border-amber-500/30 px-3 py-1 rounded-full">
-          Carregando pontos...
-        </span>
-      </div>
+    <!-- 2. LAYOUT PRINCIPAL EM DUAS COLUNAS (TABLET DISPLAY) -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start">
 
-      <!-- Grade com as 7 Colunas da Foto (Scroll horizontal suave no mobile, grid completo no desktop) -->
-      <div class="overflow-x-auto pb-3">
-        <div id="week-columns-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3 min-w-[320px] lg:min-w-[1100px]">
-          <!-- Injetado dinamicamente via routine.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. REGRAS IMPORTANTES E COMBINADOS FAMILIARES (DO QUADRO FÍSICO) -->
-    <section class="neo-box p-4 sm:p-5 bg-gradient-to-r from-amber-950/20 via-[#131926] to-amber-950/20 border border-amber-500/30">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div class="space-y-2 flex-1">
-          <div class="flex items-center gap-2">
-            <span class="text-2xl">⭐</span>
-            <h3 class="font-black text-sm sm:text-base text-amber-300 uppercase tracking-wider">
-              REGRAS IMPORTANTES & COMBINADOS
-            </h3>
+      <!-- ================================================================= -->
+      <!-- COLUNA ESQUERDA: "TEU RITMO ÚNICO" (TIMELINE MODULAR)              -->
+      <!-- ================================================================= -->
+      <section class="lg:col-span-7 tech-card p-4 sm:p-6 flex flex-col justify-between space-y-4">
+        <div>
+          <!-- Título da Coluna -->
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+              <h2 class="text-base font-black uppercase tracking-wider text-slate-100">
+                TEU RITMO ÚNICO
+              </h2>
+            </div>
+            <button onclick="window.addBonusPointsPrompt()" class="text-xs font-mono text-lime-400 hover:underline flex items-center gap-1">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> +5P Bônus
+            </button>
           </div>
-          <ul id="board-rules-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <!-- Injetado dinamicamente -->
-          </ul>
+
+          <!-- Carrossel de Dias: SEG | TER (Active) | QUA | QUI | SEX | SÁB | DOM -->
+          <div id="day-carousel" class="flex items-center justify-between gap-1 p-1 bg-[#09111c] border border-[#1b2a3f] rounded-xl mb-4 overflow-x-auto">
+            <!-- Injetado via tablet_ui.js -->
+          </div>
+
+          <!-- Timeline com Cards Modulares e Eixo Vertical -->
+          <div id="timeline-slots-container" class="track-axis space-y-3 max-h-[500px] overflow-y-auto pr-1">
+            <!-- Injetado dinamicamente via tablet_ui.js -->
+          </div>
         </div>
 
-        <div class="p-4 rounded-xl bg-amber-500/10 border-2 border-amber-500/40 text-center shrink-0 w-full md:w-auto">
-          <p class="text-sm font-black text-amber-300 uppercase tracking-wide">
-            ESFORÇO HOJE,<br>RESULTADOS SEMPRE! 😊
-          </p>
-          <p class="text-[11px] text-slate-400 mt-1">
-            Constância também é uma grande conquista!
-          </p>
+        <!-- Botão de Ação Inferior: REORGANIZAR DIA -->
+        <div class="pt-3">
+          <button id="btn-reorganize-day" class="btn-reorganize w-full py-3 px-4 flex items-center justify-center gap-2 text-sm">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            REORGANIZAR DIA
+          </button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 4. PAINEL "MINHAS CONQUISTAS" (RECOMPENSAS POR FAIXA DE PONTOS - IDÊNTICA À FOTO) -->
-    <section class="space-y-3">
-      <div class="flex items-center justify-between px-1">
-        <div class="flex items-center gap-2">
-          <span class="text-2xl">🏆</span>
-          <h3 class="font-black text-base sm:text-lg text-white uppercase tracking-wider">
-            MINHAS CONQUISTAS (TABELA DE RECOMPENSAS)
+      <!-- ================================================================= -->
+      <!-- COLUNA DIREITA: "CONQUISTAS DO DIA" & METACOGNIÇÃO                 -->
+      <!-- ================================================================= -->
+      <section class="lg:col-span-5 space-y-4">
+
+        <!-- Card 1: CONQUISTAS DO DIA & BARRA DE MARCOS -->
+        <div class="tech-card p-4 sm:p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-2">
+              <i data-lucide="award" class="w-4 h-4 text-cyan-400"></i>
+              CONQUISTAS DO DIA
+            </h3>
+            <button onclick="window.openHistoryModal()" class="text-xs text-slate-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
+              <i data-lucide="clock" class="w-3.5 h-3.5"></i> Resgates
+            </button>
+          </div>
+
+          <!-- Barra de Progresso Horizontal -->
+          <div class="space-y-2">
+            <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-[#1b2a3f] relative">
+              <div id="milestone-bar-fill" class="h-full bg-gradient-to-r from-cyan-400 via-lime-400 to-lime-300 rounded-full transition-all duration-500 shadow-sm shadow-cyan-400/50" style="width: 35%;"></div>
+            </div>
+
+            <!-- Ícones dos Marcos (100P Popcorn, 250P Cinema, 500P Jantar, 1000P Viagem) -->
+            <div id="milestones-icons-row" class="grid grid-cols-4 gap-2 pt-1">
+              <!-- Injetado dinamicamente via tablet_ui.js -->
+            </div>
+          </div>
+
+          <!-- Rótulo do Próximo Objetivo -->
+          <div class="p-2.5 rounded-xl bg-[#09111c] border border-[#1b2a3f] text-center">
+            <p id="milestone-target-label" class="text-xs font-mono font-bold text-lime-400">
+              PRÓXIMO OBJETIVO: 500P Jantar (345/500)
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: HUMOR PÓS-TAREFA (CONECTANDO EMOÇÃO À AÇÃO) -->
+        <div class="tech-card p-4 sm:p-5 space-y-3">
+          <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+            <i data-lucide="smile" class="w-4 h-4 text-lime-400"></i>
+            HUMOR PÓS-TAREFA
           </h3>
+
+          <div class="grid grid-cols-3 gap-2">
+            <button class="mood-pill active" data-mood="foco_total" onclick="window.selectMood('foco_total')">
+              <span class="text-2xl">😤</span>
+              <span class="text-[11px] font-bold text-slate-200">Foco Total</span>
+            </button>
+            <button class="mood-pill" data-mood="cansado" onclick="window.selectMood('cansado')">
+              <span class="text-2xl">😩</span>
+              <span class="text-[11px] font-bold text-slate-200">Cansado</span>
+            </button>
+            <button class="mood-pill" data-mood="relaxado" onclick="window.selectMood('relaxado')">
+              <span class="text-2xl">😌</span>
+              <span class="text-[11px] font-bold text-slate-200">Relaxado</span>
+            </button>
+          </div>
         </div>
-        <p class="text-xs text-slate-400 hidden sm:block">
-          Quanto mais você se esforça, mais experiências incríveis te esperam!
-        </p>
+
+        <!-- Card 3: REFLEXÃO RÁPIDA -->
+        <div class="tech-card p-4 sm:p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300">
+              REFLEXÃO RÁPIDA
+            </h3>
+            <span class="text-lime-400 text-xs font-bold flex items-center gap-1">
+              <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Validado
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-400 font-medium">Como você fluiu hoje?</p>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="quick-tag" data-tag="Sem Energia" onclick="window.selectReflection('Sem Energia')">Sem Energia</button>
+            <button class="quick-tag active" data-tag="Dia Fluido" onclick="window.selectReflection('Dia Fluido')">Dia Fluido</button>
+            <button class="quick-tag" data-tag="Muitas Distrações" onclick="window.selectReflection('Muitas Distrações')">Muitas Distrações</button>
+            <button class="quick-tag" data-tag="Pouco Tempo" onclick="window.selectReflection('Pouco Tempo')">Pouco Tempo</button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- 3. RODAPÉ DE NAVEGAÇÃO MINIMALISTA & FILOSOFIA -->
+    <footer class="mt-5 pt-3 border-t border-[#1b2a3f] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+      <!-- Ícones de Navegação da Base -->
+      <div class="flex items-center gap-4 text-slate-400">
+        <button class="hover:text-cyan-400 transition-colors p-1" title="Início"><i data-lucide="home" class="w-5 h-5 text-cyan-400"></i></button>
+        <button onclick="window.openHistoryModal()" class="hover:text-cyan-400 transition-colors p-1" title="Loja de Recompensas"><i data-lucide="layout-grid" class="w-5 h-5"></i></button>
+        <button onclick="window.openProfileModal()" class="hover:text-cyan-400 transition-colors p-1" title="Perfil"><i data-lucide="user" class="w-5 h-5"></i></button>
+        <button onclick="window.openLegalModal('termos')" class="hover:text-cyan-400 transition-colors p-1" title="Configurações"><i data-lucide="settings" class="w-5 h-5"></i></button>
       </div>
 
-      <!-- Grade dos 5 Níveis de Conquistas da Foto -->
-      <div id="rewards-tiers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        <!-- Injetado dinamicamente via routine.js (5 pts, 10 pts, 20 pts, 30 pts, 50 pts) -->
+      <!-- Tagline Centrada -->
+      <div class="font-mono text-center text-xs tracking-wider text-slate-400 uppercase">
+        SABEDORIA É TER A TUA PRÓPRIA ROTINA.
       </div>
-    </section>
 
-    <!-- 5. RODAPÉ AFETIVO & REGULATÓRIO -->
-    <footer class="text-center pt-4 pb-8 space-y-2 text-xs text-slate-500 border-t border-slate-800/80">
-      <p class="font-bold text-amber-400 tracking-wider">
-        ❤️ SONHE • PLANEJE • FAÇA • CONQUISTE • REPITA ⭐ ORGULHO DE VOCÊ, MIGUEL! ❤️
-      </p>
-      <p class="text-[11px] text-slate-600 max-w-xl mx-auto">
-        Sistema de Rotina e Economia de Fichas para suporte ao desenvolvimento e autorregulação. Desenvolvido para Luciano (Padrão Cloud 24/7).
-      </p>
-      <div class="flex justify-center gap-4 text-xs text-indigo-400/80 pt-1">
-        <button id="btn-open-profile-edit" class="hover:underline">Personalizar Nome / Aluno</button>
+      <!-- Links Técnicos & Cloud -->
+      <div class="flex items-center gap-3 text-[11px] text-slate-500">
+        <a href="/api/health" target="_blank" class="hover:text-cyan-400">Health 24/7</a>
         <span>•</span>
-        <button onclick="window.openLegalModal('termos')" class="hover:underline">Termos de Uso</button>
-        <span>•</span>
-        <button onclick="window.openLegalModal('privacidade')" class="hover:underline">Privacidade LGPD</button>
+        <button onclick="window.openLegalModal('privacidade')" class="hover:text-cyan-400">LGPD</button>
       </div>
     </footer>
 
   </div>
 
-  <!-- MODAL: Adicionar Atividade em um Dia -->
-  <div id="modal-add-routine-task" class="modal-overlay hidden">
+  <!-- MODAL: Reorganizar Dia Sem Culpa -->
+  <div id="modal-reorganize" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i data-lucide="plus-circle" class="w-5 h-5 text-indigo-400"></i> 
-          Nova Atividade para <span id="add-task-day-label" class="text-indigo-400">Segunda</span>
+          <i data-lucide="refresh-cw" class="w-5 h-5 text-cyan-400"></i> Reorganizar o Teu Dia
         </h3>
         <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Nome da Atividade:</label>
-          <input type="text" id="input-new-task-title" placeholder="Ex: Natação, Estudar Inglês, Tarefa de Ciências..." class="reflection-input" />
-        </div>
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Pontos ao Concluir:</label>
-          <select id="input-new-task-points" class="reflection-input bg-slate-900">
-            <option value="1">+1 Ponto (Rotina diária rápida / organização)</option>
-            <option value="3" selected>+3 Pontos (Foco, estudo, terapia ou esporte)</option>
-            <option value="5">+5 Pontos (Superação, prova ou grande conquista)</option>
-          </select>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Na vida e na rotina, o dia às vezes pede um compasso diferente. Reorganizar tarefas não desconta pontos nem gera advertências morais:
+      </p>
+      <div class="space-y-2 text-xs">
+        <label class="block font-semibold text-slate-200">Qual ajuste você deseja fazer?</label>
+        <div class="space-y-1.5">
+          <label class="flex items-center gap-2 p-2 rounded bg-slate-900 border border-slate-800 cursor-pointer">
+            <input type="radio" name="reorg-option" checked class="text-cyan-500">
+            <span>Mover tarefas pendentes com tranquilidade para amanhã</span>
+          </label>
+          <label class="flex items-center gap-2 p-2 rounded bg-slate-900 border border-slate-800 cursor-pointer">
+            <input type="radio" name="reorg-option" class="text-cyan-500">
+            <span>Transformar o restante do dia em Ócio Deliberado (Descanso)</span>
+          </label>
         </div>
       </div>
       <div class="flex justify-end gap-2 pt-2">
-        <button class="btn-close-modal neo-btn text-xs">Cancelar</button>
-        <button id="btn-confirm-add-task" class="neo-btn neo-btn-primary text-xs">Adicionar ao Quadro</button>
+        <button class="btn-close-modal tech-card text-xs px-3 py-1.5">Voltar</button>
+        <button id="btn-confirm-reorganize" class="btn-reorganize text-xs px-4 py-2">Confirmar Ajuste</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: Histórico de Resgates -->
+  <!-- MODAL: Histórico de Conquistas & Resgates -->
   <div id="modal-history" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i data-lucide="history" class="w-5 h-5 text-amber-400"></i> Histórico de Conquistas Resgatadas
+          <i data-lucide="trophy" class="w-5 h-5 text-lime-400"></i> Conquistas e Resgates
         </h3>
         <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <p class="text-xs text-slate-400">Registro de todas as experiências e prêmios já conquistados:</p>
-      <div id="routine-history-list" class="space-y-2 max-h-[50vh] overflow-y-auto pr-1">
+      <div id="history-items-container" class="space-y-2 max-h-[50vh] overflow-y-auto pr-1">
         <!-- Injetado dinamicamente -->
       </div>
       <div class="flex justify-end pt-2">
-        <button class="btn-close-modal neo-btn text-xs">Fechar</button>
+        <button class="btn-close-modal tech-card text-xs px-4 py-2">Fechar</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: Personalizar Nome do Aluno / Filho -->
-  <div id="modal-profile-edit" class="modal-overlay hidden">
+  <!-- MODAL: Configurar Perfil -->
+  <div id="modal-profile" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i data-lucide="user-cog" class="w-5 h-5 text-indigo-400"></i> Personalizar Nome do Titular
+          <i data-lucide="user-cog" class="w-5 h-5 text-cyan-400"></i> Personalizar Perfil
         </h3>
         <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <div class="space-y-3 text-xs">
         <div>
-          <label class="block font-semibold text-slate-300 mb-1">Nome do Jovem:</label>
-          <input type="text" id="input-profile-name" value="Miguel" class="reflection-input" />
-        </div>
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Título do Quadro:</label>
-          <input type="text" id="input-profile-title" value="Rotina do Miguel" class="reflection-input" />
+          <label class="block font-semibold text-slate-300 mb-1">Nome do Titular:</label>
+          <input type="text" id="profile-name-input" value="Miguel" class="w-full bg-[#0a111b] border border-[#1b2a3f] p-2.5 rounded-lg text-white font-semibold outline-none focus:border-cyan-400" />
         </div>
       </div>
       <div class="flex justify-end gap-2 pt-2">
-        <button class="btn-close-modal neo-btn text-xs">Cancelar</button>
-        <button id="btn-save-profile-name" class="neo-btn neo-btn-primary text-xs">Salvar Alterações</button>
+        <button class="btn-close-modal tech-card text-xs px-3 py-1.5">Cancelar</button>
+        <button id="btn-save-profile" class="btn-reorganize text-xs px-4 py-2">Salvar</button>
       </div>
     </div>
   </div>
@@ -276,11 +289,9 @@
         <h3 id="legal-modal-title" class="font-bold text-base text-white">Termos de Uso & Conformidade LGPD</h3>
         <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div id="legal-modal-body" class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
-        <!-- Preenchido via legal.js -->
-      </div>
+      <div id="legal-modal-body" class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2"></div>
       <div class="flex justify-end pt-2">
-        <button class="btn-close-modal neo-btn text-xs px-4">Entendido</button>
+        <button class="btn-close-modal tech-card text-xs px-4 py-1.5">Entendido</button>
       </div>
     </div>
   </div>
@@ -288,59 +299,74 @@
   <!-- Scripts Modulares -->
   <script src="/js/legal.js"></script>
   <script type="module">
-    import { fetchRoutineBoard, submitNewRoutineTask, loadRedemptionHistory } from '/js/routine.js';
+    import { initCleanTechUI } from '/js/tablet_ui.js';
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      // Carrega o quadro completo
-      await fetchRoutineBoard();
+    document.addEventListener('DOMContentLoaded', () => {
+      initCleanTechUI();
 
-      // Fechamento de modais
+      // Fechamento universal de modais
       document.querySelectorAll('.btn-close-modal').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
         });
       });
 
-      // Abrir histórico de resgates
-      document.getElementById('btn-open-history').addEventListener('click', async () => {
-        document.getElementById('modal-history').classList.remove('hidden');
-        await loadRedemptionHistory();
-      });
+      // Bônus rápido
+      window.addBonusPointsPrompt = async () => {
+        const reason = prompt('Qual foi a superação ou prova realizada?', 'Nota alta na prova de matemática');
+        if (!reason) return;
+        const res = await fetch('/api/routine/bonus', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ points: 5, reason })
+        });
+        const json = await res.json();
+        if (json.success) {
+          window.showToast(json.message, 'success');
+          initCleanTechUI();
+        }
+      };
 
-      // Confirmar adição de tarefa
-      document.getElementById('btn-confirm-add-task').addEventListener('click', async () => {
-        const title = document.getElementById('input-new-task-title').value.trim();
-        const points = document.getElementById('input-new-task-points').value;
-        if (!title) return alert('Informe o nome da atividade.');
-        await submitNewRoutineTask(title, points);
-        document.getElementById('input-new-task-title').value = '';
-      });
-
-      // Personalizar nome
-      document.getElementById('btn-open-profile-edit').addEventListener('click', () => {
-        document.getElementById('modal-profile-edit').classList.remove('hidden');
-      });
-
-      document.getElementById('btn-save-profile-name').addEventListener('click', async () => {
-        const name = document.getElementById('input-profile-name').value.trim();
-        const title = document.getElementById('input-profile-title').value.trim();
-        if (!name) return;
+      // Modal de Histórico
+      window.openHistoryModal = async () => {
+        const modal = document.getElementById('modal-history');
+        const container = document.getElementById('history-items-container');
+        modal.classList.remove('hidden');
 
         try {
-          const res = await fetch('/api/routine/profile', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, title })
-          });
+          const res = await fetch('/api/routine/history');
           const json = await res.json();
-          if (json.success) {
-            window.showToast('Nome atualizado com sucesso!', 'success');
-            await fetchRoutineBoard();
-            document.getElementById('modal-profile-edit').classList.add('hidden');
+          if (json.data && json.data.length > 0) {
+            container.innerHTML = json.data.map(item => `
+              <div class="p-2.5 rounded-lg bg-[#0a111b] border border-[#1b2a3f] flex items-center justify-between text-xs">
+                <div>
+                  <p class="font-bold text-white">${item.rewardName}</p>
+                  <p class="text-[10px] text-slate-500">${new Date(item.claimedAt).toLocaleDateString('pt-BR')} às ${new Date(item.claimedAt).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</p>
+                </div>
+                <span class="font-mono font-bold text-lime-400">-${item.cost}P</span>
+              </div>
+            `).join('');
+          } else {
+            container.innerHTML = '<p class="text-xs text-slate-500">Nenhum resgate registrado ainda.</p>';
           }
-        } catch (err) {
-          console.error(err);
-        }
+        } catch (e) {}
+      };
+
+      // Modal de Perfil
+      window.openProfileModal = () => {
+        document.getElementById('modal-profile').classList.remove('hidden');
+      };
+
+      document.getElementById('btn-save-profile').addEventListener('click', async () => {
+        const name = document.getElementById('profile-name-input').value.trim();
+        if (!name) return;
+        await fetch('/api/routine/profile', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, title: `Rotina do ${name}` })
+        });
+        document.getElementById('modal-profile').classList.add('hidden');
+        initCleanTechUI();
       });
     });
   </script>

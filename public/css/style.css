@@ -1,26 +1,27 @@
 /* ==========================================================================
-   Ritmo: Autonomia através da Autoria - Estilo Neo-Brutalista Dark
-   Sem infantilização, alto contraste e focado na autoria do adolescente
+   Rotina do Miguel — Clean Tech Theme (Dark Mode Neon Cyan & Electric Lime)
+   Gamified Daily Routine Tracker for Teenagers
    ========================================================================== */
 
 :root {
-  --bg-main: #0b0f17;
-  --bg-card: #131926;
-  --bg-card-hover: #192132;
-  --bg-input: #0e1420;
-  --border-color: #27354a;
-  --border-focus: #6366f1;
-  --text-primary: #f1f5f9;
+  --bg-deep: #070c14;
+  --bg-card: #0e1724;
+  --bg-card-hover: #142133;
+  --bg-input: #0a111b;
+  --border-card: #1b2a3f;
+  --border-focus: #00f2fe;
+  
+  --neon-cyan: #00f2fe;
+  --neon-cyan-dim: rgba(0, 242, 254, 0.15);
+  --neon-cyan-glow: 0 0 15px rgba(0, 242, 254, 0.4);
+  
+  --electric-lime: #a3e635;
+  --electric-lime-dim: rgba(163, 230, 53, 0.15);
+  --electric-lime-glow: 0 0 15px rgba(163, 230, 53, 0.4);
+
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent-primary: #6366f1;
-  --accent-energy: #f59e0b;
-  --accent-ocio: #0ea5e9;
-  --accent-recharge: #10b981;
-  --accent-focus: #a855f7;
-  --neo-shadow: 3px 3px 0px rgba(0, 0, 0, 0.7);
-  --neo-shadow-sm: 2px 2px 0px rgba(0, 0, 0, 0.7);
-  --neo-shadow-hover: 1px 1px 0px rgba(0, 0, 0, 0.7);
+  --text-muted: #475569;
 }
 
 * {
@@ -32,228 +33,222 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--bg-main);
+  background-color: var(--bg-deep);
   color: var(--text-primary);
   line-height: 1.5;
   min-height: 100vh;
-  padding-bottom: 90px; /* espaço para o painel de créditos fixo inferior */
   overflow-x: hidden;
 }
 
-/* Scrollbar sutil */
+/* Scrollbar Clean Tech */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 3px;
+  background: #1b2a3f;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
 }
 
-/* Classes Neo-Brutalistas */
-.neo-box {
+/* Cards com Estética Clean Tech */
+.tech-card {
   background-color: var(--bg-card);
-  border: 1.5px solid var(--border-color);
-  box-shadow: var(--neo-shadow);
-  border-radius: 8px;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  border: 1.5px solid var(--border-card);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.neo-box:hover {
-  border-color: #3b4d6b;
+.tech-card:hover {
+  border-color: #2b4162;
 }
 
-.neo-btn {
-  background-color: var(--bg-card);
-  border: 1.5px solid var(--border-color);
-  box-shadow: var(--neo-shadow-sm);
-  color: var(--text-primary);
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+/* Glow e Acentos Neon */
+.glow-cyan {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: var(--neon-cyan-glow) !important;
+}
+
+.glow-lime {
+  border-color: var(--electric-lime) !important;
+  box-shadow: var(--electric-lime-glow) !important;
+}
+
+.text-glow-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+}
+
+.text-glow-lime {
+  color: var(--electric-lime);
+  text-shadow: 0 0 10px rgba(163, 230, 53, 0.6);
+}
+
+/* Botão Reorganizar Dia / Ação Principal */
+.btn-reorganize {
+  background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+  color: #050b14;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+  transition: all 0.2s ease;
+}
+
+.btn-reorganize:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 242, 254, 0.7);
+}
+
+.btn-reorganize:active {
+  transform: translateY(0);
+}
+
+/* Cards da Timeline */
+.timeline-slot-card {
+  background-color: #0b131f;
+  border: 1.5px solid #1a283c;
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: all 0.1s ease;
   user-select: none;
 }
 
-.neo-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: none;
+.timeline-slot-card:hover {
+  border-color: #2b4162;
+  background-color: #101c2e;
 }
 
-.neo-btn-primary {
-  background-color: var(--accent-primary);
-  border-color: #4f46e5;
-  color: #ffffff;
+.timeline-slot-card.active-focus {
+  border-color: var(--electric-lime);
+  background-color: rgba(163, 230, 53, 0.06);
+  box-shadow: 0 0 14px rgba(163, 230, 53, 0.25);
 }
 
-.neo-btn-done {
-  background-color: rgba(16, 185, 129, 0.15);
-  border-color: #10b981;
-  color: #34d399;
-}
-.neo-btn-done.active {
-  background-color: #10b981;
-  color: #0b0f17;
+.timeline-slot-card.is-done {
+  border-color: rgba(0, 242, 254, 0.5);
+  background-color: rgba(0, 242, 254, 0.05);
 }
 
-.neo-btn-partial {
-  background-color: rgba(245, 158, 11, 0.15);
-  border-color: #f59e0b;
-  color: #fbbf24;
-}
-.neo-btn-partial.active {
-  background-color: #f59e0b;
-  color: #0b0f17;
-}
-
-.neo-btn-reschedule {
-  background-color: rgba(14, 165, 233, 0.15);
-  border-color: #0ea5e9;
-  color: #38bdf8;
-}
-.neo-btn-reschedule.active {
-  background-color: #0ea5e9;
-  color: #0b0f17;
-}
-
-/* Badges de Estado Interno */
-.tag-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 3px 8px;
-  border-radius: 4px;
-  border: 1px solid currentColor;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.tag-recarregando {
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.tag-exige_energia {
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.12);
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.tag-ocio_deliberado {
-  color: #38bdf8;
-  background: rgba(14, 165, 233, 0.12);
-  border-color: rgba(14, 165, 233, 0.3);
-}
-
-.tag-foco_leve {
-  color: #c084fc;
-  background: rgba(168, 85, 247, 0.12);
-  border-color: rgba(168, 85, 247, 0.3);
-}
-
-.tag-piloto_automatico {
-  color: #94a3b8;
-  background: rgba(148, 163, 184, 0.12);
-  border-color: rgba(148, 163, 184, 0.3);
-}
-
-/* Inputs Livres de Autoria */
-.title-input {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-primary);
-  font-size: 1.05rem;
-  font-weight: 600;
-  width: 100%;
-  padding: 4px 6px;
-  border-radius: 4px;
-  transition: all 0.15s ease;
-}
-
-.title-input:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: var(--border-color);
-}
-
-.title-input:focus {
-  background: var(--bg-input);
-  border-color: var(--accent-primary);
-  outline: none;
-}
-
-/* Micro-reflexão */
-.reflection-input {
-  background: var(--bg-input);
-  border: 1px dashed var(--border-color);
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  width: 100%;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: all 0.15s ease;
-}
-
-.reflection-input:focus {
-  border-color: #6366f1;
-  color: var(--text-primary);
-  outline: none;
-}
-
-/* Trilho da Timeline */
-.timeline-track {
+/* Marcador na Linha da Timeline */
+.track-axis {
   position: relative;
-  padding-left: 20px;
+  padding-left: 26px;
 }
 
-.timeline-track::before {
+.track-axis::before {
   content: '';
   position: absolute;
-  left: 6px;
-  top: 10px;
-  bottom: 20px;
+  left: 8px;
+  top: 14px;
+  bottom: 24px;
   width: 2px;
-  background: linear-gradient(to bottom, #6366f1, #27354a, #10b981);
+  background: linear-gradient(to bottom, #00f2fe, #1e293b, #a3e635);
 }
 
-.slot-dot {
+.track-node {
   position: absolute;
-  left: -20px;
-  top: 18px;
+  left: -26px;
+  top: 16px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--bg-main);
-  border: 2px solid var(--accent-primary);
-  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+  background: #070c14;
+  border: 2px solid #00f2fe;
+  transition: all 0.2s ease;
 }
 
-/* Status Concluído ou Reorganizado */
-.slot-card.status-feito {
-  border-left: 4px solid #10b981;
+.track-node.active-node {
+  border-color: var(--electric-lime);
+  box-shadow: 0 0 8px var(--electric-lime);
+  background: var(--electric-lime);
 }
 
-.slot-card.status-parcial {
-  border-left: 4px solid #f59e0b;
+/* Carrossel de Dias */
+.day-pill {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
 }
 
-.slot-card.status-reorganizado {
-  border-left: 4px solid #0ea5e9;
-  opacity: 0.85;
+.day-pill:hover {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
 }
 
-/* Toasts de Acolhimento */
+.day-pill.active {
+  color: #050b14;
+  background-color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+}
+
+/* Humor Pós-Tarefa */
+.mood-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #0b131f;
+  border: 1px solid #1a283c;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mood-pill:hover {
+  border-color: var(--neon-cyan);
+  background: #101c2e;
+}
+
+.mood-pill.active {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 242, 254, 0.1);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+/* Quick Tags de Reflexão */
+.quick-tag {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: #0b131f;
+  border: 1px solid #1a283c;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quick-tag:hover {
+  border-color: #3b4d6b;
+  color: #e2e8f0;
+}
+
+.quick-tag.active {
+  color: #070c14;
+  background-color: var(--electric-lime);
+  border-color: var(--electric-lime);
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(163, 230, 53, 0.4);
+}
+
+/* Modais e Toasts */
 #toast-container {
   position: fixed;
   top: 20px;
@@ -266,38 +261,31 @@ body {
 }
 
 .toast {
-  background: #131b2c;
-  border: 1.5px solid #3b4d6b;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  background: #0f1a28;
+  border: 1.5px solid var(--neon-cyan);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), var(--neon-cyan-glow);
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 10px;
   color: #f1f5f9;
   font-size: 0.9rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   pointer-events: auto;
   animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes toastIn {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(5, 8, 14, 0.85);
-  backdrop-filter: blur(4px);
+  background: rgba(3, 7, 12, 0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,10 +294,10 @@ body {
 }
 
 .modal-content {
-  background: #131926;
-  border: 1.5px solid #27354a;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
+  background: #0e1724;
+  border: 1.5px solid #1f3147;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+  border-radius: 16px;
   max-width: 520px;
   width: 100%;
   max-height: 90vh;
