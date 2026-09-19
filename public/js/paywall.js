@@ -1,3 +1,14 @@
+// Proteção para ambiente Node.js de testes
+const _win = typeof window !== 'undefined' ? window : globalThis;
+const _doc = typeof document !== 'undefined' ? document : {
+  getElementById: () => null
+};
+const _storage = typeof localStorage !== 'undefined' ? localStorage : {
+  _data: {},
+  getItem(k) { return this._data[k] || null; },
+  setItem(k, v) { this._data[k] = String(v); },
+  removeItem(k) { delete this._data[k]; }
+};
 // public/js/paywall.js - Gerenciador do Período Gratuito Unificado (30 min) e Bloqueio Comercial
 // Ritmo Autonomia — Clean Tech Dark Mode
 
@@ -5,19 +16,19 @@ export const TRIAL_DURATION_MS = 30 * 60 * 1000; // 30 minutos unificados
 let timerTimeoutId = null;
 
 export function isRitmoUnlocked() {
-  return localStorage.getItem('ritmo_unlocked') === 'true';
+  return _storage.getItem('ritmo_unlocked') === 'true';
 }
 
 export function getRemainingTrialTimeMs() {
   if (isRitmoUnlocked()) return Infinity;
-  const trialStart = parseInt(localStorage.getItem('ritmo_trial_start') || '0', 10);
+  const trialStart = parseInt(_storage.getItem('ritmo_trial_start') || '0', 10);
   if (!trialStart) return TRIAL_DURATION_MS;
   const elapsed = Date.now() - trialStart;
   return Math.max(0, TRIAL_DURATION_MS - elapsed);
 }
 
 export function showPaywallModal() {
-  const modal = document.getElementById('paywall-modal');
+  const modal = _doc.getElementById('paywall-modal');
   if (modal) {
     modal.classList.remove('hidden');
     modal.style.display = 'flex';
@@ -25,7 +36,7 @@ export function showPaywallModal() {
 }
 
 export function hidePaywallModal() {
-  const modal = document.getElementById('paywall-modal');
+  const modal = _doc.getElementById('paywall-modal');
   if (modal) {
     modal.classList.add('hidden');
     modal.style.display = 'none';
@@ -39,10 +50,10 @@ export function initPaywallTimer() {
   }
 
   // Inicializa carimbo inicial da degustação (persistente, não reinicia com F5)
-  let trialStart = localStorage.getItem('ritmo_trial_start');
+  let trialStart = _storage.getItem('ritmo_trial_start');
   if (!trialStart) {
     trialStart = Date.now().toString();
-    localStorage.setItem('ritmo_trial_start', trialStart);
+    _storage.setItem('ritmo_trial_start', trialStart);
   }
 
   const startTime = parseInt(trialStart, 10);
@@ -62,26 +73,26 @@ export function initPaywallTimer() {
   }
 
   // Listener para pressionar 'Enter' no campo de código
-  const inputCodigo = document.getElementById('input-codigo');
+  const inputCodigo = _doc.getElementById('input-codigo');
   if (inputCodigo && !inputCodigo._hasEnterListener) {
     inputCodigo._hasEnterListener = true;
     inputCodigo.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        window.validarCodigo();
+        _win.validarCodigo();
       }
     });
   }
 }
 
 // Validação de chave de acesso
-window.validarCodigo = async function() {
-  const input = document.getElementById('input-codigo');
+_win.validarCodigo = async function() {
+  const input = _doc.getElementById('input-codigo');
   if (!input) return;
   const rawCode = input.value.trim().toUpperCase();
 
   if (!rawCode) {
-    if (window.showToast) {
-      window.showToast('Por favor, insira a chave de acesso recebida.', 'warning');
+    if (_win.showToast) {
+      _win.showToast('Por favor, insira a chave de acesso recebida.', 'warning');
     } else {
       alert('Por favor, insira a chave de acesso recebida.');
     }
@@ -110,16 +121,16 @@ window.validarCodigo = async function() {
   }
 
   if (isValid) {
-    localStorage.setItem('ritmo_unlocked', 'true');
+    _storage.setItem('ritmo_unlocked', 'true');
     hidePaywallModal();
-    if (window.showToast) {
-      window.showToast('Acesso Vitalício Ativado com Sucesso! Aproveite o seu ritmo sem limites.', 'success');
+    if (_win.showToast) {
+      _win.showToast('Acesso Vitalício Ativado com Sucesso! Aproveite o seu ritmo sem limites.', 'success');
     } else {
       alert('Acesso Vitalício Ativado com Sucesso!');
     }
   } else {
-    if (window.showToast) {
-      window.showToast('Chave de acesso inválida. Verifique o código enviado no seu e-mail após a confirmação do pagamento.', 'error');
+    if (_win.showToast) {
+      _win.showToast('Chave de acesso inválida. Verifique o código enviado no seu e-mail após a confirmação do pagamento.', 'error');
     } else {
       alert('Chave de acesso inválida. Verifique o código enviado no seu e-mail após a confirmação do pagamento.');
     }
@@ -127,41 +138,41 @@ window.validarCodigo = async function() {
   }
 };
 
-window.openPaywallModal = showPaywallModal;
+_win.openPaywallModal = showPaywallModal;
 
-window.fecharPaywallSeDegustando = function() {
+_win.fecharPaywallSeDegustando = function() {
   if (isRitmoUnlocked()) {
     hidePaywallModal();
     return;
   }
-  const trialStart = parseInt(localStorage.getItem('ritmo_trial_start') || '0', 10);
+  const trialStart = parseInt(_storage.getItem('ritmo_trial_start') || '0', 10);
   const elapsed = Date.now() - trialStart;
 
   if (elapsed < TRIAL_DURATION_MS) {
     hidePaywallModal();
   } else {
-    if (window.showToast) {
-      window.showToast('O período de degustação de 30 min encerrou. Desbloqueie o acesso completo para continuar.', 'warning');
+    if (_win.showToast) {
+      _win.showToast('O período de degustação de 30 min encerrou. Desbloqueie o acesso completo para continuar.', 'warning');
     }
   }
 };
 
-window.copiarPix = function() {
+_win.copiarPix = function() {
   navigator.clipboard.writeText('luklen2@gmail.com').then(() => {
-    if (window.showToast) {
-      window.showToast('Chave Pix copiada com sucesso: luklen2@gmail.com', 'info');
+    if (_win.showToast) {
+      _win.showToast('Chave Pix copiada com sucesso: luklen2@gmail.com', 'info');
     }
   }).catch(() => {
-    if (window.showToast) {
-      window.showToast('Chave Pix: luklen2@gmail.com', 'info');
+    if (_win.showToast) {
+      _win.showToast('Chave Pix: luklen2@gmail.com', 'info');
     }
   });
 };
 
 // Auto-inicialização quando o DOM carregar
 if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPaywallTimer);
+  if (_doc.readyState === 'loading') {
+    _doc.addEventListener('DOMContentLoaded', initPaywallTimer);
   } else {
     initPaywallTimer();
   }

@@ -70,66 +70,35 @@
         "themeColor": "#16a34a",
         "tasks": [
           {
-            "id": "ter_1",
-            "title": "Ir para a escola",
-            "points": 1,
-            "icon": "school",
-            "done": false
-          },
-          {
-            "id": "ter_2",
-            "title": "Dia na escola sem reclamações",
-            "points": 3,
-            "icon": "smile",
-            "done": false
-          },
-          {
-            "id": "ter_3",
-            "title": "Ir ao Kumon (ao voltar da escola)",
-            "points": 3,
-            "icon": "edit-3",
-            "done": false
-          },
-          {
-            "id": "ter_4",
-            "title": "Psicopedagoga Tia Alyne",
-            "points": 1,
-            "icon": "user-check",
-            "done": false
-          },
-          {
-            "id": "ter_5",
-            "title": "Psicólogo Tio Luan",
-            "points": 1,
-            "icon": "heart",
-            "done": false
-          },
-          {
-            "id": "ter_6",
-            "title": "Reforço escolar (Tiana)",
-            "points": 3,
+            "id": "terca_adapt_1",
+            "title": "Estudo Essencial (15 min)",
+            "points": 2,
             "icon": "book-open",
+            "time": "10:00",
             "done": false
           },
           {
-            "id": "ter_7",
-            "title": "Arrumar a mochila para o dia seguinte",
+            "id": "terca_adapt_2",
+            "title": "Pausa Restaurativa (5 min)",
             "points": 1,
-            "icon": "backpack",
+            "icon": "coffee",
+            "time": "10:00",
             "done": false
           },
           {
-            "id": "ter_8",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
+            "id": "terca_adapt_3",
+            "title": "Revisão Leve dos Pontos-Chave (10 min)",
+            "points": 2,
+            "icon": "check-circle-2",
+            "time": "10:00",
             "done": false
           },
           {
-            "id": "ter_9",
-            "title": "21h: hora de dormir",
+            "id": "terca_adapt_4",
+            "title": "Ócio Deliberado & Descanso",
             "points": 1,
             "icon": "moon",
+            "time": "10:00",
             "done": false
           }
         ]
@@ -362,6 +331,6 @@
       }
     },
     "createdAt": "2026-09-18T21:00:10.042Z",
-    "updatedAt": "2026-09-19T20:33:54.949Z"
+    "updatedAt": "2026-09-19T21:48:08.189Z"
   }
 ]

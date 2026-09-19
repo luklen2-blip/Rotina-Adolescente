@@ -7,29 +7,39 @@ const routineDb = new JsonDB('routine_board');
 const profileDb = new JsonDB('routine_profile');
 const redemptionsDb = new JsonDB('routine_redemptions');
 
-// Perfil padrão baseado na foto
-function getProfile() {
-  let profile = profileDb.findById('miguel_profile');
+// Recupera perfil (Conta Real começando do zero ou Demo)
+function getProfile(mode = 'real') {
+  const profileId = mode === 'demo' ? 'miguel_profile' : 'real_user_profile';
+  let profile = profileDb.findById(profileId);
   if (!profile) {
-    profile = profileDb.insert({
-      id: 'miguel_profile',
-      name: 'Miguel',
-      title: 'Rotina do Miguel',
-      subtitle: 'Pequenas Ações, Grandes Conquistas!',
-      slogans: [
-        'Disciplina hoje, liberdade amanhã!',
-        'Você consegue! Você se esforça! Você evolui! Você é capaz!',
-        'Esforço hoje, resultados sempre!'
-      ],
-      values: ['FOCO', 'ORGANIZAÇÃO', 'RESPONSABILIDADE', 'RESPEITO', 'APRENDIZADO', 'ESPORTES', 'AUTONOMIA', 'SONHOS'],
-      cumulativePoints: 45,
-      updatedAt: new Date().toISOString()
-    });
+    if (mode === 'demo') {
+      profile = profileDb.insert({
+        id: 'miguel_profile',
+        name: 'Miguel',
+        title: 'Rotina do Miguel (Exemplo)',
+        subtitle: 'Pequenas Ações, Grandes Conquistas!',
+        isDemo: true,
+        values: ['FOCO', 'ORGANIZAÇÃO', 'RESPONSABILIDADE', 'RESPEITO', 'APRENDIZADO', 'ESPORTES', 'AUTONOMIA', 'SONHOS'],
+        cumulativePoints: 345,
+        updatedAt: new Date().toISOString()
+      });
+    } else {
+      profile = profileDb.insert({
+        id: 'real_user_profile',
+        name: '',
+        title: 'Minha rotina',
+        subtitle: 'Cada um tem a sua rotina — autonomia através da autoria.',
+        isDemo: false,
+        values: ['FOCO', 'ORGANIZAÇÃO', 'AUTONOMIA', 'RITMO'],
+        cumulativePoints: 0,
+        updatedAt: new Date().toISOString()
+      });
+    }
   }
   return profile;
 }
 
-// Inicializa a grade semanal de tarefas exatamente como no quadro
+// Inicializa a grade semanal de tarefas padrão
 function getDefaultWeek() {
   return {
     id: 'current_week',
@@ -37,96 +47,73 @@ function getDefaultWeek() {
     days: {
       segunda: {
         name: 'Segunda',
-        themeColor: '#0284c7', // azul
+        themeColor: '#0284c7',
         tasks: [
-          { id: 'seg_1', title: 'Ir para a escola', points: 1, icon: 'school', done: true },
-          { id: 'seg_2', title: 'Dia na escola sem reclamações', points: 3, icon: 'smile', done: true },
-          { id: 'seg_3', title: 'Fono (ao voltar da escola)', points: 1, icon: 'message-circle', done: true },
-          { id: 'seg_4', title: 'Reforço escolar', points: 3, icon: 'book-open', done: false },
-          { id: 'seg_5', title: 'Fazer a atividade do Kumon', points: 3, icon: 'edit-3', done: false },
-          { id: 'seg_6', title: 'Arrumar a mochila para o dia seguinte', points: 1, icon: 'backpack', done: false },
-          { id: 'seg_7', title: '30 min de leitura', points: 3, icon: 'book', done: false },
-          { id: 'seg_8', title: '21h: hora de dormir', points: 1, icon: 'moon', done: false }
+          { id: 'seg_1', title: 'Iniciar o dia com calma', points: 1, icon: 'smile', done: false },
+          { id: 'seg_2', title: 'Bloco de foco principal', points: 3, icon: 'check-circle-2', done: false },
+          { id: 'seg_3', title: 'Pausa restaurativa', points: 1, icon: 'coffee', done: false },
+          { id: 'seg_4', title: 'Reforço escolar ou leitura', points: 3, icon: 'book-open', done: false },
+          { id: 'seg_5', title: 'Ócio Deliberado: Descanso Consciente', points: 1, icon: 'moon', done: false }
         ]
       },
       terca: {
         name: 'Terça',
-        themeColor: '#16a34a', // verde
+        themeColor: '#16a34a',
         tasks: [
-          { id: 'ter_1', title: 'Ir para a escola', points: 1, icon: 'school', done: false },
-          { id: 'ter_2', title: 'Dia na escola sem reclamações', points: 3, icon: 'smile', done: false },
-          { id: 'ter_3', title: 'Ir ao Kumon (ao voltar da escola)', points: 3, icon: 'edit-3', done: false },
-          { id: 'ter_4', title: 'Psicopedagoga Tia Alyne', points: 1, icon: 'user-check', done: false },
-          { id: 'ter_5', title: 'Psicólogo Tio Luan', points: 1, icon: 'heart', done: false },
-          { id: 'ter_6', title: 'Reforço escolar (Tiana)', points: 3, icon: 'book-open', done: false },
-          { id: 'ter_7', title: 'Arrumar a mochila para o dia seguinte', points: 1, icon: 'backpack', done: false },
-          { id: 'ter_8', title: '30 min de leitura', points: 3, icon: 'book', done: false },
-          { id: 'ter_9', title: '21h: hora de dormir', points: 1, icon: 'moon', done: false }
+          { id: 'ter_1', title: 'Organizar prioridades do dia', points: 1, icon: 'clipboard-list', done: false },
+          { id: 'ter_2', title: 'Bloco de estudo ou projeto', points: 3, icon: 'book-open', done: false },
+          { id: 'ter_3', title: 'Pausa consciente & hidratação', points: 1, icon: 'coffee', done: false },
+          { id: 'ter_4', title: 'Ócio Deliberado & Descanso', points: 1, icon: 'moon', done: false }
         ]
       },
       quarta: {
         name: 'Quarta',
-        themeColor: '#eab308', // amarelo
+        themeColor: '#eab308',
         tasks: [
-          { id: 'qua_1', title: 'Ir para a escola', points: 1, icon: 'school', done: false },
-          { id: 'qua_2', title: 'Dia na escola sem reclamações', points: 3, icon: 'smile', done: false },
-          { id: 'qua_3', title: 'Centro Esportivo (futebol + judô)', points: 1, icon: 'activity', done: false },
-          { id: 'qua_4', title: 'Lembrar do uniforme do judô!', points: 1, icon: 'bell', done: false },
-          { id: 'qua_5', title: 'Reforço escolar', points: 3, icon: 'book-open', done: false },
-          { id: 'qua_6', title: 'Fazer a atividade do Kumon', points: 3, icon: 'edit-3', done: false },
-          { id: 'qua_7', title: 'Arrumar a mochila para o dia seguinte', points: 1, icon: 'backpack', done: false },
-          { id: 'qua_8', title: '30 min de leitura', points: 3, icon: 'book', done: false },
-          { id: 'qua_9', title: '21h: hora de dormir', points: 1, icon: 'moon', done: false }
+          { id: 'qua_1', title: 'Alongamento ou movimento leve', points: 1, icon: 'activity', done: false },
+          { id: 'qua_2', title: 'Foco no essencial', points: 3, icon: 'check-circle-2', done: false },
+          { id: 'qua_3', title: 'Ócio Deliberado & Descompressão', points: 1, icon: 'moon', done: false }
         ]
       },
       quinta: {
         name: 'Quinta',
-        themeColor: '#ec4899', // rosa
+        themeColor: '#ec4899',
         tasks: [
-          { id: 'qui_1', title: 'Ir para a escola', points: 1, icon: 'school', done: false },
-          { id: 'qui_2', title: 'Dia na escola sem reclamações', points: 3, icon: 'smile', done: false },
-          { id: 'qui_3', title: 'Ir ao Kumon (ao voltar da escola)', points: 3, icon: 'edit-3', done: false },
-          { id: 'qui_4', title: 'Reforço escolar', points: 3, icon: 'book-open', done: false },
-          { id: 'qui_5', title: 'Arrumar a mochila para o dia seguinte', points: 1, icon: 'backpack', done: false },
-          { id: 'qui_6', title: '30 min de leitura', points: 3, icon: 'book', done: false },
-          { id: 'qui_7', title: '21h: hora de dormir', points: 1, icon: 'moon', done: false }
+          { id: 'qui_1', title: 'Planejamento e metas', points: 1, icon: 'clipboard-list', done: false },
+          { id: 'qui_2', title: 'Bloco produtivo no seu ritmo', points: 3, icon: 'check-circle-2', done: false },
+          { id: 'qui_3', title: 'Ócio Deliberado', points: 1, icon: 'moon', done: false }
         ]
       },
       sexta: {
         name: 'Sexta',
-        themeColor: '#8b5cf6', // roxo
+        themeColor: '#8b5cf6',
         tasks: [
-          { id: 'sex_1', title: 'Ir para a escola', points: 1, icon: 'school', done: false },
-          { id: 'sex_2', title: 'Dia na escola sem reclamações', points: 3, icon: 'smile', done: false },
-          { id: 'sex_3', title: 'Preparar a bolsa do Centro Esportivo', points: 1, icon: 'briefcase', done: false },
-          { id: 'sex_4', title: 'Centro Esportivo (futebol + judô)', points: 1, icon: 'activity', done: false },
-          { id: 'sex_5', title: 'Reforço escolar', points: 3, icon: 'book-open', done: false },
-          { id: 'sex_6', title: 'Fazer a atividade do Kumon', points: 3, icon: 'edit-3', done: false },
-          { id: 'sex_7', title: '30 min de leitura', points: 3, icon: 'book', done: false },
-          { id: 'sex_8', title: '21h: hora de dormir', points: 1, icon: 'moon', done: false }
+          { id: 'sex_1', title: 'Fechamento da semana com leveza', points: 2, icon: 'check-check', done: false },
+          { id: 'sex_2', title: 'Celebrar pequenas conquistas', points: 2, icon: 'award', done: false },
+          { id: 'sex_3', title: 'Ócio Deliberado & Lazer', points: 1, icon: 'moon', done: false }
         ]
       },
       sabado: {
         name: 'Sábado',
-        themeColor: '#06b6d4', // ciano
+        themeColor: '#06b6d4',
         tasks: [
-          { id: 'sab_1', title: 'Fazer a atividade do Kumon', points: 3, icon: 'edit-3', done: false },
-          { id: 'sab_2', title: '30 min de leitura', points: 3, icon: 'book', done: false }
+          { id: 'sab_1', title: 'Tempo livre protegido', points: 2, icon: 'smile', done: false },
+          { id: 'sab_2', title: 'Leitura ou hobby pessoal', points: 2, icon: 'book', done: false }
         ]
       },
       domingo: {
         name: 'Domingo',
-        themeColor: '#f97316', // laranja
+        themeColor: '#f97316',
         tasks: [
-          { id: 'dom_1', title: 'Fazer a atividade do Kumon', points: 3, icon: 'edit-3', done: false },
-          { id: 'dom_2', title: '30 min de leitura', points: 3, icon: 'book', done: false }
+          { id: 'dom_1', title: 'Descanso e recarregamento', points: 2, icon: 'moon', done: false },
+          { id: 'dom_2', title: 'Planejar suavemente a próxima semana', points: 2, icon: 'calendar', done: false }
         ]
       }
     }
   };
 }
 
-// Tabela de Conquistas fiel à foto
+// Tabela de Conquistas (5 níveis: 5, 10, 20, 30, 50 pts)
 const REWARDS_TIERS = [
   {
     tierPoints: 5,
@@ -185,23 +172,24 @@ const REWARDS_TIERS = [
 // Regras importantes do quadro
 const IMPORTANT_RULES = [
   'Os pontos são conquistados ao realizar as atividades.',
-  'Faça o seu melhor!',
-  'Se organize e seja responsável.',
-  'Os pontos são acumulativos. Você pode usar agora ou guardar para uma conquista maior!',
-  'Notas altas nas provas ou melhora na nota: +5 pontos de bônus!',
-  'O mais importante é o seu esforço e evolução contínua!'
+  'Faça o seu melhor no seu próprio ritmo.',
+  'Se organize e desenvolva autonomia.',
+  'Os pontos são acumulativos e sem expiração para autorrecompensas.',
+  'Notas altas nas provas ou superação: +5 pontos de bônus!',
+  'Descansar também faz parte de uma rotina saudável (Ócio Deliberado).'
 ];
 
-// GET /api/routine/week - Retorna o quadro completo com soma de pontos
+// GET /api/routine/week - Retorna o quadro com suporte a mode=real ou mode=demo
 router.get('/week', (req, res) => {
+  const mode = req.query.mode === 'demo' ? 'demo' : 'real';
+
   let board = routineDb.findById('current_week');
   if (!board) {
     board = routineDb.insert(getDefaultWeek());
   }
 
-  const profile = getProfile();
+  const profile = getProfile(mode);
 
-  // Calcula total por dia
   const dailyTotals = {};
   let weeklyTotal = 0;
 
@@ -230,7 +218,7 @@ router.get('/week', (req, res) => {
 
 // POST /api/routine/toggle - Marca ou desmarca tarefa
 router.post('/toggle', (req, res) => {
-  const { dayKey, taskId } = req.body;
+  const { dayKey, taskId, mode = 'real' } = req.body;
 
   let board = routineDb.findById('current_week');
   if (!board) board = routineDb.insert(getDefaultWeek());
@@ -240,27 +228,27 @@ router.post('/toggle', (req, res) => {
     return res.status(404).json({ success: false, error: 'Dia inválido' });
   }
 
-  const task = day.tasks.find(t => t.id === taskId);
+  let task = day.tasks.find(t => t.id === taskId);
   if (!task) {
-    return res.status(404).json({ success: false, error: 'Tarefa não encontrada' });
+    // Pode ser tarefa adaptada
+    task = { id: taskId, title: 'Atividade no ritmo', points: 2, done: false };
+    day.tasks.push(task);
   }
 
-  // Inverte status
   const wasDone = task.done;
   task.done = !wasDone;
 
-  const pointsDiff = task.done ? task.points : -task.points;
+  const pointsDiff = task.done ? (task.points || 2) : -(task.points || 2);
 
-  // Atualiza perfil com os pontos acumulados
-  const profile = getProfile();
+  const profile = getProfile(mode);
   const newCumulative = Math.max(0, (profile.cumulativePoints || 0) + pointsDiff);
-  profileDb.update('miguel_profile', { cumulativePoints: newCumulative });
+  profileDb.update(profile.id, { cumulativePoints: newCumulative });
 
   routineDb.update('current_week', { days: board.days });
 
   const message = task.done
-    ? `Parabéns! "${task.title}" marcada com sucesso (+${task.points} pts)!`
-    : `"${task.title}" desmarcada (-${task.points} pts).`;
+    ? `Parabéns! "${task.title}" marcada com sucesso (+50 XP / +${task.points || 2} pts)!`
+    : `"${task.title}" desmarcada.`;
 
   res.json({
     success: true,
@@ -271,16 +259,16 @@ router.post('/toggle', (req, res) => {
   });
 });
 
-// POST /api/routine/bonus - Adiciona bônus manual (+5 notas, esforço especial com trava de segurança)
+// POST /api/routine/bonus - Adiciona bônus manual com segurança
 router.post('/bonus', (req, res) => {
-  const { points = 5, reason = 'Nota alta na prova ou superação escolar' } = req.body;
+  const { points = 5, reason = 'Superação no ritmo', mode = 'real' } = req.body;
 
-  const profile = getProfile();
+  const profile = getProfile(mode);
   const added = Math.min(Math.max(1, Number(points) || 5), 10);
   const cleanReason = String(reason || 'Superação do dia').slice(0, 100);
   const newCumulative = (profile.cumulativePoints || 0) + added;
 
-  profileDb.update('miguel_profile', { cumulativePoints: newCumulative });
+  profileDb.update(profile.id, { cumulativePoints: newCumulative });
 
   res.json({
     success: true,
@@ -291,9 +279,9 @@ router.post('/bonus', (req, res) => {
 
 // POST /api/routine/claim - Resgata uma conquista
 router.post('/claim', (req, res) => {
-  const { tierPoints, rewardName } = req.body;
+  const { tierPoints, rewardName, mode = 'real' } = req.body;
 
-  const profile = getProfile();
+  const profile = getProfile(mode);
   const cost = Number(tierPoints);
 
   if (profile.cumulativePoints < cost) {
@@ -304,7 +292,7 @@ router.post('/claim', (req, res) => {
   }
 
   const newCumulative = profile.cumulativePoints - cost;
-  profileDb.update('miguel_profile', { cumulativePoints: newCumulative });
+  profileDb.update(profile.id, { cumulativePoints: newCumulative });
 
   const record = redemptionsDb.insert({
     rewardName,
@@ -326,72 +314,22 @@ router.get('/history', (req, res) => {
   res.json({ success: true, data: history.reverse() });
 });
 
-// POST /api/routine/reset-week - Inicia uma nova folha semanal preservando o saldo
-router.post('/reset-week', (req, res) => {
-  let board = routineDb.findById('current_week');
-  if (!board) board = getDefaultWeek();
-
-  Object.keys(board.days).forEach(dayKey => {
-    board.days[dayKey].tasks.forEach(task => {
-      task.done = false;
-    });
-  });
-
-  routineDb.update('current_week', { days: board.days });
-  const profile = getProfile();
-
-  res.json({
-    success: true,
-    message: 'Nova folha semanal iniciada! Seu saldo de pontos acumulados foi 100% preservado.',
-    cumulativePoints: profile.cumulativePoints
-  });
-});
-
-// POST /api/routine/task - Adiciona tarefa personalizada em um dia
-router.post('/task', (req, res) => {
-  const { dayKey, title, points = 1, icon = 'check-circle' } = req.body;
-
-  let board = routineDb.findById('current_week');
-  if (!board) board = routineDb.insert(getDefaultWeek());
-
-  const day = board.days[dayKey];
-  if (!day) return res.status(404).json({ success: false, error: 'Dia não encontrado' });
-
-  const newTask = {
-    id: `${dayKey}_${Date.now()}`,
-    title: title || 'Nova atividade',
-    points: Number(points) || 1,
-    icon: icon || 'check-circle',
-    done: false
-  };
-
-  day.tasks.push(newTask);
-  routineDb.update('current_week', { days: board.days });
-
-  res.status(201).json({
-    success: true,
-    message: 'Nova atividade adicionada à rotina!',
-    data: newTask
-  });
-});
-
 // POST /api/routine/profile - Atualiza nome e título da rotina
 router.post('/profile', (req, res) => {
-  const { name, title, subtitle } = req.body;
-  const profile = getProfile();
+  const { name, title, mode = 'real' } = req.body;
+  const profile = getProfile(mode);
 
-  const updated = profileDb.update('miguel_profile', {
+  const updated = profileDb.update(profile.id, {
     name: name || profile.name,
-    title: title || profile.title,
-    subtitle: subtitle || profile.subtitle
+    title: title || profile.title
   });
 
   res.json({ success: true, data: updated });
 });
 
-// POST /api/routine/adapt - Adapta a rotina funcionalmente com base no Onboarding (Objetivo + Tempo + Energia)
+// POST /api/routine/adapt - Adapta a rotina com base no Onboarding (Objetivo + Tempo + Energia)
 router.post('/adapt', (req, res) => {
-  const { focus, time, energy, tasks, dayKey = 'segunda' } = req.body;
+  const { focus, time, energy, tasks, dayKey = 'terca', mode = 'real' } = req.body;
 
   let board = routineDb.findById('current_week');
   if (!board) board = routineDb.insert(getDefaultWeek());
@@ -403,14 +341,15 @@ router.post('/adapt', (req, res) => {
         title: String(t.title || 'Atividade adaptada').slice(0, 80),
         points: Number(t.points) || 2,
         icon: t.icon || 'check-circle-2',
+        time: t.time || '10:00',
         done: false
       }));
       routineDb.update('current_week', { days: board.days });
     }
   }
 
-  // Atualiza perfil com preferências
-  profileDb.update('miguel_profile', {
+  const profile = getProfile(mode);
+  profileDb.update(profile.id, {
     lastFocus: focus,
     lastTime: time,
     lastEnergy: energy,

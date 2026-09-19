@@ -197,7 +197,8 @@ async function runTests() {
     assert.strictEqual(adaptRes.json.tasks[0].title, 'Estudo Essencial (15 min)');
     passed++;
 
-    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/12 testes passaram perfeitamente!`);
+    console.log(`\n🎉 SUCESSO NO BACKEND: Todos os ${passed}/12 testes de API e infraestrutura passaram perfeitamente!\n`);
+    import('./test_flow_v2.js');
   } finally {
     if (server) server.close();
   }

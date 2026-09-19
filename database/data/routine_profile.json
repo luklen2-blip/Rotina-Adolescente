@@ -20,7 +20,31 @@
       "SONHOS"
     ],
     "cumulativePoints": 45,
-    "updatedAt": "2026-09-19T20:33:54.962Z",
-    "createdAt": "2026-09-18T21:00:10.044Z"
+    "updatedAt": "2026-09-19T21:32:43.645Z",
+    "createdAt": "2026-09-18T21:00:10.044Z",
+    "lastFocus": "Estudos",
+    "lastTime": "Pouco",
+    "lastEnergy": "Baixa",
+    "adaptedAt": "2026-09-19T21:32:43.645Z"
+  },
+  {
+    "id": "real_user_profile",
+    "name": "",
+    "title": "Minha rotina",
+    "subtitle": "Cada um tem a sua rotina — autonomia através da autoria.",
+    "isDemo": false,
+    "values": [
+      "FOCO",
+      "ORGANIZAÇÃO",
+      "AUTONOMIA",
+      "RITMO"
+    ],
+    "cumulativePoints": 0,
+    "updatedAt": "2026-09-19T21:48:08.196Z",
+    "createdAt": "2026-09-19T21:45:56.351Z",
+    "lastFocus": "Estudos",
+    "lastTime": "Pouco",
+    "lastEnergy": "Baixa",
+    "adaptedAt": "2026-09-19T21:48:08.196Z"
   }
 ]
