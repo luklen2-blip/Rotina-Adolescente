@@ -80,7 +80,7 @@ async function main() {
       // Salva atalho na Área de Trabalho com a URL da nuvem
       const desktop = path.join(process.env.USERPROFILE, 'OneDrive', 'Desktop');
       if (fs.existsSync(desktop)) {
-        fs.writeFileSync(path.join(desktop, 'URL-NUVEM-ROTINA-MIGUEL.txt'), 
+        fs.writeFileSync(path.join(desktop, 'URL-NUVEM-RITMO-AUTONOMIA.txt'), 
 `RITMO AUTONOMIA - ACESSO EM NUVEM 24/7
 URL Pública Global HTTPS: ${publicUrl}
 Health Check: ${publicUrl}/api/health

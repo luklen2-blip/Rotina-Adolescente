@@ -329,23 +329,55 @@ router.post('/profile', (req, res) => {
 
 // POST /api/routine/adapt - Adapta a rotina com base no Onboarding (Objetivo + Tempo + Energia)
 router.post('/adapt', (req, res) => {
-  const { focus, time, energy, tasks, dayKey = 'terca', mode = 'real' } = req.body;
+  const { focus = 'Minha rotina', time = 'Normal', energy = 'Média', tasks, dayKey = 'terca', mode = 'real' } = req.body;
 
   let board = routineDb.findById('current_week');
   if (!board) board = routineDb.insert(getDefaultWeek());
 
-  if (tasks && Array.isArray(tasks) && tasks.length > 0) {
-    if (board.days && board.days[dayKey]) {
-      board.days[dayKey].tasks = tasks.map((t, idx) => ({
-        id: `${dayKey}_adapt_${idx + 1}`,
-        title: String(t.title || 'Atividade adaptada').slice(0, 80),
-        points: Number(t.points) || 2,
-        icon: t.icon || 'check-circle-2',
-        time: t.time || '10:00',
-        done: false
-      }));
-      routineDb.update('current_week', { days: board.days });
+  let taskList = tasks;
+  if (!taskList || !Array.isArray(taskList) || taskList.length === 0) {
+    if (focus === 'Estudos' && time === 'Pouco' && energy === 'Baixa') {
+      taskList = [
+        { id: 'est_1', title: 'Estudar — 15 min', points: 2, icon: 'book-open', time: '14:00', done: false },
+        { id: 'est_2', title: 'Pausa — 5 min', points: 1, icon: 'coffee', time: '14:15', done: false },
+        { id: 'est_3', title: 'Revisão — 10 min', points: 2, icon: 'check-circle-2', time: '14:20', done: false },
+        { id: 'est_4', title: 'Descanso (Ócio Deliberado)', points: 1, icon: 'moon', time: '14:30', done: false }
+      ];
+    } else if (focus === 'Estudos' && time === 'Bastante' && energy === 'Alta') {      taskList = [
+        { id: 'est_b1', title: 'Planejamento e Separação de Conteúdo (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'est_b2', title: 'Bloco 1: Estudo Teórico em Foco Total (35 min)', points: 3, icon: 'book-open', time: '09:10', done: false },
+        { id: 'est_b3', title: 'Pausa Ativa e Hidratação (10 min)', points: 1, icon: 'coffee', time: '09:45', done: false },
+        { id: 'est_b4', title: 'Bloco 2: Resolução de Exercícios & Fixação (35 min)', points: 3, icon: 'edit-3', time: '09:55', done: false },
+        { id: 'est_b5', title: 'Síntese dos Pontos-Chave & Mapeamento (20 min)', points: 2, icon: 'check-circle-2', time: '10:30', done: false },
+        { id: 'est_b6', title: 'Ócio Deliberado: Tempo Livre Protegido (30 min)', points: 1, icon: 'moon', time: '10:50', done: false }
+      ];
+    } else if (focus === 'Hábitos' && time === 'Normal' && energy === 'Média') {
+      taskList = [
+        { id: 'hab_c1', title: 'Hidratação Matinal e Despertar Consciente (10 min)', points: 1, icon: 'heart', time: '08:00', done: false },
+        { id: 'hab_c2', title: 'Alongamento ou Caminhada Leve (20 min)', points: 2, icon: 'activity', time: '08:10', done: false },
+        { id: 'hab_c3', title: 'Leitura e Presença Tranquila (20 min)', points: 2, icon: 'book-open', time: '19:00', done: false },
+        { id: 'hab_c4', title: 'Higiene do Sono & Desconexão Noturna (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
+      ];
+    } else {
+      taskList = [
+        { id: 'rot_1', title: 'Organização do Dia no Seu Compasso (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'rot_2', title: 'Bloco de Foco do Momento (30 min)', points: 3, icon: 'check-circle-2', time: '09:10', done: false },
+        { id: 'rot_3', title: 'Pausa Restaurativa (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
+        { id: 'rot_4', title: 'Prática Leve ou Leitura (20 min)', points: 2, icon: 'book-open', time: '15:00', done: false }
+      ];
     }
+  }
+
+  if (board.days && board.days[dayKey]) {
+    board.days[dayKey].tasks = taskList.map((t, idx) => ({
+      id: t.id || `${dayKey}_adapt_${idx + 1}`,
+      title: String(t.title || 'Atividade adaptada').slice(0, 80),
+      points: Number(t.points) || 2,
+      icon: t.icon || 'check-circle-2',
+      time: t.time || '10:00',
+      done: false
+    }));
+    routineDb.update('current_week', { days: board.days });
   }
 
   const profile = getProfile(mode);

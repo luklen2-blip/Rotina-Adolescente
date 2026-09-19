@@ -129,7 +129,7 @@ export function updateUI() {
   // 1. Cabeçalho Superior — "MINHA ROTINA" (ou com o nome do usuário)
   const titleEl = _doc.getElementById('user-header-title');
   const userProfile = JSON.parse(_storage.getItem('ritmo_user_profile') || '{}');
-  const customName = userProfile.name || (realState.name && realState.name.toLowerCase() !== 'miguel' ? realState.name : '');
+  const customName = userProfile.name || realState.name || '';
 
   if (titleEl) {
     if (demoActive) {
@@ -609,146 +609,187 @@ _win.activateOcioDeliberado = async function() {
 };
 
 // -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
 // GERADOR DETERMINÍSTICO DE ROTINA ADAPTADA
-// Regras: OBJETIVO + TEMPO DISPONÍVEL + ENERGIA
+// Fórmula: OBJETIVO + TEMPO DISPONÍVEL + ENERGIA = ROTINA ADAPTADA
 // -------------------------------------------------------------
 export function generateAdaptiveRoutine(focus, time, energy) {
-  let tasks = [];
+  const f = focus || 'Minha rotina';
+  const t = time || 'Normal';
+  const e = energy || 'Média';
 
-  if (focus === 'Estudos') {
-    if (time === 'Pouco' || energy === 'Baixa') {
-      // Exemplo exato do prompt: Rotina menor
-      tasks = [
+  // --- 1. ESTUDOS ---
+  if (f === 'Estudos') {
+    // CENÁRIO A: Pouco tempo e Baixa energia (Carga mínima, tarefas simples, sem sobrecarga)
+    if (t === 'Pouco' && e === 'Baixa') {
+      return [
         { id: 'est_1', title: 'Estudar — 15 min', points: 2, icon: 'book-open', time: '14:00', done: false },
         { id: 'est_2', title: 'Pausa — 5 min', points: 1, icon: 'coffee', time: '14:15', done: false },
         { id: 'est_3', title: 'Revisão — 10 min', points: 2, icon: 'check-circle-2', time: '14:20', done: false },
         { id: 'est_4', title: 'Descanso (Ócio Deliberado)', points: 1, icon: 'moon', time: '14:30', done: false }
       ];
-    } else if (time === 'Bastante' && energy === 'Alta') {
-      // Rotina extensa com alto foco
-      tasks = [
-        { id: 'est_1', title: 'Planejamento e Separação de Conteúdo (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
-        { id: 'est_2', title: 'Bloco 1: Estudo com Foco Total (35 min)', points: 3, icon: 'book-open', time: '09:10', done: false },
-        { id: 'est_3', title: 'Pausa Ativa e Hidratação (10 min)', points: 1, icon: 'coffee', time: '09:45', done: false },
-        { id: 'est_4', title: 'Bloco 2: Exercícios Práticos & Fixação (35 min)', points: 3, icon: 'edit-3', time: '09:55', done: false },
-        { id: 'est_5', title: 'Revisão e Síntese dos Pontos-Chave (15 min)', points: 2, icon: 'check-circle-2', time: '10:30', done: false },
-        { id: 'est_6', title: 'Ócio Deliberado: Tempo Livre Protegido (20 min)', points: 1, icon: 'moon', time: '10:45', done: false }
-      ];
-    } else {
-      // Normal / Média
-      tasks = [
-        { id: 'est_1', title: 'Organizar Material de Estudo (10 min)', points: 1, icon: 'clipboard-list', time: '14:00', done: false },
-        { id: 'est_2', title: 'Estudo em Foco Contínuo (25 min)', points: 3, icon: 'book-open', time: '14:10', done: false },
-        { id: 'est_3', title: 'Pausa Consciente (10 min)', points: 1, icon: 'coffee', time: '14:35', done: false },
-        { id: 'est_4', title: 'Exercícios de Fixação (20 min)', points: 2, icon: 'check-circle-2', time: '14:45', done: false },
-        { id: 'est_5', title: 'Ócio Deliberado & Descanso (15 min)', points: 1, icon: 'moon', time: '15:05', done: false }
+    }
+    // CENÁRIO B: Bastante tempo e Alta energia (Carga máxima, estudo completo, sprints)
+    if (t === 'Bastante' && e === 'Alta') {
+      return [
+        { id: 'est_b1', title: 'Planejamento e Separação de Conteúdo (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'est_b2', title: 'Bloco 1: Estudo Teórico em Foco Total (35 min)', points: 3, icon: 'book-open', time: '09:10', done: false },
+        { id: 'est_b3', title: 'Pausa Ativa e Hidratação (10 min)', points: 1, icon: 'coffee', time: '09:45', done: false },
+        { id: 'est_b4', title: 'Bloco 2: Resolução de Exercícios & Fixação (35 min)', points: 3, icon: 'edit-3', time: '09:55', done: false },
+        { id: 'est_b5', title: 'Síntese dos Pontos-Chave & Mapeamento (20 min)', points: 2, icon: 'check-circle-2', time: '10:30', done: false },
+        { id: 'est_b6', title: 'Ócio Deliberado: Tempo Livre Protegido (30 min)', points: 1, icon: 'moon', time: '10:50', done: false }
       ];
     }
-  } else if (focus === 'Trabalho') {
-    if (time === 'Pouco' || energy === 'Baixa') {
-      tasks = [
-        { id: 'tra_1', title: 'Definir a Única Prioridade do Dia (10 min)', points: 2, icon: 'check-circle-2', time: '09:00', done: false },
-        { id: 'tra_2', title: 'Execução da Tarefa Crítica (20 min)', points: 3, icon: 'briefcase', time: '09:10', done: false },
-        { id: 'tra_3', title: 'Pausa de Descompressão (10 min)', points: 1, icon: 'coffee', time: '09:30', done: false },
-        { id: 'tra_4', title: 'Ócio Deliberado & Descanso (15 min)', points: 1, icon: 'moon', time: '09:40', done: false }
-      ];
-    } else if (time === 'Bastante' && energy === 'Alta') {
-      tasks = [
-        { id: 'tra_1', title: 'Alinhar Objetivos e Entregas (15 min)', points: 1, icon: 'clipboard-list', time: '08:30', done: false },
-        { id: 'tra_2', title: 'Sprint de Foco Profundo 1 (40 min)', points: 3, icon: 'briefcase', time: '08:45', done: false },
-        { id: 'tra_3', title: 'Intervalo Restaurativo (15 min)', points: 1, icon: 'coffee', time: '09:25', done: false },
-        { id: 'tra_4', title: 'Sprint de Produção Técnica 2 (35 min)', points: 3, icon: 'pen-tool', time: '09:40', done: false },
-        { id: 'tra_5', title: 'Organização de Demandas & Próximo Dia (15 min)', points: 2, icon: 'check-check', time: '10:15', done: false },
-        { id: 'tra_6', title: 'Ócio Deliberado & Desconexão (20 min)', points: 1, icon: 'moon', time: '10:30', done: false }
-      ];
-    } else {
-      tasks = [
-        { id: 'tra_1', title: 'Planejamento das Metas Principais (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
-        { id: 'tra_2', title: 'Bloco de Foco Profissional (30 min)', points: 3, icon: 'briefcase', time: '09:10', done: false },
-        { id: 'tra_3', title: 'Pausa Consciente (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
-        { id: 'tra_4', title: 'Finalização de Tarefas Chave (20 min)', points: 2, icon: 'check-circle-2', time: '09:50', done: false },
-        { id: 'tra_5', title: 'Ócio Deliberado (15 min)', points: 1, icon: 'moon', time: '10:10', done: false }
+    // Estudos - Outras variações
+    if (t === 'Pouco') {
+      return [
+        { id: 'est_p1', title: 'Foco Essencial de Estudo (20 min)', points: 3, icon: 'book-open', time: '14:00', done: false },
+        { id: 'est_p2', title: 'Pausa Restaurativa Rápida (5 min)', points: 1, icon: 'coffee', time: '14:20', done: false },
+        { id: 'est_p3', title: 'Revisão dos Pontos Principais (10 min)', points: 2, icon: 'check-circle-2', time: '14:25', done: false }
       ];
     }
-  } else if (focus === 'Hábitos') {
-    if (time === 'Pouco' || energy === 'Baixa') {
-      tasks = [
-        { id: 'hab_1', title: 'Hidratação e Despertar Consciente (10 min)', points: 1, icon: 'heart', time: '08:00', done: false },
-        { id: 'hab_2', title: 'Movimento Corporal Leve (15 min)', points: 2, icon: 'activity', time: '08:10', done: false },
-        { id: 'hab_3', title: 'Higiene do Sono & Desconexão (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
-      ];
-    } else if (time === 'Bastante' && energy === 'Alta') {
-      tasks = [
-        { id: 'hab_1', title: 'Hidratação e Respiração Guiada (10 min)', points: 1, icon: 'heart', time: '07:00', done: false },
-        { id: 'hab_2', title: 'Treino ou Caminhada Ativa (35 min)', points: 3, icon: 'activity', time: '07:10', done: false },
-        { id: 'hab_3', title: 'Alimentação Consciente & Presença (25 min)', points: 2, icon: 'coffee', time: '07:45', done: false },
-        { id: 'hab_4', title: 'Leitura e Expansão Pessoal (25 min)', points: 2, icon: 'book-open', time: '19:30', done: false },
-        { id: 'hab_5', title: 'Higiene do Sono & Telas Desligadas (20 min)', points: 1, icon: 'moon', time: '22:00', done: false }
-      ];
-    } else {
-      tasks = [
-        { id: 'hab_1', title: 'Hidratação Matinal (5 min)', points: 1, icon: 'heart', time: '07:30', done: false },
-        { id: 'hab_2', title: 'Alongamento ou Caminhada (20 min)', points: 2, icon: 'activity', time: '07:35', done: false },
-        { id: 'hab_3', title: 'Leitura Tranquila (20 min)', points: 2, icon: 'book-open', time: '19:00', done: false },
-        { id: 'hab_4', title: 'Desconexão Noturna sem Telas (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
+    if (e === 'Baixa') {
+      return [
+        { id: 'est_eb1', title: 'Leitura Suave sem Pressão (20 min)', points: 2, icon: 'book-open', time: '14:00', done: false },
+        { id: 'est_eb2', title: 'Intervalo Restaurativo (10 min)', points: 1, icon: 'coffee', time: '14:20', done: false },
+        { id: 'est_eb3', title: 'Resumo Rápido em Tópicos (15 min)', points: 2, icon: 'edit-3', time: '14:30', done: false },
+        { id: 'est_eb4', title: 'Ócio Deliberado & Descanso (20 min)', points: 1, icon: 'moon', time: '14:45', done: false }
       ];
     }
-  } else if (focus === 'Tarefas') {
-    if (time === 'Pouco' || energy === 'Baixa') {
-      tasks = [
-        { id: 'tar_1', title: 'Escolher a Tarefa Principal de Hoje (5 min)', points: 1, icon: 'clipboard-list', time: '10:00', done: false },
-        { id: 'tar_2', title: 'Executar Tarefa em Foco Simples (15 min)', points: 2, icon: 'check-circle-2', time: '10:05', done: false },
-        { id: 'tar_3', title: 'Pausa Restaurativa sem Cobrança (10 min)', points: 1, icon: 'coffee', time: '10:20', done: false },
-        { id: 'tar_4', title: 'Ócio Deliberado: Descanso Consciente', points: 1, icon: 'moon', time: '10:30', done: false }
-      ];
-    } else if (time === 'Bastante' && energy === 'Alta') {
-      tasks = [
-        { id: 'tar_1', title: 'Listar e Priorizar Demandas do Dia (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
-        { id: 'tar_2', title: 'Tarefa de Maior Impacto (30 min)', points: 3, icon: 'check-circle-2', time: '09:10', done: false },
-        { id: 'tar_3', title: 'Pausa Restaurativa e Água (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
-        { id: 'tar_4', title: 'Segunda Tarefa Essencial (25 min)', points: 2, icon: 'check-circle-2', time: '09:50', done: false },
-        { id: 'tar_5', title: 'Pequenas Pendências e Organização (15 min)', points: 1, icon: 'check-check', time: '10:15', done: false },
-        { id: 'tar_6', title: 'Ócio Deliberado: Pausa Merecida (20 min)', points: 1, icon: 'moon', time: '10:30', done: false }
-      ];
-    } else {
-      tasks = [
-        { id: 'tar_1', title: 'Listar 3 Tarefas Chave (10 min)', points: 1, icon: 'clipboard-list', time: '10:00', done: false },
-        { id: 'tar_2', title: 'Executar Primeira Tarefa (25 min)', points: 3, icon: 'check-circle-2', time: '10:10', done: false },
-        { id: 'tar_3', title: 'Pausa de Descompressão (10 min)', points: 1, icon: 'coffee', time: '10:35', done: false },
-        { id: 'tar_4', title: 'Segunda Tarefa sem Pressa (20 min)', points: 2, icon: 'check-circle-2', time: '10:45', done: false },
-        { id: 'tar_5', title: 'Ócio Deliberado (15 min)', points: 1, icon: 'moon', time: '11:05', done: false }
+    if (t === 'Bastante') {
+      return [
+        { id: 'est_bas1', title: 'Organização do Cronograma de Estudos (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'est_bas2', title: 'Sessão 1: Conceitos e Teoria (30 min)', points: 3, icon: 'book-open', time: '09:10', done: false },
+        { id: 'est_bas3', title: 'Pausa Consciente & Lanche (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
+        { id: 'est_bas4', title: 'Sessão 2: Prática e Aplicação (30 min)', points: 3, icon: 'edit-3', time: '09:50', done: false },
+        { id: 'est_bas5', title: 'Ócio Deliberado Merecido (25 min)', points: 1, icon: 'moon', time: '10:20', done: false }
       ];
     }
-  } else {
-    // 'Meu dia' ou 'Minha rotina'
-    if (time === 'Pouco' || energy === 'Baixa') {
-      tasks = [
-        { id: 'rot_1', title: 'Acolher a Energia e Escolher 1 Prioridade (10 min)', points: 1, icon: 'smile', time: '10:00', done: false },
-        { id: 'rot_2', title: 'Atividade Essencial no Seu Ritmo (20 min)', points: 3, icon: 'check-circle-2', time: '10:10', done: false },
-        { id: 'rot_3', title: 'Pausa Relaxante sem Culpa (10 min)', points: 1, icon: 'coffee', time: '10:30', done: false },
-        { id: 'rot_4', title: 'Ócio Deliberado: Descanso Consciente', points: 1, icon: 'moon', time: '10:40', done: false }
-      ];
-    } else if (time === 'Bastante' && energy === 'Alta') {
-      tasks = [
-        { id: 'rot_1', title: 'Planejamento do Dia e Metas Claras (10 min)', points: 1, icon: 'clipboard-list', time: '08:30', done: false },
-        { id: 'rot_2', title: 'Bloco 1: Foco Principal e Autonomia (35 min)', points: 3, icon: 'check-circle-2', time: '08:40', done: false },
-        { id: 'rot_3', title: 'Pausa Ativa e Hidratação (10 min)', points: 1, icon: 'coffee', time: '09:15', done: false },
-        { id: 'rot_4', title: 'Bloco 2: Atividade Prática ou Estudos (30 min)', points: 3, icon: 'book-open', time: '09:25', done: false },
-        { id: 'rot_5', title: 'Leitura ou Prática Pessoal (20 min)', points: 2, icon: 'heart', time: '15:00', done: false },
-        { id: 'rot_6', title: 'Ócio Deliberado & Tempo Protegido (25 min)', points: 1, icon: 'moon', time: '21:00', done: false }
-      ];
-    } else {
-      tasks = [
-        { id: 'rot_1', title: 'Organização do Dia no Seu Compasso (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
-        { id: 'rot_2', title: 'Bloco de Foco do Momento (30 min)', points: 3, icon: 'check-circle-2', time: '09:10', done: false },
-        { id: 'rot_3', title: 'Pausa Restaurativa (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
-        { id: 'rot_4', title: 'Prática Leve ou Leitura (20 min)', points: 2, icon: 'book-open', time: '15:00', done: false },
-        { id: 'rot_5', title: 'Ócio Deliberado (15 min)', points: 1, icon: 'moon', time: '21:30', done: false }
-      ];
-    }
+    // Estudos - Normal / Média (Padrão)
+    return [
+      { id: 'est_m1', title: 'Organizar Material e Metas de Estudo (10 min)', points: 1, icon: 'clipboard-list', time: '14:00', done: false },
+      { id: 'est_m2', title: 'Estudo em Foco Contínuo (25 min)', points: 3, icon: 'book-open', time: '14:10', done: false },
+      { id: 'est_m3', title: 'Pausa Consciente & Água (10 min)', points: 1, icon: 'coffee', time: '14:35', done: false },
+      { id: 'est_m4', title: 'Exercícios de Fixação no Seu Ritmo (20 min)', points: 2, icon: 'check-circle-2', time: '14:45', done: false },
+      { id: 'est_m5', title: 'Ócio Deliberado & Descanso (15 min)', points: 1, icon: 'moon', time: '15:05', done: false }
+    ];
   }
 
-  return tasks;
+  // --- 2. HÁBITOS ---
+  if (f === 'Hábitos') {
+    // CENÁRIO C: Tempo Normal e Média energia (Autocuidado, saúde e equilíbrio sustentável)
+    if (t === 'Normal' && e === 'Média') {
+      return [
+        { id: 'hab_c1', title: 'Hidratação Matinal e Despertar Consciente (10 min)', points: 1, icon: 'heart', time: '08:00', done: false },
+        { id: 'hab_c2', title: 'Alongamento ou Caminhada Leve (20 min)', points: 2, icon: 'activity', time: '08:10', done: false },
+        { id: 'hab_c3', title: 'Leitura e Presença Tranquila (20 min)', points: 2, icon: 'book-open', time: '19:00', done: false },
+        { id: 'hab_c4', title: 'Higiene do Sono & Desconexão Noturna (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
+      ];
+    }
+    if (t === 'Pouco' || e === 'Baixa') {
+      return [
+        { id: 'hab_p1', title: 'Copão de Água e Respiração Consciente (5 min)', points: 1, icon: 'heart', time: '08:00', done: false },
+        { id: 'hab_p2', title: 'Alongamento Suave (10 min)', points: 1, icon: 'activity', time: '08:05', done: false },
+        { id: 'hab_p3', title: 'Desconexão Precoce de Telas (10 min)', points: 1, icon: 'moon', time: '21:30', done: false }
+      ];
+    }
+    if (t === 'Bastante' && e === 'Alta') {
+      return [
+        { id: 'hab_b1', title: 'Hidratação e Respiração Guiada (10 min)', points: 1, icon: 'heart', time: '07:00', done: false },
+        { id: 'hab_b2', title: 'Treino Físico ou Caminhada Ativa (35 min)', points: 3, icon: 'activity', time: '07:10', done: false },
+        { id: 'hab_b3', title: 'Alimentação Consciente & Café com Calma (25 min)', points: 2, icon: 'coffee', time: '07:45', done: false },
+        { id: 'hab_b4', title: 'Organização do Espaço de Vivência (20 min)', points: 2, icon: 'clipboard-list', time: '14:00', done: false },
+        { id: 'hab_b5', title: 'Leitura e Expansão Pessoal (25 min)', points: 2, icon: 'book-open', time: '19:30', done: false },
+        { id: 'hab_b6', title: 'Higiene do Sono & Telas Desligadas (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
+      ];
+    }
+    return [
+      { id: 'hab_std1', title: 'Hidratação Matinal (5 min)', points: 1, icon: 'heart', time: '07:30', done: false },
+      { id: 'hab_std2', title: 'Movimento Corporal Leve (20 min)', points: 2, icon: 'activity', time: '07:35', done: false },
+      { id: 'hab_std3', title: 'Leitura Tranquila (20 min)', points: 2, icon: 'book-open', time: '19:00', done: false },
+      { id: 'hab_std4', title: 'Ócio Deliberado & Preparação do Sono (15 min)', points: 1, icon: 'moon', time: '22:00', done: false }
+    ];
+  }
+
+  // --- 3. TRABALHO ---
+  if (f === 'Trabalho') {
+    if (t === 'Pouco' || e === 'Baixa') {
+      return [
+        { id: 'tra_p1', title: 'Definir a Única Prioridade do Dia (10 min)', points: 2, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'tra_p2', title: 'Execução Essencial sem Pressa (15 min)', points: 2, icon: 'briefcase', time: '09:10', done: false },
+        { id: 'tra_p3', title: 'Ócio Deliberado & Descompressão (15 min)', points: 1, icon: 'moon', time: '09:25', done: false }
+      ];
+    }
+    if (t === 'Bastante' && e === 'Alta') {
+      return [
+        { id: 'tra_b1', title: 'Alinhar Objetivos e Entregas (15 min)', points: 1, icon: 'clipboard-list', time: '08:30', done: false },
+        { id: 'tra_b2', title: 'Sprint 1 de Produção (35 min)', points: 3, icon: 'briefcase', time: '08:45', done: false },
+        { id: 'tra_b3', title: 'Intervalo Restaurativo (10 min)', points: 1, icon: 'coffee', time: '09:20', done: false },
+        { id: 'tra_b4', title: 'Sprint 2 Foco Profundo (35 min)', points: 3, icon: 'briefcase', time: '09:30', done: false },
+        { id: 'tra_b5', title: 'Fechamento de Pendências (20 min)', points: 2, icon: 'check-check', time: '10:05', done: false },
+        { id: 'tra_b6', title: 'Ócio Deliberado (20 min)', points: 1, icon: 'moon', time: '10:25', done: false }
+      ];
+    }
+    return [
+      { id: 'tra_m1', title: 'Planejamento das Metas Principais (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+      { id: 'tra_m2', title: 'Bloco de Foco Profissional (30 min)', points: 3, icon: 'briefcase', time: '09:10', done: false },
+      { id: 'tra_m3', title: 'Pausa Consciente (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
+      { id: 'tra_m4', title: 'Finalização de Tarefas Chave (20 min)', points: 2, icon: 'check-circle-2', time: '09:50', done: false }
+    ];
+  }
+
+  // --- 4. TAREFAS ---
+  if (f === 'Tarefas') {
+    if (t === 'Pouco' || e === 'Baixa') {
+      return [
+        { id: 'tar_p1', title: 'Escolher a Tarefa Mais Urgente (5 min)', points: 1, icon: 'clipboard-list', time: '10:00', done: false },
+        { id: 'tar_p2', title: 'Executar no Seu Ritmo (15 min)', points: 2, icon: 'check-circle-2', time: '10:05', done: false },
+        { id: 'tar_p3', title: 'Pausa Restaurativa sem Cobrança (10 min)', points: 1, icon: 'coffee', time: '10:20', done: false }
+      ];
+    }
+    if (t === 'Bastante' && e === 'Alta') {
+      return [
+        { id: 'tar_b1', title: 'Listar e Priorizar Demandas do Dia (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+        { id: 'tar_b2', title: 'Tarefa de Maior Impacto (30 min)', points: 3, icon: 'check-circle-2', time: '09:10', done: false },
+        { id: 'tar_b3', title: 'Pausa Restaurativa e Água (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
+        { id: 'tar_b4', title: 'Segunda Tarefa Essencial (25 min)', points: 2, icon: 'check-circle-2', time: '09:50', done: false },
+        { id: 'tar_b5', title: 'Pequenas Pendências e Organização (15 min)', points: 1, icon: 'check-check', time: '10:15', done: false },
+        { id: 'tar_b6', title: 'Ócio Deliberado: Pausa Merecida (20 min)', points: 1, icon: 'moon', time: '10:30', done: false }
+      ];
+    }
+    return [
+      { id: 'tar_m1', title: 'Listar 3 Tarefas Chave (10 min)', points: 1, icon: 'clipboard-list', time: '10:00', done: false },
+      { id: 'tar_m2', title: 'Executar Primeira Tarefa (25 min)', points: 3, icon: 'check-circle-2', time: '10:10', done: false },
+      { id: 'tar_m3', title: 'Pausa de Descompressão (10 min)', points: 1, icon: 'coffee', time: '10:35', done: false },
+      { id: 'tar_m4', title: 'Segunda Tarefa sem Pressa (20 min)', points: 2, icon: 'check-circle-2', time: '10:45', done: false }
+    ];
+  }
+
+  // --- 5. MEU DIA / MINHA ROTINA ---
+  if (t === 'Pouco' || e === 'Baixa') {
+    return [
+      { id: 'rot_p1', title: 'Acolher a Energia e Escolher 1 Prioridade (10 min)', points: 1, icon: 'smile', time: '10:00', done: false },
+      { id: 'rot_p2', title: 'Atividade Essencial no Seu Ritmo (15 min)', points: 2, icon: 'check-circle-2', time: '10:10', done: false },
+      { id: 'rot_p3', title: 'Ócio Deliberado: Descanso Merecido (10 min)', points: 1, icon: 'moon', time: '10:25', done: false }
+    ];
+  }
+  if (t === 'Bastante' && e === 'Alta') {
+    return [
+      { id: 'rot_b1', title: 'Planejamento Geral do Dia (10 min)', points: 1, icon: 'clipboard-list', time: '08:30', done: false },
+      { id: 'rot_b2', title: 'Bloco 1: Foco e Autonomia (35 min)', points: 3, icon: 'check-circle-2', time: '08:40', done: false },
+      { id: 'rot_b3', title: 'Pausa Ativa e Hidratação (10 min)', points: 1, icon: 'coffee', time: '09:15', done: false },
+      { id: 'rot_b4', title: 'Bloco 2: Atividade Prática ou Estudos (30 min)', points: 3, icon: 'book-open', time: '09:25', done: false },
+      { id: 'rot_b5', title: 'Leitura ou Prática Pessoal (25 min)', points: 2, icon: 'heart', time: '15:00', done: false },
+      { id: 'rot_b6', title: 'Ócio Deliberado & Tempo Protegido (25 min)', points: 1, icon: 'moon', time: '21:00', done: false }
+    ];
+  }
+  return [
+    { id: 'rot_m1', title: 'Organização do Dia no Seu Compasso (10 min)', points: 1, icon: 'clipboard-list', time: '09:00', done: false },
+    { id: 'rot_m2', title: 'Bloco de Foco do Momento (30 min)', points: 3, icon: 'check-circle-2', time: '09:10', done: false },
+    { id: 'rot_m3', title: 'Pausa Restaurativa (10 min)', points: 1, icon: 'coffee', time: '09:40', done: false },
+    { id: 'rot_m4', title: 'Prática Leve ou Leitura (20 min)', points: 2, icon: 'book-open', time: '15:00', done: false }
+  ];
 }
 
 // -------------------------------------------------------------

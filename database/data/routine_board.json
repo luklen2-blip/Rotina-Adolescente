@@ -9,58 +9,42 @@
         "tasks": [
           {
             "id": "seg_1",
-            "title": "Ir para a escola",
+            "title": "Planejar prioridades essenciais da semana",
             "points": 1,
-            "icon": "school",
-            "done": true
+            "icon": "clipboard-list",
+            "time": "08:30",
+            "done": false
           },
           {
             "id": "seg_2",
-            "title": "Dia na escola sem reclamações",
+            "title": "Bloco de foco com calma",
             "points": 3,
-            "icon": "smile",
-            "done": true
+            "icon": "check-circle-2",
+            "time": "09:00",
+            "done": false
           },
           {
             "id": "seg_3",
-            "title": "Fono (ao voltar da escola)",
+            "title": "Pausa restaurativa e hidratação",
             "points": 1,
-            "icon": "message-circle",
-            "done": true
+            "icon": "coffee",
+            "time": "09:40",
+            "done": false
           },
           {
             "id": "seg_4",
-            "title": "Reforço escolar",
-            "points": 3,
+            "title": "Leitura, estudo ou prática",
+            "points": 2,
             "icon": "book-open",
+            "time": "14:00",
             "done": false
           },
           {
             "id": "seg_5",
-            "title": "Fazer a atividade do Kumon",
-            "points": 3,
-            "icon": "edit-3",
-            "done": false
-          },
-          {
-            "id": "seg_6",
-            "title": "Arrumar a mochila para o dia seguinte",
-            "points": 1,
-            "icon": "backpack",
-            "done": false
-          },
-          {
-            "id": "seg_7",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
-            "done": false
-          },
-          {
-            "id": "seg_8",
-            "title": "21h: hora de dormir",
+            "title": "Ócio Deliberado: Descanso Consciente",
             "points": 1,
             "icon": "moon",
+            "time": "21:00",
             "done": false
           }
         ]
@@ -109,65 +93,34 @@
         "tasks": [
           {
             "id": "qua_1",
-            "title": "Ir para a escola",
+            "title": "Alongamento ou movimento leve",
             "points": 1,
-            "icon": "school",
+            "icon": "activity",
+            "time": "08:30",
             "done": false
           },
           {
             "id": "qua_2",
-            "title": "Dia na escola sem reclamações",
+            "title": "Foco no essencial do dia",
             "points": 3,
-            "icon": "smile",
+            "icon": "check-circle-2",
+            "time": "09:00",
             "done": false
           },
           {
             "id": "qua_3",
-            "title": "Centro Esportivo (futebol + judô)",
+            "title": "Pausa de descompressão",
             "points": 1,
-            "icon": "activity",
+            "icon": "coffee",
+            "time": "09:45",
             "done": false
           },
           {
             "id": "qua_4",
-            "title": "Lembrar do uniforme do judô!",
-            "points": 1,
-            "icon": "bell",
-            "done": false
-          },
-          {
-            "id": "qua_5",
-            "title": "Reforço escolar",
-            "points": 3,
-            "icon": "book-open",
-            "done": false
-          },
-          {
-            "id": "qua_6",
-            "title": "Fazer a atividade do Kumon",
-            "points": 3,
-            "icon": "edit-3",
-            "done": false
-          },
-          {
-            "id": "qua_7",
-            "title": "Arrumar a mochila para o dia seguinte",
-            "points": 1,
-            "icon": "backpack",
-            "done": false
-          },
-          {
-            "id": "qua_8",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
-            "done": false
-          },
-          {
-            "id": "qua_9",
-            "title": "21h: hora de dormir",
+            "title": "Ócio Deliberado",
             "points": 1,
             "icon": "moon",
+            "time": "21:00",
             "done": false
           }
         ]
@@ -178,51 +131,34 @@
         "tasks": [
           {
             "id": "qui_1",
-            "title": "Ir para a escola",
+            "title": "Planejamento e metas do dia",
             "points": 1,
-            "icon": "school",
+            "icon": "clipboard-list",
+            "time": "08:30",
             "done": false
           },
           {
             "id": "qui_2",
-            "title": "Dia na escola sem reclamações",
+            "title": "Bloco produtivo no seu ritmo",
             "points": 3,
-            "icon": "smile",
+            "icon": "check-circle-2",
+            "time": "09:00",
             "done": false
           },
           {
             "id": "qui_3",
-            "title": "Ir ao Kumon (ao voltar da escola)",
-            "points": 3,
-            "icon": "edit-3",
+            "title": "Pausa restaurativa",
+            "points": 1,
+            "icon": "coffee",
+            "time": "09:45",
             "done": false
           },
           {
             "id": "qui_4",
-            "title": "Reforço escolar",
-            "points": 3,
-            "icon": "book-open",
-            "done": false
-          },
-          {
-            "id": "qui_5",
-            "title": "Arrumar a mochila para o dia seguinte",
-            "points": 1,
-            "icon": "backpack",
-            "done": false
-          },
-          {
-            "id": "qui_6",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
-            "done": false
-          },
-          {
-            "id": "qui_7",
-            "title": "21h: hora de dormir",
+            "title": "Ócio Deliberado",
             "points": 1,
             "icon": "moon",
+            "time": "21:00",
             "done": false
           }
         ]
@@ -233,58 +169,26 @@
         "tasks": [
           {
             "id": "sex_1",
-            "title": "Ir para a escola",
-            "points": 1,
-            "icon": "school",
+            "title": "Fechamento da semana com leveza",
+            "points": 2,
+            "icon": "check-check",
+            "time": "09:00",
             "done": false
           },
           {
             "id": "sex_2",
-            "title": "Dia na escola sem reclamações",
-            "points": 3,
-            "icon": "smile",
+            "title": "Revisão e pequenas conquistas",
+            "points": 2,
+            "icon": "award",
+            "time": "10:00",
             "done": false
           },
           {
             "id": "sex_3",
-            "title": "Preparar a bolsa do Centro Esportivo",
-            "points": 1,
-            "icon": "briefcase",
-            "done": false
-          },
-          {
-            "id": "sex_4",
-            "title": "Centro Esportivo (futebol + judô)",
-            "points": 1,
-            "icon": "activity",
-            "done": false
-          },
-          {
-            "id": "sex_5",
-            "title": "Reforço escolar",
-            "points": 3,
-            "icon": "book-open",
-            "done": false
-          },
-          {
-            "id": "sex_6",
-            "title": "Fazer a atividade do Kumon",
-            "points": 3,
-            "icon": "edit-3",
-            "done": false
-          },
-          {
-            "id": "sex_7",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
-            "done": false
-          },
-          {
-            "id": "sex_8",
-            "title": "21h: hora de dormir",
+            "title": "Ócio Deliberado & Lazer",
             "points": 1,
             "icon": "moon",
+            "time": "20:30",
             "done": false
           }
         ]
@@ -295,16 +199,18 @@
         "tasks": [
           {
             "id": "sab_1",
-            "title": "Fazer a atividade do Kumon",
-            "points": 3,
-            "icon": "edit-3",
+            "title": "Tempo livre protegido",
+            "points": 2,
+            "icon": "smile",
+            "time": "10:00",
             "done": false
           },
           {
             "id": "sab_2",
-            "title": "30 min de leitura",
-            "points": 3,
+            "title": "Leitura, hobby ou descanso",
+            "points": 2,
             "icon": "book",
+            "time": "15:00",
             "done": false
           }
         ]
@@ -315,22 +221,23 @@
         "tasks": [
           {
             "id": "dom_1",
-            "title": "Fazer a atividade do Kumon",
-            "points": 3,
-            "icon": "edit-3",
+            "title": "Descanso e recarregamento",
+            "points": 2,
+            "icon": "moon",
+            "time": "10:00",
             "done": false
           },
           {
             "id": "dom_2",
-            "title": "30 min de leitura",
-            "points": 3,
-            "icon": "book",
+            "title": "Planejar suavemente a próxima semana",
+            "points": 2,
+            "icon": "calendar",
+            "time": "17:00",
             "done": false
           }
         ]
       }
     },
-    "createdAt": "2026-09-18T21:00:10.042Z",
-    "updatedAt": "2026-09-19T22:04:46.177Z"
+    "updatedAt": "2026-09-19T22:18:10.560Z"
   }
 ]

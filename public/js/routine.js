@@ -1,4 +1,4 @@
-// routine.js - Lógica do Quadro de Rotina Semanal e Sistema de Conquistas (Rotina do Miguel)
+// routine.js - Lógica do Quadro de Rotina Semanal e Sistema de Conquistas
 
 let routineState = {
   profile: null,
@@ -52,7 +52,7 @@ export function renderRoutineUI() {
 
   // 1. Cabeçalho e Título
   const titleEl = document.getElementById('board-title');
-  if (titleEl) titleEl.innerText = profile.title || 'Rotina do Miguel';
+  if (titleEl) titleEl.innerText = profile.title || 'Ritmo Autonomia';
 
   const subtitleEl = document.getElementById('board-subtitle');
   if (subtitleEl) subtitleEl.innerText = profile.subtitle || 'Pequenas Ações, Grandes Conquistas!';

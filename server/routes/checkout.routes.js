@@ -32,7 +32,7 @@ router.post('/validate-code', (req, res) => {
   }
 
   const cleanCode = code.trim().toUpperCase();
-  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026', 'RITMO'];
+  const validMasterKeys = ['RITMO2026', 'PROMO1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026', 'RITMO'];
   const isValid = validMasterKeys.includes(cleanCode) || cleanCode.startsWith('RTM-') || cleanCode.startsWith('KIW-');
 
 
