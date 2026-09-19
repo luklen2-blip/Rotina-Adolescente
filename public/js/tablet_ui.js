@@ -1,4 +1,4 @@
-﻿// tablet_ui.js - Controlador da Interface Clean Tech Dark Mode (Ritmo Autonomia V2)
+// tablet_ui.js - Controlador da Interface Clean Tech Dark Mode (Ritmo Autonomia V2)
 // "Sua rotina. Seu ritmo. Sua autonomia."
 
 let currentRoutineData = null;
@@ -19,12 +19,24 @@ export async function initCleanTechUI() {
   checkOnboardingStatus();
 }
 
-async function fetchCleanTechData() {
+export async function fetchCleanTechData() {
   try {
     const res = await fetch('/api/routine/week');
     const json = await res.json();
     if (json.success) {
       currentRoutineData = json.data;
+
+      // Se o usuário possui rotina adaptada customizada salva localmente, integra no dia ativo
+      const savedCustom = localStorage.getItem('ritmo_custom_daily_tasks');
+      if (savedCustom) {
+        try {
+          const parsed = JSON.parse(savedCustom);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            currentRoutineData.board.days[activeDayKey].tasks = parsed;
+          }
+        } catch (e) {}
+      }
+
       updateUI();
     }
   } catch (err) {
@@ -39,9 +51,18 @@ function updateUI() {
   const points = profile.cumulativePoints || 345;
   const xpLevel = Math.max(1, Math.floor(points / 30));
 
-  // 1. Cabeçalho Superior
+  // 1. Cabeçalho Superior — "MINHA ROTINA" (ou com o nome do usuário)
   const titleEl = document.getElementById('user-header-title');
-  if (titleEl) titleEl.innerHTML = `ROTINA DO <span class="text-glow-lime">${(profile.name || 'MIGUEL').toUpperCase()}</span>`;
+  const userProfile = JSON.parse(localStorage.getItem('ritmo_user_profile') || '{}');
+  const customName = userProfile.name || (profile.name && profile.name.toLowerCase() !== 'miguel' ? profile.name : '');
+
+  if (titleEl) {
+    if (customName) {
+      titleEl.innerHTML = `ROTINA DE <span class="text-glow-lime">${customName.toUpperCase()}</span>`;
+    } else {
+      titleEl.innerHTML = `MINHA <span class="text-glow-lime">ROTINA</span>`;
+    }
+  }
 
   const xpEl = document.getElementById('xp-level-display');
   if (xpEl) xpEl.innerText = `NÍVEL DE XP: ${xpLevel}`;
@@ -121,7 +142,7 @@ function renderNextActivitySection() {
         <div>
           <div class="text-[11px] font-mono text-slate-400 flex items-center gap-1.5">
             <i data-lucide="clock" class="w-3.5 h-3.5 text-cyan-400"></i>
-            Horário previsto: <strong class="text-white font-mono">${nextTask.time || 'Em andamento'}</strong>
+            Horário previsto: <strong class="text-white font-mono">${nextTask.time || 'Agora'}</strong>
           </div>
           <h3 class="text-base sm:text-lg font-black text-white uppercase tracking-tight mt-0.5">
             ${nextTask.title}
@@ -260,18 +281,16 @@ function getTaskIcon(icon, title) {
   if (lower.includes('skate') || lower.includes('esporte') || lower.includes('futebol') || lower.includes('treino')) return 'activity';
   if (lower.includes('leitura') || lower.includes('ler') || lower.includes('livro')) return 'book-open';
   if (lower.includes('gaming') || lower.includes('lazer') || lower.includes('jogo')) return 'gamepad-2';
-  if (lower.includes('dormir') || lower.includes('desconexão') || lower.includes('descanso') || lowerócio(lower)) return 'moon';
+  if (lower.includes('dormir') || lower.includes('desconexão') || lower.includes('descanso') || lower.includes('ócio') || lower.includes('pausa')) return 'moon';
   if (lower.includes('escola') || lower.includes('estudo') || lower.includes('foco')) return 'graduation-cap';
-  if (lower.includes('kumon') || lower.includes('reforço')) return 'edit-3';
-  return 'circle-dot';
-}
-
-function lowerócio(str) {
-  return str.includes('ócio') || str.includes('pausa');
+  if (lower.includes('kumon') || lower.includes('reforço') || lower.includes('exercício')) return 'edit-3';
+  if (lower.includes('trabalho') || lower.includes('projeto')) return 'briefcase';
+  if (lower.includes('hábito') || lower.includes('água') || lower.includes('saúde')) return 'heart';
+  return icon || 'check-circle-2';
 }
 
 function getDefaultTime(idx) {
-  const times = ['17:30', '19:00', '21:30', '22:30', '08:00', '14:00', '16:00', '20:00'];
+  const times = ['08:00', '10:00', '14:00', '16:00', '18:00', '20:00', '21:30', '22:30'];
   return times[idx % times.length];
 }
 
@@ -286,7 +305,7 @@ window.toggleCleanTechTask = async function(dayKey, taskId) {
     const json = await res.json();
     if (json.success) {
       if (json.pointsDiff > 0) {
-        showVisualFeedback('+50 XP', 'Atividade concluída', 'Você avançou mais um passo.');
+        showVisualFeedback('+50 XP', 'Atividade concluída', 'Você avançou mais um passo no seu ritmo.');
       } else {
         if (window.showToast) {
           window.showToast('Tarefa marcada como pendente.', 'info');
@@ -344,10 +363,16 @@ window.selectMood = function(mood) {
   activeMood = mood;
   updateMoodUI();
   const labels = { 
-    foco_total: 'Foco Total registrado! Excelente presença.', 
-    cansado: 'Cansaço acolhido. Respeite o teu ritmo e desacelere se necessário.', 
-    relaxado: 'Modo relaxado registrado. Fluindo com tranquilidade.' 
+    foco_total: '😤 Foco Total registrado! Excelente presença.', 
+    cansado: '😩 Cansaço acolhido. Respeite o teu ritmo e desacelere se necessário.', 
+    relaxado: '😌 Modo relaxado registrado. Fluindo com tranquilidade.' 
   };
+  
+  // Persiste percepção para identificação de padrões
+  const storedPerceptions = JSON.parse(localStorage.getItem('ritmo_perceptions') || '[]');
+  storedPerceptions.push({ mood, timestamp: new Date().toISOString() });
+  localStorage.setItem('ritmo_perceptions', JSON.stringify(storedPerceptions.slice(-20)));
+
   if (window.showToast) {
     window.showToast(labels[mood] || 'Percepção registrada!', 'success');
   }
@@ -388,7 +413,7 @@ window.openReorganizeModal = function() {
   if (modal) modal.classList.remove('hidden');
 };
 
-// Ativação do Ócio Deliberado (Descanso Consciente)
+// Ativação do Ócio Deliberado (Descanso Consciente Planejado)
 window.activateOcioDeliberado = async function() {
   try {
     const res = await fetch('/api/routine/bonus', {
@@ -396,14 +421,14 @@ window.activateOcioDeliberado = async function() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         points: 5, 
-        reason: 'Ócio Deliberado: Descanso Consciente Protegido' 
+        reason: 'Ócio Deliberado: Descanso Consciente' 
       })
     });
     const json = await res.json();
     if (json.success) {
       document.getElementById('modal-reorganize')?.classList.add('hidden');
       if (window.showToast) {
-        window.showToast('Ócio Deliberado ativado com sucesso (+5P). Descansar faz parte de uma rotina saudável!', 'success');
+        window.showToast('Ócio Deliberado ativado (+5P). Descansar também faz parte de uma rotina saudável!', 'success');
       }
       await fetchCleanTechData();
     }
@@ -411,6 +436,98 @@ window.activateOcioDeliberado = async function() {
     console.error('Erro ao ativar Ócio Deliberado:', err);
   }
 };
+
+// Gerador Funcional de Rotina Adaptada com base em: OBJETIVO + TEMPO + ENERGIA
+export function generateAdaptiveRoutine(focus, time, energy) {
+  let tasks = [];
+
+  if (focus === 'Estudos') {
+    if (time === 'Pouco' || energy === 'Baixa') {
+      tasks = [
+        { title: 'Estudo Focado e Essencial (15 min)', points: 2, icon: 'book-open', time: '14:00' },
+        { title: 'Pausa Restaurativa e Água (5 min)', points: 1, icon: 'coffee', time: '14:15' },
+        { title: 'Revisão Leve dos Pontos-Chave (10 min)', points: 2, icon: 'check-circle-2', time: '14:20' },
+        { title: 'Ócio Deliberado & Descanso Consciente', points: 1, icon: 'moon', time: '14:30' }
+      ];
+    } else if (energy === 'Alta' && time === 'Bastante') {
+      tasks = [
+        { title: 'Planejamento e Separação de Conteúdo (10 min)', points: 1, icon: 'clipboard-list', time: '09:00' },
+        { title: 'Bloco 1: Teoria e Conceitos Chave (30 min)', points: 3, icon: 'book-open', time: '09:10' },
+        { title: 'Pausa Ativa e Descompressão (10 min)', points: 1, icon: 'coffee', time: '09:40' },
+        { title: 'Bloco 2: Exercícios Práticos e Questões (30 min)', points: 3, icon: 'pen-tool', time: '09:50' },
+        { title: 'Revisão Espaçada e Resumo (15 min)', points: 2, icon: 'check-check', time: '10:20' },
+        { title: 'Ócio Deliberado: Tempo Protegido (20 min)', points: 1, icon: 'gamepad-2', time: '10:35' }
+      ];
+    } else {
+      tasks = [
+        { title: 'Organizar Material de Estudo (10 min)', points: 1, icon: 'clipboard-list', time: '15:00' },
+        { title: 'Estudo em Foco Contínuo (25 min)', points: 3, icon: 'book-open', time: '15:10' },
+        { title: 'Pausa Consciente (10 min)', points: 1, icon: 'coffee', time: '15:35' },
+        { title: 'Exercícios de Fixação (20 min)', points: 2, icon: 'check-circle-2', time: '15:45' },
+        { title: 'Fechamento e Registro de Percepção (10 min)', points: 1, icon: 'smile', time: '16:05' }
+      ];
+    }
+  } else if (focus === 'Trabalho') {
+    if (time === 'Pouco' || energy === 'Baixa') {
+      tasks = [
+        { title: 'Definir a Única Prioridade do Dia (10 min)', points: 2, icon: 'check-circle-2', time: '09:00' },
+        { title: 'Execução sem Distrações (20 min)', points: 3, icon: 'briefcase', time: '09:10' },
+        { title: 'Pausa de Descompressão (10 min)', points: 1, icon: 'coffee', time: '09:30' },
+        { title: 'Check-out Leve de Demandas (15 min)', points: 1, icon: 'clipboard-list', time: '09:40' }
+      ];
+    } else if (energy === 'Alta' && time === 'Bastante') {
+      tasks = [
+        { title: 'Alinhar Objetivos e Entregas (15 min)', points: 2, icon: 'clipboard-list', time: '08:30' },
+        { title: 'Sprint de Foco Profundo (40 min)', points: 3, icon: 'briefcase', time: '08:45' },
+        { title: 'Intervalo Restaurativo (15 min)', points: 1, icon: 'coffee', time: '09:25' },
+        { title: 'Demandas Técnicas e Resolução (35 min)', points: 3, icon: 'pen-tool', time: '09:40' },
+        { title: 'Organização do Próximo Dia (15 min)', points: 1, icon: 'check-check', time: '10:15' }
+      ];
+    } else {
+      tasks = [
+        { title: 'Planejamento das Metas Principais (10 min)', points: 1, icon: 'clipboard-list', time: '09:00' },
+        { title: 'Bloco de Foco Profissional (30 min)', points: 3, icon: 'briefcase', time: '09:10' },
+        { title: 'Pausa Consciente (10 min)', points: 1, icon: 'coffee', time: '09:40' },
+        { title: 'Finalização de Tarefas Chave (20 min)', points: 2, icon: 'check-circle-2', time: '09:50' }
+      ];
+    }
+  } else if (focus === 'Hábitos') {
+    tasks = [
+      { title: 'Hidratação e Despertar Consciente (10 min)', points: 1, icon: 'heart', time: '07:30' },
+      { title: 'Movimento Corporal ou Caminhada Leve (20 min)', points: 2, icon: 'activity', time: '07:40' },
+      { title: 'Leitura Tranquila (15 min)', points: 2, icon: 'book-open', time: '19:00' },
+      { title: 'Higiene do Sono & Desconexão de Telas (20 min)', points: 1, icon: 'moon', time: '22:00' }
+    ];
+  } else if (focus === 'Tarefas') {
+    tasks = [
+      { title: 'Listar o Essencial de Hoje (5 min)', points: 1, icon: 'clipboard-list', time: '10:00' },
+      { title: 'Executar Primeira Tarefa Chave (20 min)', points: 3, icon: 'check-circle-2', time: '10:05' },
+      { title: 'Pausa Restaurativa (10 min)', points: 1, icon: 'coffee', time: '10:25' },
+      { title: 'Segunda Tarefa sem Cobrança (20 min)', points: 2, icon: 'check-circle-2', time: '10:35' },
+      { title: 'Ócio Deliberado (Descanso Livre)', points: 1, icon: 'moon', time: '11:00' }
+    ];
+  } else {
+    // 'Meu dia' ou 'Minha rotina'
+    if (energy === 'Baixa' || time === 'Pouco') {
+      tasks = [
+        { title: 'Acolher a Energia de Hoje e Escolher 1 Foco (10 min)', points: 1, icon: 'smile', time: '10:00' },
+        { title: 'Atividade Essencial no Seu Ritmo (20 min)', points: 3, icon: 'check-circle-2', time: '10:10' },
+        { title: 'Pausa Relaxante sem Culpa (15 min)', points: 1, icon: 'coffee', time: '10:30' },
+        { title: 'Ócio Deliberado: Descanso Consciente', points: 1, icon: 'moon', time: '10:45' }
+      ];
+    } else {
+      tasks = [
+        { title: 'Organização do Dia e Metas Claras (10 min)', points: 1, icon: 'clipboard-list', time: '08:30' },
+        { title: 'Bloco de Foco Principal (30 min)', points: 3, icon: 'check-circle-2', time: '08:40' },
+        { title: 'Pausa Restaurativa (10 min)', points: 1, icon: 'coffee', time: '09:10' },
+        { title: 'Leitura ou Prática de Habilidade (25 min)', points: 2, icon: 'book-open', time: '15:00' },
+        { title: 'Ócio Deliberado & Tempo Protegido', points: 1, icon: 'moon', time: '21:00' }
+      ];
+    }
+  }
+
+  return tasks;
+}
 
 // Onboarding: "Descubra Seu Ritmo"
 function checkOnboardingStatus() {
@@ -441,8 +558,8 @@ window.skipOnboarding = function() {
   }
 };
 
-// Salvar respostas do onboarding e adaptar a rotina
-window.saveOnboardingPreferences = function() {
+// Salvar respostas do onboarding e adaptar a rotina DE VERDADE
+window.saveOnboardingPreferences = async function() {
   const selectedFocus = document.querySelector('.onboarding-option[data-group="focus"].selected')?.dataset.value || 'Minha rotina';
   const selectedTime = document.querySelector('.onboarding-option[data-group="time"].selected')?.dataset.value || 'Normal';
   const selectedEnergy = document.querySelector('.onboarding-option[data-group="energy"].selected')?.dataset.value || 'Média';
@@ -451,27 +568,48 @@ window.saveOnboardingPreferences = function() {
   localStorage.setItem('ritmo_user_profile', JSON.stringify(preferences));
   localStorage.setItem('ritmo_onboarding_done', 'true');
 
+  // GERAÇÃO REAL DA ROTINA ADAPTADA
+  const adaptedTasks = generateAdaptiveRoutine(selectedFocus, selectedTime, selectedEnergy);
+  localStorage.setItem('ritmo_custom_daily_tasks', JSON.stringify(adaptedTasks));
+
+  // Envia ao servidor para persistência
+  try {
+    await fetch('/api/routine/adapt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        focus: selectedFocus,
+        time: selectedTime,
+        energy: selectedEnergy,
+        tasks: adaptedTasks,
+        dayKey: activeDayKey
+      })
+    });
+  } catch (err) {
+    console.warn('Persistindo adaptação offline:', err);
+  }
+
   window.closeOnboardingModal();
 
-  // Adaptação imediata do dia
+  // Adaptação de humor imediata
   if (selectedEnergy === 'Baixa' || selectedTime === 'Pouco') {
     window.selectMood('cansado');
     if (window.showToast) {
-      window.showToast(`Ritmo Suave ativado para hoje (${selectedFocus} • Energia ${selectedEnergy}). Sem sobrecarga!`, 'success');
+      window.showToast(`Ritmo Suave adaptado para ${selectedFocus}! ${adaptedTasks.length} blocos sem sobrecarga.`, 'success');
     }
   } else if (selectedEnergy === 'Alta') {
     window.selectMood('foco_total');
     if (window.showToast) {
-      window.showToast(`Ritmo de Alto Foco ativado (${selectedFocus} • Energia Alta). Excelente momento para avançar!`, 'success');
+      window.showToast(`Ritmo de Alto Foco gerado para ${selectedFocus}! ${adaptedTasks.length} blocos para avançar.`, 'success');
     }
   } else {
     window.selectMood('relaxado');
     if (window.showToast) {
-      window.showToast(`Ritmo equilibrado gerado com sucesso para ${selectedFocus}!`, 'success');
+      window.showToast(`Rotina equilibrada gerada com sucesso para ${selectedFocus}!`, 'success');
     }
   }
 
-  fetchCleanTechData();
+  await fetchCleanTechData();
 };
 
 function setupEventListeners() {
@@ -481,18 +619,63 @@ function setupEventListeners() {
     btnReorganize.addEventListener('click', () => window.openReorganizeModal());
   }
 
-  // Confirmar Reorganização padrão
+  // Confirmar Reorganização com opções sem culpa
   const btnConfirmReorg = document.getElementById('btn-confirm-reorganize');
   if (btnConfirmReorg) {
     btnConfirmReorg.addEventListener('click', () => {
       const selectedOption = document.querySelector('input[name="reorg-option"]:checked')?.value;
+      
       if (selectedOption === 'ocio') {
         window.activateOcioDeliberado();
-      } else {
-        document.getElementById('modal-reorganize').classList.add('hidden');
+        return;
+      }
+
+      if (selectedOption === 'partial') {
+        // Conclusão parcial (+25 XP por ter feito o que foi possível)
+        fetch('/api/routine/bonus', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ points: 3, reason: 'Conclusão Parcial Conscientemente Adaptada' })
+        }).then(() => fetchCleanTechData());
+        document.getElementById('modal-reorganize')?.classList.add('hidden');
         if (window.showToast) {
-          window.showToast('Vamos reorganizar. Seu dia mudou e você pode continuar amanhã com tranquilidade!', 'success');
+          window.showToast('Conclusão parcial registrada (+25 XP). Fazer o que é possível hoje é vitória!', 'success');
         }
+        return;
+      }
+
+      if (selectedOption === 'essential') {
+        // Reduz tarefas para focar no essencial
+        if (currentRoutineData && currentRoutineData.board.days[activeDayKey]) {
+          const tasks = currentRoutineData.board.days[activeDayKey].tasks;
+          const pending = tasks.filter(t => !t.done);
+          if (pending.length > 1) {
+            // Mantém apenas a primeira pendente e pausa as demais
+            const essentialTasks = tasks.filter((t, i) => t.done || t.id === pending[0].id);
+            essentialTasks.push({
+              id: 'rest_today',
+              title: 'Ócio Deliberado: Pausa Consciente',
+              points: 1,
+              icon: 'moon',
+              time: 'Descanso',
+              done: false
+            });
+            localStorage.setItem('ritmo_custom_daily_tasks', JSON.stringify(essentialTasks));
+            currentRoutineData.board.days[activeDayKey].tasks = essentialTasks;
+            updateUI();
+          }
+        }
+        document.getElementById('modal-reorganize')?.classList.add('hidden');
+        if (window.showToast) {
+          window.showToast('Prioridades reduzidas com sucesso. Focando no essencial sem sobrecarga!', 'success');
+        }
+        return;
+      }
+
+      // Default: mover para amanhã
+      document.getElementById('modal-reorganize')?.classList.add('hidden');
+      if (window.showToast) {
+        window.showToast('Tarefas pendentes organizadas para amanhã. Seu dia mudou e está tudo bem!', 'success');
       }
     });
   }

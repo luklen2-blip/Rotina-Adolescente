@@ -47,11 +47,12 @@ async function runTests() {
 
   try {
     // 1. Health Check
-    console.log('👉 [1/9] Testando /api/health...');
+    console.log('👉 [1/12] Testando /api/health...');
     const health = await request('/api/health');
     assert.strictEqual(health.status, 200, 'Health check deve retornar 200');
     assert.strictEqual(health.json.status, 'ok');
     assert.strictEqual(health.json.version, '2.0.0');
+    assert.strictEqual(health.json.core_concept, 'Cada um tem a sua rotina — autonomia através da autoria');
     assert.ok(typeof health.json.uptime_seconds === 'number');
     passed++;
 
@@ -148,8 +149,8 @@ async function runTests() {
     passed++;
 
 
-    // 11. Validação de Chave de Ativação do Paywall e Teste Exclusivo 1h Luciano
-    console.log('👉 [11/11] Testando /api/checkout/validate-code (Vitalício e Teste 1h Luciano)...');
+    // 11. Validação de Chave de Ativação do Paywall (Chaves Mestre e Segurança)
+    console.log('👉 [11/12] Testando /api/checkout/validate-code...');
     const validKeyRes = await request('/api/checkout/validate-code', {
       method: 'POST',
       body: { code: 'RITMO2026' }
@@ -158,14 +159,12 @@ async function runTests() {
     assert.strictEqual(validKeyRes.json.success, true);
     assert.strictEqual(validKeyRes.json.tier, 'lifetime');
 
-    const test1hKeyRes = await request('/api/checkout/validate-code', {
+    const validLucianoKeyRes = await request('/api/checkout/validate-code', {
       method: 'POST',
-      body: { code: 'TESTE1H' }
+      body: { code: 'LUCIANO' }
     });
-    assert.strictEqual(test1hKeyRes.status, 200);
-    assert.strictEqual(test1hKeyRes.json.success, true);
-    assert.strictEqual(test1hKeyRes.json.tier, 'trial_1h');
-    assert.strictEqual(test1hKeyRes.json.durationMinutes, 60);
+    assert.strictEqual(validLucianoKeyRes.status, 200);
+    assert.strictEqual(validLucianoKeyRes.json.success, true);
 
     const invalidKeyRes = await request('/api/checkout/validate-code', {
       method: 'POST',
@@ -175,7 +174,30 @@ async function runTests() {
     assert.strictEqual(invalidKeyRes.json.success, false);
     passed++;
 
-    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/11 testes passaram perfeitamente!`);
+    // 12. Adaptação Funcional de Rotina (Onboarding: Objetivo + Tempo + Energia)
+    console.log('👉 [12/12] Testando /api/routine/adapt (Geração de Rotina Adaptada)...');
+    const adaptRes = await request('/api/routine/adapt', {
+      method: 'POST',
+      body: {
+        focus: 'Estudos',
+        time: 'Pouco',
+        energy: 'Baixa',
+        tasks: [
+          { title: 'Estudo Essencial (15 min)', points: 2, icon: 'book-open' },
+          { title: 'Pausa Restaurativa (5 min)', points: 1, icon: 'coffee' },
+          { title: 'Revisão Leve dos Pontos-Chave (10 min)', points: 2, icon: 'check-circle-2' },
+          { title: 'Ócio Deliberado & Descanso', points: 1, icon: 'moon' }
+        ],
+        dayKey: 'terca'
+      }
+    });
+    assert.strictEqual(adaptRes.status, 200);
+    assert.strictEqual(adaptRes.json.success, true);
+    assert.strictEqual(adaptRes.json.tasks.length, 4);
+    assert.strictEqual(adaptRes.json.tasks[0].title, 'Estudo Essencial (15 min)');
+    passed++;
+
+    console.log(`\n🎉 SUCESSO ABSOLUTO: Todos os ${passed}/12 testes passaram perfeitamente!`);
   } finally {
     if (server) server.close();
   }

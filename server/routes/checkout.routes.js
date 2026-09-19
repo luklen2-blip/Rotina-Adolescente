@@ -32,19 +32,7 @@ router.post('/validate-code', (req, res) => {
   }
 
   const cleanCode = code.trim().toUpperCase();
-
-  // Códigos para ativação do teste de 1 hora exclusivo de Luciano
-  const codes1h = ['TESTE1H', 'LUCIANO1H', '1HORA', 'TESTE60', 'TESTE-1H', '1H'];
-  if (codes1h.includes(cleanCode)) {
-    return res.json({
-      success: true,
-      message: 'Modo de Teste Exclusivo (1 hora) ativado para Luciano!',
-      tier: 'trial_1h',
-      durationMinutes: 60
-    });
-  }
-
-  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026'];
+  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026', 'RITMO'];
   const isValid = validMasterKeys.includes(cleanCode) || cleanCode.startsWith('RTM-') || cleanCode.startsWith('KIW-');
 
 

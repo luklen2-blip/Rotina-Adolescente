@@ -9,7 +9,7 @@ router.get('/health', (req, res) => {
     version: '2.0.0',
     uptime_seconds: Math.floor(process.uptime()),
     timestamp: new Date().toISOString(),
-    clinical_premise: 'Cada um tem a sua rotina — autonomia através da autoria',
+    core_concept: 'Cada um tem a sua rotina — autonomia através da autoria',
     non_punitive: true
   });
 });

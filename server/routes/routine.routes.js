@@ -271,19 +271,20 @@ router.post('/toggle', (req, res) => {
   });
 });
 
-// POST /api/routine/bonus - Adiciona bônus manual (+5 notas, esforço especial)
+// POST /api/routine/bonus - Adiciona bônus manual (+5 notas, esforço especial com trava de segurança)
 router.post('/bonus', (req, res) => {
   const { points = 5, reason = 'Nota alta na prova ou superação escolar' } = req.body;
 
   const profile = getProfile();
-  const added = Number(points) || 5;
+  const added = Math.min(Math.max(1, Number(points) || 5), 10);
+  const cleanReason = String(reason || 'Superação do dia').slice(0, 100);
   const newCumulative = (profile.cumulativePoints || 0) + added;
 
   profileDb.update('miguel_profile', { cumulativePoints: newCumulative });
 
   res.json({
     success: true,
-    message: `Incrível! Bônus de +${added} pontos adicionado: ${reason}`,
+    message: `Incrível! Bônus de +${added} pontos adicionado: ${cleanReason}`,
     cumulativePoints: newCumulative
   });
 });
@@ -386,6 +387,41 @@ router.post('/profile', (req, res) => {
   });
 
   res.json({ success: true, data: updated });
+});
+
+// POST /api/routine/adapt - Adapta a rotina funcionalmente com base no Onboarding (Objetivo + Tempo + Energia)
+router.post('/adapt', (req, res) => {
+  const { focus, time, energy, tasks, dayKey = 'segunda' } = req.body;
+
+  let board = routineDb.findById('current_week');
+  if (!board) board = routineDb.insert(getDefaultWeek());
+
+  if (tasks && Array.isArray(tasks) && tasks.length > 0) {
+    if (board.days && board.days[dayKey]) {
+      board.days[dayKey].tasks = tasks.map((t, idx) => ({
+        id: `${dayKey}_adapt_${idx + 1}`,
+        title: String(t.title || 'Atividade adaptada').slice(0, 80),
+        points: Number(t.points) || 2,
+        icon: t.icon || 'check-circle-2',
+        done: false
+      }));
+      routineDb.update('current_week', { days: board.days });
+    }
+  }
+
+  // Atualiza perfil com preferências
+  profileDb.update('miguel_profile', {
+    lastFocus: focus,
+    lastTime: time,
+    lastEnergy: energy,
+    adaptedAt: new Date().toISOString()
+  });
+
+  res.json({
+    success: true,
+    message: `Rotina adaptada com sucesso para ${focus} (Tempo: ${time}, Energia: ${energy})!`,
+    tasks: board.days ? board.days[dayKey]?.tasks : []
+  });
 });
 
 export default router;
