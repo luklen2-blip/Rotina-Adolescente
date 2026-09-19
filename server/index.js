@@ -21,6 +21,41 @@ const PORT = process.env.PORT || 3005;
 app.use(cors());
 app.use(express.json());
 
+// Middleware de Proteção de Cabeçalhos (OWASP Hardening)
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
+// Limitador de requisições simples em memória (Anti-DDoS / Brute Force)
+const requestCounts = new Map();
+app.use('/api', (req, res, next) => {
+  const ip = req.ip || req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1';
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000;
+  const record = requestCounts.get(ip) || { count: 0, resetTime: now + windowMs };
+
+  if (now > record.resetTime) {
+    record.count = 1;
+    record.resetTime = now + windowMs;
+  } else {
+    record.count++;
+  }
+  requestCounts.set(ip, record);
+
+  // Limite generoso para uso normal (1000 requisições por 15 min por IP)
+  if (record.count > 1000) {
+    return res.status(429).json({
+      success: false,
+      error: 'Muitas requisições. Por favor, aguarde alguns instantes.'
+    });
+  }
+  next();
+});
+
 // Log de requisições simplificado
 app.use((req, res, next) => {
   if (!req.path.startsWith('/public') && !req.path.includes('.')) {

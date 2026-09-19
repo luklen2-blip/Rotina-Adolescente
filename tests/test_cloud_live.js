@@ -55,6 +55,14 @@ async function runLiveValidation() {
   }
   console.log('✅ Manifest PWA acessível para instalação mobile.');
 
+  // 4. Checkout API & Kiwify Oficial
+  console.log('💳 Verificando /api/checkout (Kiwify V2)...');
+  const checkout = await checkEndpoint('/api/checkout');
+  if (checkout.status !== 200 || checkout.json?.checkoutUrl !== 'https://pay.kiwify.com.br/8hGuEYs') {
+    throw new Error(`Checkout API falhou: HTTP ${checkout.status}`);
+  }
+  console.log(`✅ /api/checkout respondendo 200 OK (Kiwify: ${checkout.json.checkoutUrl})`);
+
   console.log('\n🎉 SUCESSO: O ambiente de nuvem está 100% íntegro, ativo e pronto para uso!');
   process.exit(0);
 }

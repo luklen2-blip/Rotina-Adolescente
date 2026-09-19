@@ -1,14 +1,15 @@
 @echo off
-title Ritmo Autonomia - Pequenas Acoes, Grandes Conquistas
+title Ritmo Autonomia - Sua rotina. Seu ritmo. Sua autonomia.
 color 0B
-cd /d "C:\Users\luciano\.gemini\antigravity\scratch\ritmo-autonomia"
+cd /d "%~dp0"
 cls
 echo ================================================================
-echo    RITMO AUTONOMIA: PEQUENAS ACOES, GRANDES CONQUISTAS
-echo    Sistema Interativo de Rotina e Economia de Fichas
+echo    RITMO AUTONOMIA — V2 COMERCIAL
+echo    Sua rotina. Seu ritmo. Sua autonomia.
+echo    Cada um tem a sua rotina — autonomia atraves da autoria.
 echo ================================================================
 echo.
-echo Iniciando servidor na porta dedicada 3005...
+echo Iniciando servidor na porta 3005...
 start http://localhost:3005
-npm start
+node server/index.js
 pause
