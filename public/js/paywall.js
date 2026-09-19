@@ -32,6 +32,9 @@ export function showPaywallModal() {
   if (modal) {
     modal.classList.remove('hidden');
     modal.style.display = 'flex';
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      lucide.createIcons();
+    }
   }
 }
 
@@ -167,6 +170,39 @@ _win.copiarPix = function() {
       _win.showToast('Chave Pix: luklen2@gmail.com', 'info');
     }
   });
+};
+
+_win.copiarPixCopiaECola = function() {
+  const payload = '00020126390014br.gov.bcb.pix0117luklen2@gmail.com520400005303986540519.905802BR5917LUCIANO SANT ANNA6009SAO PAULO62110507RTM199063046636';
+  const input = _doc.getElementById('pix-copia-cola-input');
+  if (input && input.select) {
+    input.select();
+  }
+  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payload).then(() => {
+      if (_win.showToast) {
+        _win.showToast('Código Pix Copia e Cola copiado com sucesso!', 'success');
+      } else {
+        alert('Código Pix Copia e Cola copiado com sucesso!');
+      }
+    }).catch(() => {
+      if (input && typeof document !== 'undefined') {
+        input.select();
+        document.execCommand('copy');
+      }
+      if (_win.showToast) {
+        _win.showToast('Código Pix Copia e Cola copiado!', 'success');
+      }
+    });
+  } else {
+    if (input && typeof document !== 'undefined') {
+      input.select();
+      document.execCommand('copy');
+    }
+    if (_win.showToast) {
+      _win.showToast('Código Pix Copia e Cola copiado!', 'success');
+    }
+  }
 };
 
 // Auto-inicialização quando o DOM carregar

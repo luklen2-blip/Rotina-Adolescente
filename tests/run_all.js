@@ -198,7 +198,8 @@ async function runTests() {
     passed++;
 
     console.log(`\n🎉 SUCESSO NO BACKEND: Todos os ${passed}/12 testes de API e infraestrutura passaram perfeitamente!\n`);
-    import('./test_flow_v2.js');
+    await import('./test_flow_v2.js');
+    await import('./test_pix_resolution.js');
   } finally {
     if (server) server.close();
   }
