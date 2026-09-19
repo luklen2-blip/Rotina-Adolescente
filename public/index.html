@@ -10,11 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS Estático Pré-compilado (Zero Overhead / Sem Compilação no Navegador) -->
+  <link rel="stylesheet" href="/css/tailwind.min.css">
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body class="bg-[#070C14] text-slate-100 antialiased selection:bg-cyan-500 selection:text-black">
 
@@ -312,8 +313,9 @@
   </div>
 
   <!-- Modal de Bloqueio por Tempo (30 min) -->
-  <div id="paywall-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 hidden">
+  <div id="paywall-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 hidden">
     <div class="relative w-full max-w-md rounded-2xl border border-cyan-500/30 bg-slate-900 p-6 text-white shadow-2xl">
+
       
       <!-- Botão Fechar (ativo durante degustação) -->
       <button id="btn-close-paywall" onclick="window.fecharPaywallSeDegustando()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" title="Fechar">
