@@ -1,17 +1,17 @@
-# Ritmo — Autonomia através da Autoria (v2.0.0)
+# Ritmo Autonomia (v2.0.0)
 
-> **Premissa Clínica Fundamental:** *"Cada um tem a sua rotina — autonomia através da autoria."*  
-> Desenvolvido sob a ótica da Psicologia do Desenvolvimento e da Psicanálise da Adolescência (Donald Winnicott, Françoise Dolto e Contardo Calligaris).
+> **Posicionamento:** *"Sua rotina. Seu ritmo. Sua autonomia."*  
+> **Conceito Central:** *"Cada um tem a sua rotina — autonomia através da autoria."*  
 
 ---
 
-## 🧠 Filosofia Clínica e Metacognitiva
+## 🧭 Metodologia e Princípios de Autonomia
 
-1. **Não-Punitivo:** Zero alertas de culpa, perda de sequência tóxica (*streaks*) ou julgamento de desempenho moral. A falha é lida como dado de auto-observação, não como insuficiência.
-2. **Princípio da Autonomia:** O adolescente é o sujeito da escrita. O app fornece a moldura temporal, mas o jovem nomeia os blocos e decide o ritmo.
-3. **Acolhimento da Ambiguidade:** Espaços flexíveis legítimos como *Ócio Deliberado*, *Tempo de Nada*, *Foco Leve* e *Recarregando*.
-4. **Economia de Créditos Neutros:** Os pontos acumulam sem expiração para resgate de autorrecompensas tangíveis pactuadas com a família ou consigo mesmo (pedir pizza, tempo de videogame, passeios).
-5. **Válvula de Escape:** Microdiário de até 3 linhas com cofre privativo para descompressão.
+1. **Não-Punitivo:** Zero alertas de culpa, sem perda de sequência tóxica (*streaks*) ou julgamento de desempenho moral. Reorganizar é parte natural da vida.
+2. **Princípio da Autonomia:** O usuário é o sujeito da escrita. O app fornece a moldura temporal, mas cada um escolhe os blocos e decide o ritmo.
+3. **Ócio Deliberado:** Descansar faz parte de uma rotina saudável. Espaços de pausa e tempo protegido são planejados conscientemente.
+4. **Economia de Conquistas Neutras:** Os pontos acumulam sem expiração para autorrecompensas pactuadas.
+5. **Registro de Percepção:** Acompanhamento do humor pós-tarefa para identificar melhores momentos sem diagnósticos clínicos.
 
 ---
 
