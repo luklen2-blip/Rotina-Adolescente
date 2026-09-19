@@ -134,16 +134,19 @@ async function runTests() {
     console.log('👉 [9/10] Testando servidor estático e fallback SPA...');
     const home = await request('/');
     assert.strictEqual(home.status, 200);
-    assert.ok(home.data.includes('Rotina do Miguel'), 'Deve carregar o HTML da Rotina do Miguel');
+    assert.ok(home.data.includes('RITMO') && home.data.includes('AUTONOMIA'), 'Deve carregar o HTML do Ritmo Autonomia');
     passed++;
 
+
     // 10. Endpoint do Checkout Oficial Kiwify
-    console.log('👉 [10/11] Testando /api/checkout (Kiwify)...');
+    console.log('👉 [10/11] Testando /api/checkout (Kiwify V2)...');
     const checkoutRes = await request('/api/checkout');
     assert.strictEqual(checkoutRes.status, 200);
     assert.strictEqual(checkoutRes.json.provider, 'Kiwify');
-    assert.strictEqual(checkoutRes.json.checkoutUrl, 'https://pay.kiwify.com.br/9fQEqnA');
+    assert.strictEqual(checkoutRes.json.checkoutUrl, 'https://pay.kiwify.com.br/8hGuEYs');
+    assert.strictEqual(checkoutRes.json.product, 'Ritmo Autonomia — Acesso Vitalício');
     passed++;
+
 
     // 11. Validação de Chave de Ativação do Paywall
     console.log('👉 [11/11] Testando /api/checkout/validate-code...');

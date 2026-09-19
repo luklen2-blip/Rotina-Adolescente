@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-const KIWIFY_CHECKOUT_URL = 'https://pay.kiwify.com.br/9fQEqnA';
+const KIWIFY_CHECKOUT_URL = 'https://pay.kiwify.com.br/8hGuEYs';
 
 // GET /api/checkout - Retorna a URL oficial de pagamento Kiwify
 router.get('/', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     success: true,
     provider: 'Kiwify',
     checkoutUrl: KIWIFY_CHECKOUT_URL,
-    product: 'Soundworld-kids / Rotina do Jovem',
+    product: 'Ritmo Autonomia — Acesso Vitalício',
     vendor: "Luciano da Silva Sant'Anna",
     price: 19.90,
     currency: 'BRL',
@@ -32,8 +32,9 @@ router.post('/validate-code', (req, res) => {
   }
 
   const cleanCode = code.trim().toUpperCase();
-  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'SOUNDWORLD', 'VIP2026', 'LUCIANO', 'ADM2026'];
+  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026'];
   const isValid = validMasterKeys.includes(cleanCode) || cleanCode.startsWith('RTM-') || cleanCode.startsWith('KIW-');
+
 
 
   if (isValid) {

@@ -80,8 +80,9 @@ window.validarCodigo = async function() {
   }
 
   // Chaves mestre válidas e padrão de chave gerada
-  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'SOUNDWORLD', 'VIP2026', 'LUCIANO', 'ADM2026'];
+  const validMasterKeys = ['RITMO2026', 'MIGUEL1990', 'AUTONOMIA', 'VIP2026', 'LUCIANO', 'ADM2026', 'RITMO'];
   const isValidPattern = rawCode.startsWith('RTM-') || rawCode.startsWith('KIW-');
+
 
   let isValid = validMasterKeys.includes(rawCode) || isValidPattern;
 

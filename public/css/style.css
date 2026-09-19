@@ -309,3 +309,101 @@ body {
   display: none !important;
 }
 
+/* ==========================================================================
+   V2 COMERCIAL — Estilos da Hero, Como Funciona, Próxima Atividade & Onboarding
+   ========================================================================== */
+
+/* Hero Comercial */
+.hero-v2 {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.12) 0%, rgba(7, 12, 20, 0) 70%), #0a121e;
+  border: 1px solid #1b2a3f;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Cards das 5 Etapas (Como Funciona) */
+.step-card {
+  background: #0d1624;
+  border: 1px solid #1b2a3f;
+  border-radius: 14px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.step-card:hover {
+  border-color: var(--neon-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 242, 254, 0.15);
+}
+
+.step-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.08em;
+}
+
+/* Card: Próxima Atividade (Foco Imediato) */
+.next-activity-card {
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(163, 230, 53, 0.05) 100%), #0b1422;
+  border: 1.5px solid var(--neon-cyan);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+/* Barra de XP e Nível */
+.xp-bar-track {
+  background: #070d17;
+  border: 1px solid #1b2a3f;
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-bar-fill {
+  background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--electric-lime) 100%);
+  height: 100%;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+  transition: width 0.4s ease;
+}
+
+/* Pílulas de Seleção do Onboarding */
+.onboarding-option {
+  background: #09121d;
+  border: 1.5px solid #1b2a3f;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #cbd5e1;
+}
+
+.onboarding-option:hover {
+  border-color: var(--neon-cyan);
+  background: #0f1c2d;
+}
+
+.onboarding-option.selected {
+  border-color: var(--electric-lime);
+  background: rgba(163, 230, 53, 0.12);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.3);
+}
+
+/* Animação de Celebração de XP */
+.xp-popup {
+  animation: floatUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  20% { opacity: 1; transform: translateY(0) scale(1.05); }
+  80% { opacity: 1; transform: translateY(-8px) scale(1); }
+  100% { opacity: 0; transform: translateY(-16px); }
+}
+
+
