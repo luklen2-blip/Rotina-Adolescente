@@ -148,14 +148,24 @@ async function runTests() {
     passed++;
 
 
-    // 11. Validação de Chave de Ativação do Paywall
-    console.log('👉 [11/11] Testando /api/checkout/validate-code...');
+    // 11. Validação de Chave de Ativação do Paywall e Teste Exclusivo 1h Luciano
+    console.log('👉 [11/11] Testando /api/checkout/validate-code (Vitalício e Teste 1h Luciano)...');
     const validKeyRes = await request('/api/checkout/validate-code', {
       method: 'POST',
       body: { code: 'RITMO2026' }
     });
     assert.strictEqual(validKeyRes.status, 200);
     assert.strictEqual(validKeyRes.json.success, true);
+    assert.strictEqual(validKeyRes.json.tier, 'lifetime');
+
+    const test1hKeyRes = await request('/api/checkout/validate-code', {
+      method: 'POST',
+      body: { code: 'TESTE1H' }
+    });
+    assert.strictEqual(test1hKeyRes.status, 200);
+    assert.strictEqual(test1hKeyRes.json.success, true);
+    assert.strictEqual(test1hKeyRes.json.tier, 'trial_1h');
+    assert.strictEqual(test1hKeyRes.json.durationMinutes, 60);
 
     const invalidKeyRes = await request('/api/checkout/validate-code', {
       method: 'POST',
