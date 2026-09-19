@@ -202,7 +202,7 @@
       <div id="demo-mode-banner" class="hidden p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-300">
         <span class="flex items-center gap-2 font-bold">
           <span class="text-base">💡</span>
-          <span>MODO DEMONSTRAÇÃO ATIVO — Exibindo rotina demonstrativa do Miguel (Nível 12). Seus dados reais estão protegidos.</span>
+          <span>MODO DEMONSTRAÇÃO ATIVO — Exemplo de rotina e gamificação avançada (Nível 12). Seus dados reais estão protegidos.</span>
         </span>
         <button onclick="window.exitDemoMode()" class="px-3 py-1.5 rounded-xl bg-amber-400 text-black font-extrabold text-xs hover:brightness-110 shrink-0">
           Voltar para Minha Rotina (Conta Real)
@@ -672,7 +672,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-semibold text-slate-300 mb-1">Nome do Titular da Rotina:</label>
-          <input type="text" id="profile-name-input" placeholder="Seu nome ou apelido (ex: Luciano, Alex)" class="w-full bg-[#0a111b] border border-[#1b2a3f] p-2.5 rounded-lg text-white font-semibold outline-none focus:border-cyan-400" />
+          <input type="text" id="profile-name-input" placeholder="Digite seu nome ou apelido" class="w-full bg-[#0a111b] border border-[#1b2a3f] p-2.5 rounded-lg text-white font-semibold outline-none focus:border-cyan-400" />
         </div>
       </div>
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-800">
@@ -838,7 +838,7 @@
               </div>
             `).join('');
           } else {
-            container.innerHTML = '<p class="text-xs text-slate-500">Nenhum resgate registrado ainda.</p>';
+            container.innerHTML = '<p class="text-xs text-slate-400 p-2 text-center">Nenhum resgate registrado ainda. Suas futuras conquistas aparecerão aqui.</p>';
           }
         } catch (e) {}
       };

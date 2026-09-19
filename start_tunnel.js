@@ -1,5 +1,5 @@
 /**
- * Gerenciador de Túnel Seguro Cloudflare Quick Tunnel 24/7 para a Rotina do Miguel
+ * Gerenciador de Túnel Seguro Cloudflare Quick Tunnel 24/7 para a Ritmo Autonomia
  * Com flag mandatória --no-prechecks e pool de certificados CA.
  */
 
@@ -81,14 +81,14 @@ async function main() {
       const desktop = path.join(process.env.USERPROFILE, 'OneDrive', 'Desktop');
       if (fs.existsSync(desktop)) {
         fs.writeFileSync(path.join(desktop, 'URL-NUVEM-ROTINA-MIGUEL.txt'), 
-`ROTINA DO MIGUEL - ACESSO EM NUVEM 24/7
+`RITMO AUTONOMIA - ACESSO EM NUVEM 24/7
 URL Pública Global HTTPS: ${publicUrl}
 Health Check: ${publicUrl}/api/health
 `, 'utf-8');
       }
 
       console.log(`\n===============================================================`);
-      console.log(`🚀 ROTINA DO MIGUEL DISPONÍVEL 24/7 NA NUVEM GLOBAL!`);
+      console.log(`🚀 RITMO AUTONOMIA DISPONÍVEL 24/7 NA NUVEM GLOBAL!`);
       console.log(`🌐 URL Pública HTTPS:   ${publicUrl}`);
       console.log(`🩺 Health Check Nuvem:  ${publicUrl}/api/health`);
       console.log(`📱 Acesso Mobile / Web: Disponível para qualquer dispositivo no mundo!`);

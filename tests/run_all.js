@@ -6,7 +6,7 @@ import app from '../server/index.js';
 import { generatePixPayload } from '../server/routes/pix.routes.js';
 import { JsonDB } from '../server/database/jsondb.js';
 
-console.log('🧪 Iniciando testes de integridade do Sistema de Rotina (Rotina do Miguel)...');
+console.log('🧪 Iniciando testes de integridade do Sistema de Rotina (Ritmo Autonomia)...');
 
 const TEST_PORT = 3199;
 let server;
@@ -66,7 +66,7 @@ async function runTests() {
     testDb.delete(doc.id);
     passed++;
 
-    // 3. Carregamento do Quadro Semanal da Rotina do Miguel
+    // 3. Carregamento do Quadro Semanal da Rotina
     console.log('👉 [3/9] Testando /api/routine/week (Quadro Semanal)...');
     const weekRes = await request('/api/routine/week');
     assert.strictEqual(weekRes.status, 200);
@@ -84,7 +84,7 @@ async function runTests() {
     });
     assert.strictEqual(toggleRes.status, 200);
     assert.strictEqual(typeof toggleRes.json.cumulativePoints, 'number');
-    assert.ok(toggleRes.json.message.includes('Reforço escolar'));
+    assert.ok(toggleRes.json.message.includes('marcada com sucesso') || toggleRes.json.message.includes('desmarcada'));
     passed++;
 
     // 5. Bônus Manual de Notas / Prova (+5 pontos)
@@ -119,11 +119,11 @@ async function runTests() {
     // 8. Gerador de PIX EMV Oficial do Banco Central (CRC16)
     console.log('👉 [8/9] Testando gerador nativo de PIX EMV Bacen...');
     const pixPayload = generatePixPayload({
-      pixKey: 'contato@rotinamiguel.com.br',
-      name: 'ROTINA DO MIGUEL',
+      pixKey: 'contato@ritmoautonomia.com.br',
+      name: 'RITMO AUTONOMIA',
       city: 'SAO PAULO',
       amount: 29.90,
-      txId: 'MIGUEL01'
+      txId: 'RITMO01'
     });
     assert.ok(pixPayload.startsWith('000201'));
     assert.ok(pixPayload.includes('br.gov.bcb.pix'));

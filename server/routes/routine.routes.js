@@ -9,14 +9,14 @@ const redemptionsDb = new JsonDB('routine_redemptions');
 
 // Recupera perfil (Conta Real começando do zero ou Demo)
 function getProfile(mode = 'real') {
-  const profileId = mode === 'demo' ? 'miguel_profile' : 'real_user_profile';
+  const profileId = mode === 'demo' ? 'demo_profile' : 'real_user_profile';
   let profile = profileDb.findById(profileId);
   if (!profile) {
     if (mode === 'demo') {
       profile = profileDb.insert({
-        id: 'miguel_profile',
-        name: 'Miguel',
-        title: 'Rotina do Miguel (Exemplo)',
+        id: 'demo_profile',
+        name: 'Demonstração',
+        title: 'Exemplo de Rotina (Demonstração) (Exemplo)',
         subtitle: 'Pequenas Ações, Grandes Conquistas!',
         isDemo: true,
         values: ['FOCO', 'ORGANIZAÇÃO', 'RESPONSABILIDADE', 'RESPEITO', 'APRENDIZADO', 'ESPORTES', 'AUTONOMIA', 'SONHOS'],

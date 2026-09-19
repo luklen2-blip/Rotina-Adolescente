@@ -70,7 +70,7 @@ _win.toggleDemoMode = function() {
 _win.enableDemoMode = function() {
   _storage.setItem('ritmo_mode', 'demo');
   if (_win.showToast) {
-    _win.showToast('Exibindo dados de demonstração (Exemplo com dados do Miguel: Nível 12)', 'info');
+    _win.showToast('Exibindo dados de demonstração (Exemplo de rotina avançada: Nível 12)', 'info');
   }
   updateUI();
 };
@@ -133,7 +133,7 @@ export function updateUI() {
 
   if (titleEl) {
     if (demoActive) {
-      titleEl.innerHTML = `ROTINA DO MIGUEL <span class="text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono align-middle">EXEMPLO DEMO</span>`;
+      titleEl.innerHTML = `EXEMPLO DE ROTINA <span class="text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono align-middle">DEMONSTRAÇÃO</span>`;
     } else if (customName) {
       titleEl.innerHTML = `ROTINA DE <span class="text-glow-lime">${customName.toUpperCase()}</span>`;
     } else {
