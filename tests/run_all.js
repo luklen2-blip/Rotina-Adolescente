@@ -199,6 +199,7 @@ async function runTests() {
 
     console.log(`\n🎉 SUCESSO NO BACKEND: Todos os ${passed}/12 testes de API e infraestrutura passaram perfeitamente!\n`);
     await import('./test_flow_v2.js');
+    process.env.TEST_URL = `http://127.0.0.1:${TEST_PORT}`;
     await import('./test_pix_resolution.js');
   } finally {
     if (server) server.close();

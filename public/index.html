@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Ritmo Autonomia — Sua rotina. Seu ritmo. Sua autonomia.</title>
   <meta name="description" content="Uma forma mais leve de organizar o dia, acompanhar seu ritmo e desenvolver autonomia — sem transformar cada tarefa em uma cobrança.">
-  <meta name="theme-color" content="#0b0f19">
+  <meta name="theme-color" content="#f8fafc">
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-[#0b0f19] text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+<body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-sky-500 selection:text-white">
 
   <!-- Container de Toasts -->
   <div id="toast-container"></div>
@@ -25,18 +25,18 @@
   <div class="min-h-screen flex flex-col justify-between p-3 sm:p-6 max-w-6xl mx-auto space-y-6">
 
     <!-- 1. BARRA SUPERIOR DE MARCA & NAVEGAÇÃO COMERCIAL -->
-    <nav class="flex items-center justify-between gap-3 pb-3 border-b border-slate-800">
+    <nav class="flex items-center justify-between gap-3 pb-3 border-b border-slate-200">
       <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollToApp()">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-400 to-emerald-400 p-0.5 shadow-sm shrink-0">
-          <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-black text-sky-400 text-lg">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-emerald-500 p-0.5 shadow-sm shrink-0">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center font-black text-sky-600 text-lg shadow-inner">
             ⚡
           </div>
         </div>
         <div>
-          <span class="text-sm sm:text-base font-black tracking-tight text-white uppercase block leading-none">
-            RITMO <span class="text-sky-400">AUTONOMIA</span>
+          <span class="text-sm sm:text-base font-black tracking-tight text-slate-900 uppercase block leading-none">
+            RITMO <span class="text-sky-600">AUTONOMIA</span>
           </span>
-          <span class="text-[10px] font-mono text-slate-400 tracking-wider">
+          <span class="text-[10px] font-mono text-slate-500 tracking-wider">
             Sua rotina. Seu ritmo. Sua autonomia.
           </span>
         </div>
@@ -44,68 +44,68 @@
 
       <!-- Ações do Topo -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <button onclick="window.openOnboardingModal()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white hover:border-sky-400 transition hidden md:flex items-center gap-1.5">
-          <i data-lucide="compass" class="w-3.5 h-3.5 text-sky-400"></i>
+        <button onclick="window.openOnboardingModal()" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:text-slate-900 hover:border-sky-400 transition hidden md:flex items-center gap-1.5 shadow-sm">
+          <i data-lucide="compass" class="w-3.5 h-3.5 text-sky-600"></i>
           Descubra Seu Ritmo
         </button>
 
-        <a href="#como-funciona" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-sky-300 transition hidden sm:inline">
+        <a href="#como-funciona" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-sky-600 transition hidden sm:inline">
           Como funciona
         </a>
 
-        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-xs hover:brightness-105 active:scale-95 transition shadow-sm shadow-emerald-500/20 flex items-center gap-1.5 shrink-0" title="Desbloquear acesso completo (R$ 19,90 Vitalício)">
+        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs hover:brightness-105 active:scale-95 transition shadow-sm shadow-emerald-500/20 flex items-center gap-1.5 shrink-0" title="Desbloquear acesso completo (R$ 19,90 Vitalício)">
           <i data-lucide="shield-check" class="w-4 h-4"></i>
           <span>Desbloquear acesso completo</span>
-          <span class="hidden sm:inline font-mono text-[11px] bg-emerald-950/30 px-1 rounded">R$ 19,90</span>
+          <span class="hidden sm:inline font-mono text-[11px] bg-emerald-950/20 px-1 rounded text-emerald-100">R$ 19,90</span>
         </a>
       </div>
     </nav>
 
     <!-- 2. HERO COMERCIAL / APRESENTAÇÃO -->
     <section class="hero-v2 p-6 sm:p-10 text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-xs font-mono font-bold text-sky-400">
-        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono font-bold text-sky-700">
+        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
         Sua rotina. Seu ritmo. Sua autonomia.
       </div>
 
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase">
         RITMO <span class="text-glow-lime">AUTONOMIA</span>
       </h1>
 
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-300 font-medium leading-relaxed">
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
         Uma forma mais leve de organizar o dia, acompanhar seu ritmo e desenvolver autonomia — sem transformar cada tarefa em uma cobrança.
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-        <button onclick="window.scrollToApp()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm hover:brightness-105 active:scale-95 transition-all shadow-md shadow-sky-500/20 flex items-center gap-2">
+        <button onclick="window.scrollToApp()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-bold text-sm hover:brightness-105 active:scale-95 transition-all shadow-md shadow-sky-500/20 flex items-center gap-2">
           <i data-lucide="play" class="w-4 h-4 fill-current"></i>
           Experimentar gratuitamente
         </button>
 
-        <a href="#como-funciona" class="px-5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800 text-sm font-semibold transition flex items-center gap-2">
-          <i data-lucide="info" class="w-4 h-4 text-sky-400"></i>
+        <a href="#como-funciona" class="px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-50 text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+          <i data-lucide="info" class="w-4 h-4 text-sky-600"></i>
           Conhecer como funciona
         </a>
 
-        <button onclick="window.openOnboardingModal()" class="px-5 py-3 rounded-xl bg-sky-950/30 border border-sky-500/30 text-sky-300 hover:bg-sky-900/40 text-sm font-bold transition flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+        <button onclick="window.openOnboardingModal()" class="px-5 py-3 rounded-xl bg-sky-50 border border-sky-200 text-sky-700 hover:bg-sky-100 text-sm font-bold transition flex items-center gap-2 shadow-sm">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
           Descobrir meu ritmo
         </button>
       </div>
 
-      <p id="hero-trial-note" class="text-[11px] font-mono text-slate-400 pt-1">
+      <p id="hero-trial-note" class="text-[11px] font-mono text-slate-500 pt-1">
         ⏱️ Experimente gratuitamente por 30 minutos • Acesso vitalício por R$ 19,90 • Cada um tem a sua rotina
       </p>
     </section>
 
     <!-- 3. SEÇÃO "COMO FUNCIONA" (5 ETAPAS DA METODOLOGIA) -->
     <section id="como-funciona" class="space-y-4 pt-2">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-800 pb-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-3">
         <div>
-          <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider block">A Metodologia do Ritmo</span>
-          <h2 class="text-xl sm:text-2xl font-black text-white">Como Funciona</h2>
+          <span class="text-xs font-mono font-bold text-sky-600 uppercase tracking-wider block">A Metodologia do Ritmo</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Como Funciona</h2>
         </div>
-        <span class="text-xs font-mono text-slate-400">
+        <span class="text-xs font-mono text-slate-500">
           ROTINA → EXECUÇÃO → PERCEPÇÃO → ADAPTAÇÃO → AUTONOMIA
         </span>
       </div>
@@ -114,8 +114,8 @@
         <!-- 01 — ORGANIZE -->
         <div class="step-card space-y-2">
           <div class="step-number">01 — ORGANIZE</div>
-          <h3 class="text-sm font-extrabold text-white">Escolha o essencial</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-sm font-extrabold text-slate-900">Escolha o essencial</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
             Escolha o que realmente importa hoje sem transformar o dia em uma lista infinita.
           </p>
         </div>
@@ -123,8 +123,8 @@
         <!-- 02 — EXECUTE -->
         <div class="step-card space-y-2">
           <div class="step-number">02 — EXECUTE</div>
-          <h3 class="text-sm font-extrabold text-white">Avance no seu ritmo</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-sm font-extrabold text-slate-900">Avance no seu ritmo</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
             Avance no seu compasso, ganhe XP a cada bloco concluído e acompanhe sua evolução.
           </p>
         </div>
@@ -132,8 +132,8 @@
         <!-- 03 — PERCEBA -->
         <div class="step-card space-y-2">
           <div class="step-number">03 — PERCEBA</div>
-          <h3 class="text-sm font-extrabold text-white">Registre como se sente</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-sm font-extrabold text-slate-900">Registre como se sente</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
             Registre sua energia e humor pós-tarefa para entender seus melhores momentos de foco.
           </p>
         </div>
@@ -141,8 +141,8 @@
         <!-- 04 — ADAPTE -->
         <div class="step-card space-y-2">
           <div class="step-number">04 — ADAPTE</div>
-          <h3 class="text-sm font-extrabold text-white">Reorganize sem culpa</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-sm font-extrabold text-slate-900">Reorganize sem culpa</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
             Se o dia mudar, ajuste tarefas para amanhã ou pause com Ócio Deliberado sem punição.
           </p>
         </div>
@@ -150,8 +150,8 @@
         <!-- 05 — AUTONOMIA -->
         <div class="step-card space-y-2">
           <div class="step-number">05 — AUTONOMIA</div>
-          <h3 class="text-sm font-extrabold text-white">Construa sua rotina</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-sm font-extrabold text-slate-900">Construa sua rotina</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
             Aprenda a construir um ritmo que faça sentido para você, desenvolvendo autoria real.
           </p>
         </div>
@@ -162,23 +162,23 @@
     <div id="painel-principal" class="space-y-5 pt-3">
 
       <!-- CABEÇALHO DO PAINEL (Identidade + Alternância de Modo Real vs Demo) -->
-      <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+      <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
         <!-- Avatar e Nome -->
         <div class="flex items-center gap-3">
-          <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-400 to-emerald-400 p-0.5 shadow-md shadow-sky-500/20 shrink-0 cursor-pointer hover:scale-105 transition-transform" onclick="window.openProfileModal()" title="Editar Perfil">
-            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-xl overflow-hidden">
+          <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-emerald-500 p-0.5 shadow-sm shrink-0 cursor-pointer hover:scale-105 transition-transform" onclick="window.openProfileModal()" title="Editar Perfil">
+            <div class="w-full h-full bg-slate-100 rounded-[14px] flex items-center justify-center text-xl overflow-hidden">
               🧑‍💻
             </div>
-            <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-slate-900 flex items-center justify-center text-[9px] font-black text-black">✓</span>
+            <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-black text-white">✓</span>
           </div>
 
           <div>
             <div class="flex items-center gap-2">
-              <h2 id="user-header-title" class="text-base sm:text-lg font-black tracking-tight text-white uppercase">
+              <h2 id="user-header-title" class="text-base sm:text-lg font-black tracking-tight text-slate-900 uppercase">
                 MINHA <span class="text-glow-lime">ROTINA</span>
               </h2>
             </div>
-            <p class="text-[11px] font-mono text-sky-400 font-semibold tracking-wide">
+            <p class="text-[11px] font-mono text-sky-600 font-semibold tracking-wide">
               CADA UM TEM A SUA ROTINA — AUTONOMIA ATRAVÉS DA AUTORIA
             </p>
           </div>
@@ -186,25 +186,25 @@
 
         <!-- Ações do Cabeçalho: Alternância Demo vs Real e Redefinir Ritmo -->
         <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-          <button id="btn-toggle-demo" onclick="window.toggleDemoMode()" class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-sky-400 hover:border-sky-400 hover:text-white transition flex items-center gap-1.5" title="Alternar entre Conta Real e Demonstração">
+          <button id="btn-toggle-demo" onclick="window.toggleDemoMode()" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-mono text-sky-700 hover:border-sky-400 hover:text-sky-900 transition flex items-center gap-1.5 shadow-sm" title="Alternar entre Conta Real e Demonstração">
             <i data-lucide="eye" class="w-3.5 h-3.5"></i>
             <span id="demo-toggle-label">Ver rotina de exemplo (Demo)</span>
           </button>
 
-          <button onclick="window.openOnboardingModal()" class="px-3.5 py-1.5 rounded-xl bg-sky-950/40 border border-sky-500/30 text-xs font-bold text-sky-300 hover:bg-sky-900/50 transition flex items-center gap-1.5" title="Redefinir Ritmo com 3 Perguntas">
-            <i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <button onclick="window.openOnboardingModal()" class="px-3.5 py-1.5 rounded-xl bg-sky-50 border border-sky-200 text-xs font-bold text-sky-700 hover:bg-sky-100 transition flex items-center gap-1.5 shadow-sm" title="Redefinir Ritmo com 3 Perguntas">
+            <i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-600"></i>
             <span>Redefinir Ritmo</span>
           </button>
         </div>
       </header>
 
       <!-- Banner de Alerta para Modo Demo -->
-      <div id="demo-mode-banner" class="hidden p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-300">
+      <div id="demo-mode-banner" class="hidden p-3.5 rounded-2xl bg-amber-50 border border-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-800">
         <span class="flex items-center gap-2 font-bold">
           <span class="text-base">💡</span>
           <span>MODO DEMONSTRAÇÃO ATIVO — Exemplo de rotina e gamificação avançada (Nível 12). Seus dados reais estão protegidos.</span>
         </span>
-        <button onclick="window.exitDemoMode()" class="px-3 py-1.5 rounded-xl bg-amber-400 text-black font-extrabold text-xs hover:brightness-110 shrink-0">
+        <button onclick="window.exitDemoMode()" class="px-3 py-1.5 rounded-xl bg-amber-500 text-white font-extrabold text-xs hover:bg-amber-600 shrink-0 shadow-sm">
           Voltar para Minha Rotina (Conta Real)
         </button>
       </div>
@@ -219,35 +219,35 @@
       <!-- =============================================================== -->
       <!-- HIERARQUIA 2: COMO VOCÊ ESTÁ? (Percepção Emocional Imediata)    -->
       <!-- =============================================================== -->
-      <section id="mood-section-container" class="tech-card p-4 sm:p-5 bg-slate-900 border border-slate-800 space-y-3">
+      <section id="mood-section-container" class="tech-card p-4 sm:p-5 bg-white border border-slate-200 space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
           <div>
-            <span class="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-wider block">Percepção Pós-Tarefa</span>
-            <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
-              <i data-lucide="smile" class="w-4 h-4 text-emerald-400"></i>
+            <span class="text-[11px] font-mono font-bold text-emerald-600 uppercase tracking-wider block">Percepção Pós-Tarefa</span>
+            <h3 class="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <i data-lucide="smile" class="w-4 h-4 text-emerald-600"></i>
               Como você está?
             </h3>
           </div>
-          <span class="text-[10px] text-slate-500 font-mono">Registro de percepção pessoal • Não diagnóstico</span>
+          <span class="text-[10px] text-slate-400 font-mono">Registro de percepção pessoal • Não diagnóstico</span>
         </div>
 
-        <p class="text-xs text-slate-300">Como você se sentiu depois dessa atividade ou como está se sentindo agora?</p>
+        <p class="text-xs text-slate-600">Como você se sentiu depois dessa atividade ou como está se sentindo agora?</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
           <button class="mood-pill active" data-mood="foco_total" onclick="window.selectMood('foco_total')">
             <span class="text-2xl">😤</span>
-            <span class="text-xs font-bold text-slate-100">Foco Total</span>
-            <span class="text-[10px] text-slate-400">Presente e focado</span>
+            <span class="text-xs font-bold text-slate-800">Foco Total</span>
+            <span class="text-[10px] text-slate-500">Presente e focado</span>
           </button>
           <button class="mood-pill" data-mood="cansado" onclick="window.selectMood('cansado')">
             <span class="text-2xl">😩</span>
-            <span class="text-xs font-bold text-slate-100">Cansado</span>
-            <span class="text-[10px] text-slate-400">Ritmo reduzido com acolhimento</span>
+            <span class="text-xs font-bold text-slate-800">Cansado</span>
+            <span class="text-[10px] text-slate-500">Ritmo reduzido com acolhimento</span>
           </button>
           <button class="mood-pill" data-mood="relaxado" onclick="window.selectMood('relaxado')">
             <span class="text-2xl">😌</span>
-            <span class="text-xs font-bold text-slate-100">Relaxado</span>
-            <span class="text-[10px] text-slate-400">Fluindo com calma</span>
+            <span class="text-xs font-bold text-slate-800">Relaxado</span>
+            <span class="text-[10px] text-slate-500">Fluindo com calma</span>
           </button>
         </div>
       </section>
@@ -255,53 +255,53 @@
       <!-- =============================================================== -->
       <!-- HIERARQUIA 3: SEU PROGRESSO (XP, Nível e Pontos)                 -->
       <!-- =============================================================== -->
-      <section id="user-progress-container" class="tech-card p-4 sm:p-5 bg-slate-900 border border-slate-800 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+      <section id="user-progress-container" class="tech-card p-4 sm:p-5 bg-white border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
           <div class="flex items-center gap-2">
-            <i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>
-            <h3 class="text-xs font-black uppercase tracking-wider text-slate-100">
+            <i data-lucide="trending-up" class="w-4 h-4 text-sky-600"></i>
+            <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">
               Seu Progresso
             </h3>
           </div>
-          <span class="text-[11px] font-mono text-sky-400 font-bold" id="progress-mode-badge">
+          <span class="text-[11px] font-mono text-sky-700 font-bold" id="progress-mode-badge">
             CONTA REAL (COMEÇANDO DO ZERO)
           </span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <!-- Card de Nível & XP -->
-          <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex items-center justify-between text-xs font-mono font-bold">
-              <span id="gamification-level-title" class="text-sky-400">NÍVEL 1</span>
-              <span id="gamification-xp-number" class="text-slate-200 font-mono">0 XP</span>
+              <span id="gamification-level-title" class="text-sky-700">NÍVEL 1</span>
+              <span id="gamification-xp-number" class="text-slate-800 font-mono">0 XP</span>
             </div>
             <div class="xp-bar-track">
               <div id="gamification-bar-fill" class="xp-bar-fill" style="width: 0%;"></div>
             </div>
-            <p id="gamification-level-sub" class="text-[10px] font-mono text-slate-400 text-right">
+            <p id="gamification-level-sub" class="text-[10px] font-mono text-slate-500 text-right">
               0% • 100 XP para o próximo nível
             </p>
           </div>
 
           <!-- Card de Saldo de Pontos -->
-          <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between">
-            <span class="text-[10px] font-mono uppercase text-slate-400">Saldo de Conquistas</span>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+            <span class="text-[10px] font-mono uppercase text-slate-500">Saldo de Conquistas</span>
             <div class="flex items-baseline gap-2 mt-1">
-              <span id="saldo-points-display" class="text-2xl font-black text-emerald-400">0</span>
-              <span class="text-xs font-mono text-slate-400">PONTOS</span>
+              <span id="saldo-points-display" class="text-2xl font-black text-emerald-600">0</span>
+              <span class="text-xs font-mono text-slate-500">PONTOS</span>
             </div>
-            <p class="text-[10px] text-slate-500">Sem expiração • Para autorrecompensas</p>
+            <p class="text-[10px] text-slate-400">Sem expiração • Para autorrecompensas</p>
           </div>
 
           <!-- Card de Progresso do Dia -->
-          <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between space-y-1.5">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-1.5">
             <div class="flex items-center justify-between text-xs font-semibold">
-              <span id="daily-progress-text" class="text-slate-300 text-xs">Progresso de hoje: 0 de 4 concluídas (0%)</span>
+              <span id="daily-progress-text" class="text-slate-700 text-xs">Progresso de hoje: 0 de 4 concluídas (0%)</span>
             </div>
-            <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
-              <div id="daily-progress-bar" class="h-full bg-gradient-to-r from-sky-400 to-emerald-400 transition-all duration-300" style="width: 0%;"></div>
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+              <div id="daily-progress-bar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300" style="width: 0%;"></div>
             </div>
-            <p class="text-[10px] font-mono text-sky-400 font-bold">Sem cobrança • No teu compasso</p>
+            <p class="text-[10px] font-mono text-sky-700 font-bold">Sem cobrança • No teu compasso</p>
           </div>
         </div>
       </section>
@@ -309,18 +309,18 @@
       <!-- =============================================================== -->
       <!-- HIERARQUIA 4: PRECISA REORGANIZAR? (Adaptação Sem Culpa)         -->
       <!-- =============================================================== -->
-      <section id="reorganize-prompt-container" class="tech-card p-4 sm:p-5 bg-gradient-to-r from-slate-900 to-slate-900/90 border border-emerald-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <section id="reorganize-prompt-container" class="tech-card p-4 sm:p-5 bg-emerald-50/50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div class="space-y-1">
           <div class="flex items-center gap-2">
-            <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-400"></i>
-            <h3 class="text-sm font-extrabold text-white">Precisa reorganizar?</h3>
+            <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-600"></i>
+            <h3 class="text-sm font-extrabold text-slate-900">Precisa reorganizar?</h3>
           </div>
-          <p class="text-xs text-slate-300">
+          <p class="text-xs text-slate-700">
             <strong>"Seu dia mudou? Tudo bem. Vamos reorganizar."</strong>
-            <span class="block sm:inline text-slate-400 text-[11px]">Na vida real, imprevistos acontecem. Sem cobrança, sem punição e sem perder XP.</span>
+            <span class="block sm:inline text-slate-500 text-[11px]">Na vida real, imprevistos acontecem. Sem cobrança, sem punição e sem perder XP.</span>
           </p>
         </div>
-        <button onclick="window.openReorganizeModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500/15 to-emerald-500/15 border border-emerald-400/30 text-emerald-300 font-bold text-xs hover:bg-emerald-500/25 transition flex items-center justify-center gap-2 shrink-0 shadow-sm">
+        <button onclick="window.openReorganizeModal()" class="px-5 py-2.5 rounded-xl bg-white border border-emerald-400 text-emerald-700 font-bold text-xs hover:bg-emerald-50 transition flex items-center justify-center gap-2 shrink-0 shadow-sm">
           <i data-lucide="refresh-cw" class="w-4 h-4"></i>
           REORGANIZAR MEU DIA
         </button>
@@ -336,18 +336,18 @@
           <div>
             <div class="flex items-center justify-between mb-3">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
-                <h2 class="text-base font-black uppercase tracking-wider text-slate-100">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse"></span>
+                <h2 class="text-base font-black uppercase tracking-wider text-slate-900">
                   TEU RITMO ÚNICO (AGENDA COMPLETA)
                 </h2>
               </div>
-              <button onclick="window.addBonusPointsPrompt()" class="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1">
+              <button onclick="window.addBonusPointsPrompt()" class="text-xs font-mono text-emerald-600 hover:underline flex items-center gap-1">
                 <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> +5P Superação
               </button>
             </div>
 
             <!-- Carrossel de Dias: SEG | TER | QUA | QUI | SEX | SÁB | DOM -->
-            <div id="day-carousel" class="flex items-center justify-between gap-1 p-1 bg-slate-950 border border-slate-800 rounded-xl mb-4 overflow-x-auto">
+            <div id="day-carousel" class="flex items-center justify-between gap-1 p-1 bg-slate-100 border border-slate-200 rounded-xl mb-4 overflow-x-auto">
               <!-- Injetado via tablet_ui.js -->
             </div>
 
@@ -358,13 +358,13 @@
           </div>
 
           <!-- Rodapé do Bloco com Atalho para Reorganizar -->
-          <div class="pt-3 border-t border-slate-800 space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400 font-medium">
+          <div class="pt-3 border-t border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
               <span class="flex items-center gap-1">
-                <i data-lucide="heart-handshake" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <i data-lucide="heart-handshake" class="w-3.5 h-3.5 text-emerald-600"></i>
                 Seu dia mudou? Tudo bem.
               </span>
-              <span class="text-sky-400">Zero punição</span>
+              <span class="text-sky-600 font-semibold">Zero punição</span>
             </div>
             <button id="btn-reorganize-day" class="btn-reorganize w-full py-3 px-4 flex items-center justify-center gap-2 text-xs sm:text-sm">
               <i data-lucide="refresh-cw" class="w-4 h-4"></i>
@@ -379,25 +379,25 @@
           <!-- Card 1: CONQUISTAS DO RITMO (TOKEN ECONOMY) -->
           <div class="tech-card p-4 sm:p-5 space-y-4">
             <div class="flex items-center justify-between">
-              <h3 class="text-xs font-black uppercase tracking-wider text-slate-100 flex items-center gap-2">
-                <i data-lucide="award" class="w-4 h-4 text-sky-400"></i>
+              <h3 class="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-sky-600"></i>
                 CONQUISTAS DO RITMO
               </h3>
-              <button onclick="window.openHistoryModal()" class="text-[11px] font-mono text-sky-400 hover:underline">
+              <button onclick="window.openHistoryModal()" class="text-[11px] font-mono text-sky-600 hover:underline">
                 Histórico
               </button>
             </div>
 
-            <div class="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800">
-              <div id="milestone-bar-fill" class="h-full bg-gradient-to-r from-sky-400 to-emerald-400 transition-all duration-300" style="width: 0%;"></div>
+            <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+              <div id="milestone-bar-fill" class="h-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300" style="width: 0%;"></div>
             </div>
 
             <div id="milestones-icons-row" class="grid grid-cols-5 gap-1.5 pt-1">
               <!-- Injetado via tablet_ui.js -->
             </div>
 
-            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-center">
-              <p id="milestone-target-label" class="text-xs font-mono font-bold text-emerald-400">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
+              <p id="milestone-target-label" class="text-xs font-mono font-bold text-emerald-700">
                 PRÓXIMO MARCO: 5P Filme / Jogo (0/5 Pontos)
               </p>
             </div>
@@ -406,15 +406,15 @@
           <!-- Card 2: REFLEXÃO RÁPIDA -->
           <div class="tech-card p-4 sm:p-5 space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-300">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">
                 REFLEXÃO RÁPIDA
               </h3>
-              <span class="text-emerald-400 text-xs font-bold flex items-center gap-1">
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
                 <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Validado
               </span>
             </div>
 
-            <p class="text-xs text-slate-400 font-medium">Como você fluiu hoje?</p>
+            <p class="text-xs text-slate-500 font-medium">Como você fluiu hoje?</p>
 
             <div class="flex flex-wrap gap-2">
               <button class="quick-tag" data-tag="Sem Energia" onclick="window.selectReflection('Sem Energia')">Sem Energia</button>
@@ -425,20 +425,20 @@
           </div>
 
           <!-- Card 3: ÓCIO DELIBERADO (DESCANSO CONSCIENTE PLANEJADO) -->
-          <div class="tech-card p-4 sm:p-5 bg-gradient-to-br from-indigo-950/30 to-slate-900 border-indigo-500/30 space-y-3">
+          <div class="tech-card p-4 sm:p-5 bg-indigo-50/50 border-indigo-200 space-y-3">
             <div class="flex items-center gap-2">
               <span class="text-lg">🌙</span>
               <div>
-                <h3 class="text-xs font-extrabold uppercase tracking-wider text-indigo-300">
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-indigo-900">
                   ÓCIO DELIBERADO
                 </h3>
-                <p class="text-[11px] text-slate-400">Descansar também faz parte de uma rotina saudável.</p>
+                <p class="text-[11px] text-indigo-600">Descansar também faz parte de uma rotina saudável.</p>
               </div>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-700 leading-relaxed">
               Precisando parar mais cedo hoje? Encerre o dia com consciência e sem culpa, recebendo os pontos de pausa.
             </p>
-            <button onclick="window.activateOcioDeliberado()" class="w-full py-2.5 px-3 rounded-xl bg-indigo-900/60 hover:bg-indigo-800 border border-indigo-500/40 text-xs font-bold text-indigo-200 transition flex items-center justify-center gap-1.5 shadow-sm">
+            <button onclick="window.activateOcioDeliberado()" class="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-indigo-50 border border-indigo-300 text-xs font-bold text-indigo-700 transition flex items-center justify-center gap-1.5 shadow-sm">
               <i data-lucide="moon" class="w-3.5 h-3.5"></i>
               Ativar Ócio Deliberado (+5P)
             </button>
@@ -450,72 +450,72 @@
     </div>
 
     <!-- 5. APRESENTAÇÃO DE VALOR E OFERTA COMERCIAL (R$ 19,90) -->
-    <section class="tech-card p-6 sm:p-8 bg-slate-900 border border-slate-800 text-center space-y-5">
+    <section class="tech-card p-6 sm:p-8 bg-white border border-slate-200 text-center space-y-5 shadow-sm">
       <div class="max-w-xl mx-auto space-y-2">
-        <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Acesso Definitivo</span>
-        <h2 class="text-xl sm:text-2xl font-black text-white">Desbloqueie o Ritmo Autonomia</h2>
-        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <span class="text-xs font-mono font-bold text-sky-600 uppercase tracking-wider">Acesso Definitivo</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Desbloqueie o Ritmo Autonomia</h2>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
           Uma forma mais leve de organizar o dia, acompanhar seu ritmo e desenvolver autonomia — sem transformar cada tarefa em uma cobrança.
         </p>
       </div>
 
       <!-- O QUE VOCÊ RECEBE (8 ITENS CLAROS) -->
-      <div class="max-w-xl mx-auto p-4 rounded-2xl bg-slate-950/70 border border-slate-800 text-left space-y-3">
-        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider text-center">O que você recebe:</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-200">
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Rotina personalizada</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Sistema de XP e evolução</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Reorganização sem punição</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Registro de percepção</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Ócio Deliberado</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Conquistas</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Histórico</div>
-          <div class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Acesso vitalício</div>
+      <div class="max-w-xl mx-auto p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-3">
+        <h3 class="text-xs font-mono font-bold text-sky-700 uppercase tracking-wider text-center">O que você recebe:</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-700">
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Rotina personalizada</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Sistema de XP e evolução</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Reorganização sem punição</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Registro de percepção</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Ócio Deliberado</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Conquistas</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Histórico</div>
+          <div class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Acesso vitalício</div>
         </div>
       </div>
 
-      <div class="inline-block p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
-        <span class="text-[11px] font-mono text-slate-400 uppercase">Acesso Vitalício Único • Sem Mensalidades</span>
-        <div class="text-3xl font-black text-sky-400 mt-0.5">R$ 19,90</div>
+      <div class="inline-block p-4 rounded-2xl bg-slate-50 border border-slate-200">
+        <span class="text-[11px] font-mono text-slate-500 uppercase">Acesso Vitalício Único • Sem Mensalidades</span>
+        <div class="text-3xl font-black text-sky-600 mt-0.5">R$ 19,90</div>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-3">
-        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-sm hover:brightness-105 active:scale-95 transition-all shadow-md shadow-sky-500/20 flex items-center gap-2">
+        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-bold text-sm hover:brightness-105 active:scale-95 transition-all shadow-md shadow-sky-500/20 flex items-center gap-2">
           <i data-lucide="shield-check" class="w-4 h-4"></i>
           Desbloquear acesso completo
         </a>
-        <button onclick="window.openPaywallModal()" class="px-5 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white text-sm font-semibold transition flex items-center gap-2">
-          <i data-lucide="key" class="w-4 h-4 text-sky-400"></i>
+        <button onclick="window.openPaywallModal()" class="px-5 py-3.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-50 text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+          <i data-lucide="key" class="w-4 h-4 text-sky-600"></i>
           Já tenho uma chave de acesso
         </button>
       </div>
     </section>
 
     <!-- 6. RODAPÉ DE NAVEGAÇÃO MINIMALISTA & FILOSOFIA -->
-    <footer class="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+    <footer class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
       <div class="flex items-center gap-4 text-slate-400">
-        <button onclick="window.scrollToApp()" class="hover:text-sky-400 transition-colors p-1" title="Início"><i data-lucide="home" class="w-5 h-5 text-sky-400"></i></button>
-        <button onclick="window.openHistoryModal()" class="hover:text-sky-400 transition-colors p-1" title="Histórico de Conquistas"><i data-lucide="layout-grid" class="w-5 h-5"></i></button>
-        <button onclick="window.openProfileModal()" class="hover:text-sky-400 transition-colors p-1" title="Perfil"><i data-lucide="user" class="w-5 h-5"></i></button>
-        <button onclick="window.openLegalModal('termos')" class="hover:text-sky-400 transition-colors p-1" title="Configurações"><i data-lucide="settings" class="w-5 h-5"></i></button>
+        <button onclick="window.scrollToApp()" class="hover:text-sky-600 transition-colors p-1" title="Início"><i data-lucide="home" class="w-5 h-5 text-sky-600"></i></button>
+        <button onclick="window.openHistoryModal()" class="hover:text-sky-600 transition-colors p-1" title="Histórico de Conquistas"><i data-lucide="layout-grid" class="w-5 h-5"></i></button>
+        <button onclick="window.openProfileModal()" class="hover:text-sky-600 transition-colors p-1" title="Perfil"><i data-lucide="user" class="w-5 h-5"></i></button>
+        <button onclick="window.openLegalModal('termos')" class="hover:text-sky-600 transition-colors p-1" title="Configurações"><i data-lucide="settings" class="w-5 h-5"></i></button>
       </div>
 
-      <div class="font-mono text-center text-xs tracking-wider text-slate-400 uppercase">
+      <div class="font-mono text-center text-xs tracking-wider text-slate-500 uppercase">
         CADA UM TEM A SUA ROTINA — AUTONOMIA ATRAVÉS DA AUTORIA.
       </div>
 
-      <div class="flex items-center gap-3 text-[11px] text-slate-400">
-        <button onclick="window.openPaywallModal()" class="text-sky-400 hover:text-sky-300 font-semibold flex items-center gap-1" title="Inserir Chave de Desbloqueio">
+      <div class="flex items-center gap-3 text-[11px] text-slate-500">
+        <button onclick="window.openPaywallModal()" class="text-sky-600 hover:text-sky-800 font-semibold flex items-center gap-1" title="Inserir Chave de Desbloqueio">
           <i data-lucide="key" class="w-3.5 h-3.5"></i> Desbloquear
         </button>
         <span>•</span>
-        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+        <a href="https://pay.kiwify.com.br/8hGuEYs" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 font-semibold flex items-center gap-1">
           <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Kiwify R$ 19,90
         </a>
         <span>•</span>
-        <a href="/api/health" target="_blank" class="hover:text-sky-400">Health 24/7</a>
+        <a href="/api/health" target="_blank" class="hover:text-sky-600">Health 24/7</a>
         <span>•</span>
-        <button onclick="window.openLegalModal('privacidade')" class="hover:text-sky-400">LGPD</button>
+        <button onclick="window.openLegalModal('privacidade')" class="hover:text-sky-600">LGPD</button>
       </div>
     </footer>
 
@@ -528,22 +528,22 @@
   <!-- MODAL: ONBOARDING "VAMOS DESCOBRIR SEU RITMO" -->
   <div id="modal-onboarding" class="modal-overlay hidden">
     <div class="modal-content space-y-5 max-w-lg">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
         <div class="flex items-center gap-2">
           <span class="text-xl">🧭</span>
           <div>
-            <h3 class="font-black text-base text-white">Vamos descobrir seu ritmo.</h3>
-            <p class="text-xs text-slate-400">3 perguntas rápidas para adaptar a sua rotina de hoje.</p>
+            <h3 class="font-black text-base text-slate-900">Vamos descobrir seu ritmo.</h3>
+            <p class="text-xs text-slate-500">3 perguntas rápidas para adaptar a sua rotina de hoje.</p>
           </div>
         </div>
-        <button onclick="window.postponeOnboarding()" class="text-slate-400 hover:text-white p-1" title="Fazer depois">
+        <button onclick="window.postponeOnboarding()" class="text-slate-400 hover:text-slate-700 p-1" title="Fazer depois">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Pergunta 1: O que você quer organizar hoje? -->
       <div class="space-y-2">
-        <label class="block text-xs font-bold text-slate-200">1. O que você quer organizar hoje?</label>
+        <label class="block text-xs font-bold text-slate-800">1. O que você quer organizar hoje?</label>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
           <button class="onboarding-option selected" data-group="focus" data-value="Meu dia">Meu dia</button>
           <button class="onboarding-option" data-group="focus" data-value="Estudos">Estudos</button>
@@ -556,7 +556,7 @@
 
       <!-- Pergunta 2: Quanto tempo você tem hoje? -->
       <div class="space-y-2">
-        <label class="block text-xs font-bold text-slate-200">2. Quanto tempo você tem hoje?</label>
+        <label class="block text-xs font-bold text-slate-800">2. Quanto tempo você tem hoje?</label>
         <div class="grid grid-cols-3 gap-2 text-xs">
           <button class="onboarding-option" data-group="time" data-value="Pouco">Pouco</button>
           <button class="onboarding-option selected" data-group="time" data-value="Normal">Normal</button>
@@ -566,7 +566,7 @@
 
       <!-- Pergunta 3: Como está sua energia? -->
       <div class="space-y-2">
-        <label class="block text-xs font-bold text-slate-200">3. Como está sua energia?</label>
+        <label class="block text-xs font-bold text-slate-800">3. Como está sua energia?</label>
         <div class="grid grid-cols-3 gap-2 text-xs">
           <button class="onboarding-option" data-group="energy" data-value="Baixa">Baixa</button>
           <button class="onboarding-option selected" data-group="energy" data-value="Média">Média</button>
@@ -575,11 +575,11 @@
       </div>
 
       <!-- Ações do Onboarding: Fazer depois ou Gerar Minha Rotina -->
-      <div class="flex items-center justify-between pt-3 border-t border-slate-800">
-        <button onclick="window.postponeOnboarding()" class="text-xs text-slate-400 hover:text-slate-200 font-semibold px-2 py-1">
+      <div class="flex items-center justify-between pt-3 border-t border-slate-200">
+        <button onclick="window.postponeOnboarding()" class="text-xs text-slate-500 hover:text-slate-800 font-semibold px-2 py-1">
           Fazer depois
         </button>
-        <button onclick="window.saveOnboardingPreferences()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-xs hover:brightness-105 active:scale-95 transition shadow-md shadow-sky-500/20">
+        <button onclick="window.saveOnboardingPreferences()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-bold text-xs hover:brightness-105 active:scale-95 transition shadow-md shadow-sky-500/20">
           Gerar Minha Rotina
         </button>
       </div>
@@ -589,53 +589,53 @@
   <!-- MODAL: Reorganizar Dia Sem Culpa -->
   <div id="modal-reorganize" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-black text-base text-white flex items-center gap-2">
-          <i data-lucide="heart-handshake" class="w-5 h-5 text-emerald-400"></i>
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 class="font-black text-base text-slate-900 flex items-center gap-2">
+          <i data-lucide="heart-handshake" class="w-5 h-5 text-emerald-600"></i>
           Seu dia mudou? Tudo bem.
         </h3>
-        <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
 
-      <p class="text-xs text-slate-300 leading-relaxed">
+      <p class="text-xs text-slate-600 leading-relaxed">
         <strong>Vamos reorganizar.</strong> Na vida real, imprevistos acontecem. Reorganizar tarefas não desconta pontos, não gera culpa e mantém a sua consistência:
       </p>
 
       <div class="space-y-2 text-xs">
-        <label class="block font-semibold text-slate-200">Como você prefere ajustar?</label>
+        <label class="block font-semibold text-slate-800">Como você prefere ajustar?</label>
         <div class="space-y-2">
-          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-sky-500/40 transition">
-            <input type="radio" name="reorg-option" value="tomorrow" checked class="text-sky-500 mt-0.5">
+          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer hover:border-sky-400 transition">
+            <input type="radio" name="reorg-option" value="tomorrow" checked class="text-sky-600 mt-0.5">
             <div>
-              <span class="font-bold text-white block">Mover tarefas pendentes para amanhã</span>
-              <span class="text-[11px] text-slate-400">Continuar amanhã com tranquilidade, sem perder XP e zero cobrança.</span>
+              <span class="font-bold text-slate-900 block">Mover tarefas pendentes para amanhã</span>
+              <span class="text-[11px] text-slate-500">Continuar amanhã com tranquilidade, sem perder XP e zero cobrança.</span>
             </div>
           </label>
-          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-sky-500/40 transition">
-            <input type="radio" name="reorg-option" value="essential" class="text-sky-500 mt-0.5">
+          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer hover:border-sky-400 transition">
+            <input type="radio" name="reorg-option" value="essential" class="text-sky-600 mt-0.5">
             <div>
-              <span class="font-bold text-white block">Reduzir prioridades (Focar no essencial)</span>
-              <span class="text-[11px] text-slate-400">Manter apenas a próxima atividade e pausar as demais sem cobrança.</span>
+              <span class="font-bold text-slate-900 block">Reduzir prioridades (Focar no essencial)</span>
+              <span class="text-[11px] text-slate-500">Manter apenas a próxima atividade e pausar as demais sem cobrança.</span>
             </div>
           </label>
-          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-sky-500/40 transition">
-            <input type="radio" name="reorg-option" value="partial" class="text-sky-500 mt-0.5">
+          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer hover:border-sky-400 transition">
+            <input type="radio" name="reorg-option" value="partial" class="text-sky-600 mt-0.5">
             <div>
-              <span class="font-bold text-white block">Concluir parcialmente (+25 XP por esforço)</span>
-              <span class="text-[11px] text-slate-400">Fazer o que é possível hoje já é uma vitória no seu ritmo.</span>
+              <span class="font-bold text-slate-900 block">Concluir parcialmente (+25 XP por esforço)</span>
+              <span class="text-[11px] text-slate-500">Fazer o que é possível hoje já é uma vitória no seu ritmo.</span>
             </div>
           </label>
-          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-800/60 cursor-pointer hover:border-indigo-400 transition">
-            <input type="radio" name="reorg-option" value="ocio" class="text-indigo-400 mt-0.5">
+          <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-indigo-50/60 border border-indigo-200 cursor-pointer hover:border-indigo-400 transition">
+            <input type="radio" name="reorg-option" value="ocio" class="text-indigo-600 mt-0.5">
             <div>
-              <span class="font-bold text-indigo-300 block">Ativar Ócio Deliberado (Descanso Consciente +5P)</span>
-              <span class="text-[11px] text-slate-400">Descansar também faz parte de uma rotina saudável. Encerrar o dia em paz.</span>
+              <span class="font-bold text-indigo-900 block">Ativar Ócio Deliberado (Descanso Consciente +5P)</span>
+              <span class="text-[11px] text-indigo-600">Descansar também faz parte de uma rotina saudável. Encerrar o dia em paz.</span>
             </div>
           </label>
         </div>
       </div>
 
-      <div class="flex justify-end gap-2 pt-2 border-t border-slate-800">
+      <div class="flex justify-end gap-2 pt-2 border-t border-slate-200">
         <button class="btn-close-modal tech-card text-xs px-3 py-1.5">Voltar</button>
         <button id="btn-confirm-reorganize" class="btn-reorganize text-xs px-4 py-2">Confirmar Ajuste</button>
       </div>
@@ -645,11 +645,11 @@
   <!-- MODAL: Histórico de Conquistas & Resgates -->
   <div id="modal-history" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i data-lucide="trophy" class="w-5 h-5 text-emerald-400"></i> Conquistas e Resgates
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+          <i data-lucide="trophy" class="w-5 h-5 text-emerald-600"></i> Conquistas e Resgates
         </h3>
-        <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <div id="history-items-container" class="space-y-2 max-h-[50vh] overflow-y-auto pr-1">
         <!-- Injetado dinamicamente -->
@@ -663,19 +663,19 @@
   <!-- MODAL: Configurar Perfil -->
   <div id="modal-profile" class="modal-overlay hidden">
     <div class="modal-content space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i data-lucide="user-cog" class="w-5 h-5 text-sky-400"></i> Personalizar Perfil
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+          <i data-lucide="user-cog" class="w-5 h-5 text-sky-600"></i> Personalizar Perfil
         </h3>
-        <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <div class="space-y-3 text-xs">
         <div>
-          <label class="block font-semibold text-slate-300 mb-1">Nome do Titular da Rotina:</label>
-          <input type="text" id="profile-name-input" placeholder="Digite seu nome ou apelido" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-lg text-white font-semibold outline-none focus:border-sky-400" />
+          <label class="block font-semibold text-slate-700 mb-1">Nome do Titular da Rotina:</label>
+          <input type="text" id="profile-name-input" placeholder="Digite seu nome ou apelido" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-slate-900 font-semibold outline-none focus:border-sky-500 focus:bg-white" />
         </div>
       </div>
-      <div class="flex justify-end gap-2 pt-2 border-t border-slate-800">
+      <div class="flex justify-end gap-2 pt-2 border-t border-slate-200">
         <button class="btn-close-modal tech-card text-xs px-3 py-1.5">Cancelar</button>
         <button id="btn-save-profile" class="btn-reorganize text-xs px-4 py-2">Salvar</button>
       </div>
@@ -685,11 +685,11 @@
   <!-- MODAL: Termos de Uso e Privacidade LGPD -->
   <div id="modal-legal" class="modal-overlay hidden">
     <div class="modal-content space-y-4 max-w-xl">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 id="legal-modal-title" class="font-bold text-base text-white">Termos de Uso & Conformidade LGPD</h3>
-        <button class="btn-close-modal text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 id="legal-modal-title" class="font-bold text-base text-slate-900">Termos de Uso & Conformidade LGPD</h3>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div id="legal-modal-body" class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2"></div>
+      <div id="legal-modal-body" class="text-xs text-slate-600 space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2"></div>
       <div class="flex justify-end pt-2">
         <button class="btn-close-modal tech-card text-xs px-4 py-1.5">Entendido</button>
       </div>
@@ -697,31 +697,31 @@
   </div>
 
   <!-- MODAL DE BLOQUEIO POR TEMPO (30 MIN) & CHECKOUT KIWIFY -->
-  <div id="paywall-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 hidden">
-    <div class="relative w-full max-w-md max-h-[92vh] overflow-y-auto rounded-2xl border border-sky-500/30 bg-slate-900 p-6 text-white shadow-2xl">
+  <div id="paywall-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+    <div class="relative w-full max-w-md max-h-[92vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 text-slate-900 shadow-2xl">
       
       <!-- Botão Fechar (ativo durante degustação) -->
-      <button id="btn-close-paywall" onclick="window.fecharPaywallSeDegustando()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1" title="Fechar">
+      <button id="btn-close-paywall" onclick="window.fecharPaywallSeDegustando()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1" title="Fechar">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
       <!-- Cabeçalho Comercial Oficial -->
       <div class="text-center">
-        <span id="paywall-trial-badge" class="inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400">
+        <span id="paywall-trial-badge" class="inline-block rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-800">
           Período de Degustação Concluído (30 min)
         </span>
-        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-100">
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900">
           Seu período gratuito terminou.
         </h2>
-        <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
           Desbloqueie o acesso completo para continuar construindo o seu ritmo com autonomia e sem limites.
         </p>
       </div>
 
       <!-- Preço Oficial -->
-      <div class="my-4 rounded-xl border border-slate-800 bg-slate-950/60 p-4 text-center">
-        <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Acesso Vitalício Único • Sem Mensalidades</span>
-        <div class="mt-1 text-3xl font-black text-sky-400">R$ 19,90</div>
+      <div class="my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
+        <span class="text-xs font-medium uppercase tracking-wider text-slate-500">Acesso Vitalício Único • Sem Mensalidades</span>
+        <div class="mt-1 text-3xl font-black text-sky-600">R$ 19,90</div>
       </div>
 
       <!-- Opção Principal e Recomendada: Kiwify Oficial -->
@@ -729,20 +729,20 @@
         href="https://pay.kiwify.com.br/8hGuEYs" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-sky-400 via-teal-400 to-emerald-400 py-3.5 text-sm font-bold text-slate-950 transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-slate-900 shadow-md shadow-sky-500/20"
+        class="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 py-3.5 text-sm font-bold text-white transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 shadow-md shadow-sky-500/20"
       >
         Desbloquear por R$ 19,90
       </a>
 
       <!-- Opção Secundária: Pix Direto com QR Code Ultra Nítido e Copia e Cola -->
-      <details class="my-3 text-xs text-slate-400 group">
-        <summary class="cursor-pointer text-center text-slate-400 hover:text-sky-400 py-1 transition select-none flex items-center justify-center gap-1">
+      <details class="my-3 text-xs text-slate-500 group">
+        <summary class="cursor-pointer text-center text-slate-600 hover:text-sky-600 py-1 transition select-none flex items-center justify-center gap-1 font-medium">
           <span>Prefere transferir via Pix direto? Clique aqui</span>
         </summary>
-        <div class="mt-2 space-y-3 rounded-xl border border-slate-800 bg-slate-950/70 p-3.5 text-xs text-slate-300">
+        <div class="mt-2 space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-xs text-slate-700">
           <!-- QR Code Pix Vetorial de Resolução Infinita (100% Nítido) -->
           <div class="text-center py-1">
-            <div class="bg-white p-2.5 rounded-xl inline-block shadow-lg border border-slate-700">
+            <div class="bg-white p-3 rounded-xl inline-block shadow-md border border-slate-200">
               <img 
                 src="/api/pix/qrcode.svg" 
                 alt="QR Code Pix R$ 19,90" 
@@ -751,24 +751,24 @@
                 loading="eager"
               />
             </div>
-            <p class="text-[11px] text-slate-400 mt-1 font-medium">Aponte a câmera do aplicativo do seu banco</p>
+            <p class="text-[11px] text-slate-500 mt-1 font-medium">Aponte a câmera do aplicativo do seu banco</p>
           </div>
 
           <!-- Código Pix Copia e Cola EMV Oficial -->
           <div class="space-y-1">
-            <label class="block text-[11px] text-slate-400">Código Pix Copia e Cola:</label>
+            <label class="block text-[11px] text-slate-500">Código Pix Copia e Cola:</label>
             <div class="flex gap-1.5">
               <input 
                 type="text" 
                 id="pix-copia-cola-input" 
                 readonly 
                 value="00020126390014br.gov.bcb.pix0117luklen2@gmail.com520400005303986540519.905802BR5917LUCIANO SANT ANNA6009SAO PAULO62110507RTM199063046636" 
-                class="w-full rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1.5 text-[11px] text-sky-300 font-mono select-all focus:outline-none focus:border-sky-400"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[11px] text-sky-700 font-mono select-all focus:outline-none focus:border-sky-500"
               />
               <button 
                 type="button" 
                 onclick="window.copiarPixCopiaECola()" 
-                class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0 transition flex items-center gap-1 shadow"
+                class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-[11px] shrink-0 transition flex items-center gap-1 shadow-sm"
               >
                 <i data-lucide="copy" class="w-3 h-3"></i>
                 Copiar
@@ -776,27 +776,27 @@
             </div>
           </div>
 
-          <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
-            <span class="text-slate-400">Chave Pix (E-mail):</span>
-            <strong class="font-mono text-sky-400 cursor-pointer hover:underline flex items-center gap-1" onclick="window.copiarPix()" title="Clique para copiar">
+          <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+            <span class="text-slate-500">Chave Pix (E-mail):</span>
+            <strong class="font-mono text-sky-700 cursor-pointer hover:underline flex items-center gap-1" onclick="window.copiarPix()" title="Clique para copiar">
               luklen2@gmail.com
               <i data-lucide="copy" class="w-3 h-3 inline"></i>
             </strong>
           </div>
           <div class="flex justify-between">
-            <span class="text-slate-400">Titular:</span>
-            <span class="text-slate-200">Luciano Sant Anna</span>
+            <span class="text-slate-500">Titular:</span>
+            <span class="text-slate-800 font-medium">Luciano Sant Anna</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-slate-400">Valor Oficial:</span>
-            <span class="text-emerald-400 font-bold font-mono">R$ 19,90</span>
+            <span class="text-slate-500">Valor Oficial:</span>
+            <span class="text-emerald-700 font-bold font-mono">R$ 19,90</span>
           </div>
 
-          <p class="text-[10px] text-amber-400/90 italic pt-1 border-t border-slate-800/80">
+          <p class="text-[10px] text-amber-700 italic pt-1 border-t border-slate-200">
             * Nota: No Pix direto a ativação é manual após envio do comprovante. No Kiwify acima, a liberação é imediata e automática.
           </p>
-          <a href="https://wa.me/?text=Ol%C3%A1%2C%20acabei%20de%20fazer%20o%20Pix%20de%20R%24%2019%2C90%20para%20o%20Ritmo%20Autonomia%20e%20gostaria%20de%20receber%20minha%20chave%20de%20acesso!" target="_blank" rel="noopener noreferrer" class="mt-2 w-full py-2 px-3 rounded-lg bg-emerald-950/70 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 font-bold text-center block transition flex items-center justify-center gap-1.5 text-[11px] shadow-sm">
-            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <a href="https://wa.me/?text=Ol%C3%A1%2C%20acabei%20de%20fazer%20o%20Pix%20de%20R%24%2019%2C90%20para%20o%20Ritmo%20Autonomia%20e%20gostaria%20de%20receber%20minha%20chave%20de%20acesso!" target="_blank" rel="noopener noreferrer" class="mt-2 w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center block transition flex items-center justify-center gap-1.5 text-[11px] shadow-sm">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
             Enviar Comprovante via WhatsApp
           </a>
         </div>
@@ -808,11 +808,11 @@
           type="text" 
           id="input-codigo" 
           placeholder="Inserir chave de acesso recebida" 
-          class="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none font-mono uppercase"
+          class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:border-sky-500 focus:bg-white focus:outline-none font-mono uppercase"
         />
         <button 
           onclick="validarCodigo()" 
-          class="rounded-lg bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200 transition hover:bg-slate-700 shrink-0"
+          class="rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 shrink-0 shadow-sm"
         >
           Ativar
         </button>
@@ -874,16 +874,16 @@
           const json = await res.json();
           if (json.data && json.data.length > 0) {
             container.innerHTML = json.data.map(item => `
-              <div class="p-2.5 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
                 <div>
-                  <p class="font-bold text-white">${item.rewardName}</p>
+                  <p class="font-bold text-slate-900">${item.rewardName}</p>
                   <p class="text-[10px] text-slate-500">${new Date(item.claimedAt).toLocaleDateString('pt-BR')} às ${new Date(item.claimedAt).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
-                <span class="font-mono font-bold text-emerald-400">-${item.cost}P</span>
+                <span class="font-mono font-bold text-emerald-600">-${item.cost}P</span>
               </div>
             `).join('');
           } else {
-            container.innerHTML = '<p class="text-xs text-slate-400 p-2 text-center">Nenhum resgate registrado ainda. Suas futuras conquistas aparecerão aqui.</p>';
+            container.innerHTML = '<p class="text-xs text-slate-500 p-2 text-center">Nenhum resgate registrado ainda. Suas futuras conquistas aparecerão aqui.</p>';
           }
         } catch (e) {}
       };

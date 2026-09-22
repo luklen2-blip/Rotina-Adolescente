@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 async function runPixTests() {
   console.log('🔍 [PIX TEST] Iniciando verificação de nitidez e integridade do PIX...');
 
-  const BASE_URL = 'http://localhost:3005';
+  const BASE_URL = process.env.TEST_URL || 'http://127.0.0.1:3199';
 
   // 1. Validar endpoint de dados do Pix
   const infoRes = await fetch(`${BASE_URL}/api/pix`);
@@ -58,7 +58,9 @@ async function runPixTests() {
   console.log('\n🎉 [PIX TEST] TODOS OS TESTES DE NITIDEZ DO PIX PASSARAM COM 100% DE SUCESSO!\n');
 }
 
-runPixTests().catch(err => {
+try {
+  await runPixTests();
+} catch (err) {
   console.error('❌ Falha no teste de resolução do Pix:', err);
   process.exit(1);
-});
+}
