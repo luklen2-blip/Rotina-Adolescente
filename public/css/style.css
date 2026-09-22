@@ -1,27 +1,39 @@
 /* ==========================================================================
-   Ritmo Autonomia — Clean Tech Theme (Dark Mode Neon Cyan & Electric Lime)
-   Gamified Daily Routine Tracker for Teenagers
+   Ritmo Autonomia — Clean Tech Modern SaaS Theme
+   Design Limpo, Acolhedor, Sofisticado e sem Fadiga Visual
    ========================================================================== */
 
 :root {
-  --bg-deep: #070c14;
-  --bg-card: #0e1724;
-  --bg-card-hover: #142133;
-  --bg-input: #0a111b;
-  --border-card: #1b2a3f;
-  --border-focus: #00f2fe;
+  --bg-deep: #0b0f19;          /* Deep Slate / Midnight suave */
+  --bg-card: #111827;          /* Slate 900 refinado */
+  --bg-card-hover: #172236;    /* Hover suave */
+  --bg-card-inner: #0f172a;    /* Card aninhado */
+  --bg-input: #0b1120;         /* Campo limpo */
+  --border-card: #1e293b;      /* Borda sutil de 1px (slate-800) */
+  --border-card-subtle: rgba(255, 255, 255, 0.07);
+  --border-focus: #38bdf8;
   
-  --neon-cyan: #00f2fe;
-  --neon-cyan-dim: rgba(0, 242, 254, 0.15);
-  --neon-cyan-glow: 0 0 15px rgba(0, 242, 254, 0.4);
+  /* Paleta Clean: Sky Cyan e Mint Emerald (Suaves e Profissionais) */
+  --accent-cyan: #38bdf8;
+  --accent-cyan-dim: rgba(56, 189, 248, 0.12);
+  --accent-cyan-soft: #0284c7;
   
-  --electric-lime: #a3e635;
-  --electric-lime-dim: rgba(163, 230, 53, 0.15);
-  --electric-lime-glow: 0 0 15px rgba(163, 230, 53, 0.4);
+  --accent-emerald: #34d399;
+  --accent-emerald-dim: rgba(52, 211, 153, 0.12);
+  --accent-emerald-soft: #059669;
+
+  /* Aliases para compatibilidade */
+  --neon-cyan: #38bdf8;
+  --neon-cyan-dim: rgba(56, 189, 248, 0.12);
+  --neon-cyan-glow: 0 0 0 1px rgba(56, 189, 248, 0.25), 0 4px 16px rgba(56, 189, 248, 0.12);
+  
+  --electric-lime: #34d399;
+  --electric-lime-dim: rgba(52, 211, 153, 0.12);
+  --electric-lime-glow: 0 0 0 1px rgba(52, 211, 153, 0.25), 0 4px 16px rgba(52, 211, 153, 0.12);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-muted: #64748b;
 }
 
 * {
@@ -49,62 +61,67 @@ body {
   background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1b2a3f;
+  background: #1e293b;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-cyan);
+  background: #334155;
 }
 
 /* Cards com Estética Clean Tech */
 .tech-card {
   background-color: var(--bg-card);
-  border: 1.5px solid var(--border-card);
+  border: 1px solid var(--border-card);
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tech-card:hover {
-  border-color: #2b4162;
+  border-color: #334155;
 }
 
-/* Glow e Acentos Neon */
+/* Acentos Clean e Elegantes */
 .glow-cyan {
   border-color: var(--neon-cyan) !important;
-  box-shadow: var(--neon-cyan-glow) !important;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3), 0 4px 16px rgba(56, 189, 248, 0.15) !important;
 }
 
 .glow-lime {
   border-color: var(--electric-lime) !important;
-  box-shadow: var(--electric-lime-glow) !important;
+  box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.3), 0 4px 16px rgba(52, 211, 153, 0.15) !important;
 }
 
 .text-glow-cyan {
   color: var(--neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+  font-weight: 800;
+  text-shadow: none;
 }
 
 .text-glow-lime {
-  color: var(--electric-lime);
-  text-shadow: 0 0 10px rgba(163, 230, 53, 0.6);
+  background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  text-shadow: none;
 }
 
 /* Botão Reorganizar Dia / Ação Principal */
 .btn-reorganize {
-  background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
-  color: #050b14;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+  box-shadow: 0 2px 10px rgba(14, 165, 233, 0.25);
   transition: all 0.2s ease;
 }
 
 .btn-reorganize:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 28px rgba(0, 242, 254, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.35);
+  filter: brightness(1.05);
 }
 
 .btn-reorganize:active {
@@ -113,8 +130,8 @@ body {
 
 /* Cards da Timeline */
 .timeline-slot-card {
-  background-color: #0b131f;
-  border: 1.5px solid #1a283c;
+  background-color: #111827;
+  border: 1px solid #1e293b;
   border-radius: 12px;
   padding: 12px 14px;
   transition: all 0.2s ease;
@@ -123,19 +140,19 @@ body {
 }
 
 .timeline-slot-card:hover {
-  border-color: #2b4162;
-  background-color: #101c2e;
+  border-color: #334155;
+  background-color: #172236;
 }
 
 .timeline-slot-card.active-focus {
-  border-color: var(--electric-lime);
-  background-color: rgba(163, 230, 53, 0.06);
-  box-shadow: 0 0 14px rgba(163, 230, 53, 0.25);
+  border-color: #34d399;
+  background-color: rgba(52, 211, 153, 0.06);
+  box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25);
 }
 
 .timeline-slot-card.is-done {
-  border-color: rgba(0, 242, 254, 0.5);
-  background-color: rgba(0, 242, 254, 0.05);
+  border-color: rgba(56, 189, 248, 0.4);
+  background-color: rgba(56, 189, 248, 0.04);
 }
 
 /* Marcador na Linha da Timeline */
@@ -151,7 +168,7 @@ body {
   top: 14px;
   bottom: 24px;
   width: 2px;
-  background: linear-gradient(to bottom, #00f2fe, #1e293b, #a3e635);
+  background: linear-gradient(to bottom, #38bdf8, #1e293b, #34d399);
 }
 
 .track-node {
@@ -161,15 +178,15 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #070c14;
-  border: 2px solid #00f2fe;
+  background: #0b0f19;
+  border: 2px solid #38bdf8;
   transition: all 0.2s ease;
 }
 
 .track-node.active-node {
-  border-color: var(--electric-lime);
-  box-shadow: 0 0 8px var(--electric-lime);
-  background: var(--electric-lime);
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.25);
+  background: #34d399;
 }
 
 /* Carrossel de Dias */
@@ -180,21 +197,21 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: #94a3b8;
   border: 1px solid transparent;
   transition: all 0.15s ease;
   cursor: pointer;
 }
 
 .day-pill:hover {
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.04);
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .day-pill.active {
-  color: #050b14;
-  background-color: var(--neon-cyan);
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+  color: #0f172a;
+  background-color: #38bdf8;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
 }
 
 /* Humor Pós-Tarefa */
@@ -205,21 +222,21 @@ body {
   gap: 4px;
   padding: 8px 12px;
   border-radius: 12px;
-  background: #0b131f;
-  border: 1px solid #1a283c;
+  background: #111827;
+  border: 1px solid #1e293b;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .mood-pill:hover {
-  border-color: var(--neon-cyan);
-  background: #101c2e;
+  border-color: #38bdf8;
+  background: #172236;
 }
 
 .mood-pill.active {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 242, 254, 0.1);
-  box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
 }
 
 /* Quick Tags de Reflexão */
@@ -229,23 +246,23 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
   color: #94a3b8;
-  background: #0b131f;
-  border: 1px solid #1a283c;
+  background: #111827;
+  border: 1px solid #1e293b;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .quick-tag:hover {
-  border-color: #3b4d6b;
+  border-color: #334155;
   color: #e2e8f0;
 }
 
 .quick-tag.active {
-  color: #070c14;
-  background-color: var(--electric-lime);
-  border-color: var(--electric-lime);
+  color: #064e3b;
+  background-color: #34d399;
+  border-color: #34d399;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(163, 230, 53, 0.4);
+  box-shadow: 0 2px 8px rgba(52, 211, 153, 0.25);
 }
 
 /* Modais e Toasts */
@@ -261,13 +278,13 @@ body {
 }
 
 .toast {
-  background: #0f1a28;
-  border: 1.5px solid var(--neon-cyan);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), var(--neon-cyan-glow);
+  background: #111827;
+  border: 1px solid #38bdf8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.2);
   padding: 12px 16px;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 10px;
-  color: #f1f5f9;
+  color: #f8fafc;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -284,7 +301,8 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 12, 0.96);
+  background: rgba(11, 15, 25, 0.88);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -292,11 +310,10 @@ body {
   z-index: 1000;
 }
 
-
 .modal-content {
-  background: #0e1724;
-  border: 1.5px solid #1f3147;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+  background: #111827;
+  border: 1px solid #1e293b;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.75);
   border-radius: 16px;
   max-width: 520px;
   width: 100%;
@@ -315,47 +332,48 @@ body {
 
 /* Hero Comercial */
 .hero-v2 {
-  background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.12) 0%, rgba(7, 12, 20, 0) 70%), #0a121e;
-  border: 1px solid #1b2a3f;
+  background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.08) 0%, rgba(17, 24, 39, 0) 70%), #111827;
+  border: 1px solid #1e293b;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* Cards das 5 Etapas (Como Funciona) */
 .step-card {
-  background: #0d1624;
-  border: 1px solid #1b2a3f;
+  background: #111827;
+  border: 1px solid #1e293b;
   border-radius: 14px;
   padding: 16px;
   transition: all 0.2s ease;
 }
 
 .step-card:hover {
-  border-color: var(--neon-cyan);
+  border-color: #38bdf8;
+  background: #172236;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 242, 254, 0.15);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.4);
 }
 
 .step-number {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
   font-size: 0.8rem;
-  color: var(--neon-cyan);
+  color: #38bdf8;
   letter-spacing: 0.08em;
 }
 
 /* Card: Próxima Atividade (Foco Imediato) */
 .next-activity-card {
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(163, 230, 53, 0.05) 100%), #0b1422;
-  border: 1.5px solid var(--neon-cyan);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(52, 211, 153, 0.03) 100%), #111827;
+  border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
 /* Barra de XP e Nível */
 .xp-bar-track {
-  background: #070d17;
-  border: 1px solid #1b2a3f;
+  background: #0b0f19;
+  border: 1px solid #1e293b;
   border-radius: 999px;
   height: 10px;
   overflow: hidden;
@@ -363,17 +381,17 @@ body {
 }
 
 .xp-bar-fill {
-  background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--electric-lime) 100%);
+  background: linear-gradient(90deg, #38bdf8 0%, #34d399 100%);
   height: 100%;
   border-radius: 999px;
-  box-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
   transition: width 0.4s ease;
 }
 
 /* Pílulas de Seleção do Onboarding */
 .onboarding-option {
-  background: #09121d;
-  border: 1.5px solid #1b2a3f;
+  background: #111827;
+  border: 1px solid #1e293b;
   border-radius: 12px;
   padding: 10px 14px;
   cursor: pointer;
@@ -382,15 +400,15 @@ body {
 }
 
 .onboarding-option:hover {
-  border-color: var(--neon-cyan);
-  background: #0f1c2d;
+  border-color: #38bdf8;
+  background: #172236;
 }
 
 .onboarding-option.selected {
-  border-color: var(--electric-lime);
-  background: rgba(163, 230, 53, 0.12);
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(163, 230, 53, 0.3);
+  box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25);
 }
 
 /* Animação de Celebração de XP */
@@ -405,5 +423,3 @@ body {
   80% { opacity: 1; transform: translateY(-8px) scale(1); }
   100% { opacity: 0; transform: translateY(-16px); }
 }
-
-

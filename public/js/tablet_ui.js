@@ -231,13 +231,13 @@ export function renderNextActivitySection() {
   const isInProgress = _win.inProgressTaskId === nextTask.id;
 
   container.innerHTML = `
-    <div class="next-activity-card p-5 sm:p-6 space-y-4 rounded-2xl bg-gradient-to-br from-[#0c1626] to-[#070e1a] border-2 border-cyan-400/40 shadow-xl shadow-cyan-500/10">
-      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#1b2a3f] pb-3">
-        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">
-          <span class="w-2.5 h-2.5 rounded-full ${isInProgress ? 'bg-lime-400 animate-ping' : 'bg-cyan-400 animate-pulse'}"></span>
+    <div class="next-activity-card p-5 sm:p-6 space-y-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-sky-500/30 shadow-lg shadow-black/30">
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/10 text-sky-300 border border-sky-400/30">
+          <span class="w-2.5 h-2.5 rounded-full ${isInProgress ? 'bg-emerald-400 animate-ping' : 'bg-sky-400 animate-pulse'}"></span>
           ${isInProgress ? 'EM ANDAMENTO • FOCO ATIVO' : 'PRÓXIMA ATIVIDADE EM FOCO'}
         </span>
-        <span class="text-xs font-mono font-extrabold text-lime-400 bg-lime-950/70 px-2.5 py-1 rounded-lg border border-lime-500/40 shadow-sm shadow-lime-500/20">
+        <span class="text-xs font-mono font-extrabold text-emerald-400 bg-emerald-950/40 px-2.5 py-1 rounded-lg border border-emerald-500/30">
           +50 XP
         </span>
       </div>
@@ -245,11 +245,11 @@ export function renderNextActivitySection() {
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div class="space-y-1">
           <div class="text-xs font-mono text-slate-400 flex items-center gap-2">
-            <i data-lucide="clock" class="w-4 h-4 text-cyan-400"></i>
+            <i data-lucide="clock" class="w-4 h-4 text-sky-400"></i>
             <span>Horário sugerido:</span>
             <strong class="text-slate-100 font-mono">${nextTask.time || 'Agora'}</strong>
             <span class="text-slate-500">•</span>
-            <span class="text-lime-400 font-mono">+${nextTask.points || 2}P conquista</span>
+            <span class="text-emerald-400 font-mono">+${nextTask.points || 2}P conquista</span>
           </div>
           <h3 class="text-lg sm:text-xl font-black text-white uppercase tracking-tight flex items-center gap-2">
             <span>${nextTask.title}</span>
@@ -261,23 +261,23 @@ export function renderNextActivitySection() {
 
         <div class="flex flex-wrap items-center gap-2.5 shrink-0 pt-1 md:pt-0">
           ${!isInProgress ? `
-            <button onclick="_win.startNextActivity('${nextTask.id}')" class="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 font-bold text-xs hover:border-cyan-400 hover:text-cyan-300 active:scale-95 transition-all flex items-center gap-2 shadow-sm" title="Iniciar foco agora">
-              <i data-lucide="play" class="w-4 h-4 fill-current text-cyan-400"></i>
+            <button onclick="_win.startNextActivity('${nextTask.id}')" class="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 font-bold text-xs hover:border-sky-400 hover:text-sky-300 active:scale-95 transition-all flex items-center gap-2 shadow-sm" title="Iniciar foco agora">
+              <i data-lucide="play" class="w-4 h-4 fill-current text-sky-400"></i>
               <span>Começar</span>
             </button>
           ` : `
-            <span class="px-3 py-2 rounded-xl bg-lime-950/50 border border-lime-400/40 text-lime-300 font-mono text-xs flex items-center gap-1.5">
+            <span class="px-3 py-2 rounded-xl bg-emerald-950/40 border border-emerald-400/30 text-emerald-300 font-mono text-xs flex items-center gap-1.5">
               <i data-lucide="activity" class="w-3.5 h-3.5 animate-pulse"></i>
               Foco iniciado
             </span>
           `}
 
-          <button onclick="_win.completeNextActivity('${nextTask.id}')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-lime-400 text-slate-950 font-black text-xs hover:brightness-110 active:scale-95 transition-all shadow-md shadow-cyan-500/25 flex items-center gap-2" title="Concluir atividade e ganhar 50 XP">
+          <button onclick="_win.completeNextActivity('${nextTask.id}')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-bold text-xs hover:brightness-105 active:scale-95 transition-all shadow-md shadow-sky-500/20 flex items-center gap-2" title="Concluir atividade e ganhar 50 XP">
             <i data-lucide="check-circle-2" class="w-4 h-4"></i>
             <span>Concluir (+50 XP)</span>
           </button>
 
-          <button onclick="_win.openReorganizeModal()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-lime-400 text-xs font-semibold transition" title="Reorganizar sem culpa se o dia mudou">
+          <button onclick="_win.openReorganizeModal()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-400 text-xs font-semibold transition" title="Reorganizar sem culpa se o dia mudou">
             <i data-lucide="refresh-cw" class="w-4 h-4"></i>
           </button>
         </div>
@@ -419,17 +419,17 @@ export function renderTimelineSlots(dayKey) {
 
     return `
       <div class="relative pl-6">
-        <span class="track-node ${isFocusActive ? 'active-node' : ''} ${isDone ? 'border-cyan-400 bg-cyan-400' : ''}"></span>
+        <span class="track-node ${isFocusActive ? 'active-node' : ''} ${isDone ? 'border-sky-400 bg-sky-400' : ''}"></span>
 
         <div class="timeline-slot-card flex items-center justify-between gap-3 ${isFocusActive ? 'active-focus' : ''} ${isDone ? 'is-done' : ''}"
              onclick="_win.toggleCleanTechTask('${dayKey}', '${task.id}')">
           <div class="flex items-center gap-3 min-w-0">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${isFocusActive ? 'bg-lime-950/60 text-lime-400 border border-lime-400/40' : isDone ? 'bg-cyan-950/40 text-cyan-400 border border-cyan-800' : 'bg-slate-900/80 text-slate-400 border border-slate-800'}">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${isFocusActive ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-400/30' : isDone ? 'bg-sky-950/40 text-sky-400 border border-sky-800/60' : 'bg-slate-900 text-slate-400 border border-slate-800'}">
               <i data-lucide="${getTaskIcon(task.icon, task.title)}" class="w-4 h-4"></i>
             </div>
 
             <div class="min-w-0">
-              <p class="text-[11px] font-mono font-semibold ${isFocusActive ? 'text-lime-300' : isDone ? 'text-cyan-400' : 'text-slate-400'}">
+              <p class="text-[11px] font-mono font-semibold ${isFocusActive ? 'text-emerald-300' : isDone ? 'text-sky-400' : 'text-slate-400'}">
                 ${task.time || getDefaultTime(idx)}
               </p>
               <h4 class="text-xs sm:text-sm font-bold truncate ${isDone ? 'line-through text-slate-400' : 'text-slate-100'}">
@@ -439,7 +439,7 @@ export function renderTimelineSlots(dayKey) {
           </div>
 
           <div class="flex items-center gap-2 shrink-0">
-            <span class="text-xs font-mono font-bold px-2 py-1 rounded-lg ${isFocusActive ? 'text-lime-400 bg-lime-950/50 border border-lime-500/40' : isDone ? 'text-cyan-300 bg-cyan-950/50 border border-cyan-500/40' : 'text-slate-300 bg-slate-900 border border-slate-800'}">
+            <span class="text-xs font-mono font-bold px-2 py-1 rounded-lg ${isFocusActive ? 'text-emerald-400 bg-emerald-950/40 border border-emerald-500/30' : isDone ? 'text-sky-300 bg-sky-950/40 border border-sky-500/30' : 'text-slate-300 bg-slate-900 border border-slate-800'}">
               ${isDone ? '✓ Concluído' : `+${task.points || 2}P`}
             </span>
           </div>
@@ -515,10 +515,10 @@ export function renderMilestonesBar(currentPoints) {
 
       return `
         <div class="flex flex-col items-center text-center">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm mb-1 transition-all ${isReached ? 'bg-cyan-500/20 text-cyan-300 border-2 border-cyan-400 shadow-sm shadow-cyan-400/50' : isNext ? 'border-2 border-lime-400 text-lime-400 bg-lime-950/40 shadow-sm shadow-lime-400/50' : 'border border-slate-700 text-slate-500 bg-slate-900'}">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm mb-1 transition-all ${isReached ? 'bg-sky-500/15 text-sky-300 border-2 border-sky-400 shadow-sm' : isNext ? 'border-2 border-emerald-400 text-emerald-400 bg-emerald-950/30 shadow-sm' : 'border border-slate-700 text-slate-500 bg-slate-900'}">
             ${m.emoji}
           </div>
-          <span class="text-[11px] font-mono font-bold ${isReached ? 'text-cyan-300' : isNext ? 'text-lime-400' : 'text-slate-500'}">${m.points}P</span>
+          <span class="text-[11px] font-mono font-bold ${isReached ? 'text-sky-300' : isNext ? 'text-emerald-400' : 'text-slate-500'}">${m.points}P</span>
           <span class="text-[10px] text-slate-400 truncate max-w-[60px]">${m.label}</span>
         </div>
       `;
